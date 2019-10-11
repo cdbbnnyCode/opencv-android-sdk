@@ -6,7 +6,6 @@ package org.opencv.face;
 import org.opencv.face.Facemark;
 
 // C++: class FacemarkKazemi
-//javadoc: FacemarkKazemi
 
 public class FacemarkKazemi extends Facemark {
 

@@ -11,7 +11,6 @@ import org.opencv.face.LBPHFaceRecognizer;
 import org.opencv.utils.Converters;
 
 // C++: class LBPHFaceRecognizer
-//javadoc: LBPHFaceRecognizer
 
 public class LBPHFaceRecognizer extends FaceRecognizer {
 
@@ -24,13 +23,8 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  Mat cv::face::LBPHFaceRecognizer::getLabels()
     //
 
-    //javadoc: LBPHFaceRecognizer::getLabels()
-    public  Mat getLabels()
-    {
-        
-        Mat retVal = new Mat(getLabels_0(nativeObj));
-        
-        return retVal;
+    public Mat getLabels() {
+        return new Mat(getLabels_0(nativeObj));
     }
 
 
@@ -38,58 +32,343 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++: static Ptr_LBPHFaceRecognizer cv::face::LBPHFaceRecognizer::create(int radius = 1, int neighbors = 8, int grid_x = 8, int grid_y = 8, double threshold = DBL_MAX)
     //
 
-    //javadoc: LBPHFaceRecognizer::create(radius, neighbors, grid_x, grid_y, threshold)
-    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y, double threshold)
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_0(radius, neighbors, grid_x, grid_y, threshold));
-        
-        return retVal;
+    /**
+     * @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+     *     radius, the smoother the image but more spatial information you can get.
+     *     @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y, double threshold) {
+        return LBPHFaceRecognizer.__fromPtr__(create_0(radius, neighbors, grid_x, grid_y, threshold));
     }
 
-    //javadoc: LBPHFaceRecognizer::create(radius, neighbors, grid_x, grid_y)
-    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y)
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_1(radius, neighbors, grid_x, grid_y));
-        
-        return retVal;
+    /**
+     * @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+     *     radius, the smoother the image but more spatial information you can get.
+     *     @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y) {
+        return LBPHFaceRecognizer.__fromPtr__(create_1(radius, neighbors, grid_x, grid_y));
     }
 
-    //javadoc: LBPHFaceRecognizer::create(radius, neighbors, grid_x)
-    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x)
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_2(radius, neighbors, grid_x));
-        
-        return retVal;
+    /**
+     * @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+     *     radius, the smoother the image but more spatial information you can get.
+     *     @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x) {
+        return LBPHFaceRecognizer.__fromPtr__(create_2(radius, neighbors, grid_x));
     }
 
-    //javadoc: LBPHFaceRecognizer::create(radius, neighbors)
-    public static LBPHFaceRecognizer create(int radius, int neighbors)
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_3(radius, neighbors));
-        
-        return retVal;
+    /**
+     * @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+     *     radius, the smoother the image but more spatial information you can get.
+     *     @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create(int radius, int neighbors) {
+        return LBPHFaceRecognizer.__fromPtr__(create_3(radius, neighbors));
     }
 
-    //javadoc: LBPHFaceRecognizer::create(radius)
-    public static LBPHFaceRecognizer create(int radius)
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_4(radius));
-        
-        return retVal;
+    /**
+     * @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+     *     radius, the smoother the image but more spatial information you can get.
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create(int radius) {
+        return LBPHFaceRecognizer.__fromPtr__(create_4(radius));
     }
 
-    //javadoc: LBPHFaceRecognizer::create()
-    public static LBPHFaceRecognizer create()
-    {
-        
-        LBPHFaceRecognizer retVal = LBPHFaceRecognizer.__fromPtr__(create_5());
-        
-        return retVal;
+    /**
+     *     radius, the smoother the image but more spatial information you can get.
+     *     appropriate value is to use {@code 8} sample points. Keep in mind: the more sample points you include,
+     *     the higher the computational cost.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+     *     feature vector.
+     *     is larger than the threshold, this method returns -1.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+     *         grayscale images, use cvtColor to convert between the color spaces.
+     *   </li>
+     *   <li>
+     *        This model supports updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        radius see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        neighbors see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_x see LLBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        grid_y see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see LBPHFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+     *         none was given).
+     *   </li>
+     *   <li>
+     *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static LBPHFaceRecognizer create() {
+        return LBPHFaceRecognizer.__fromPtr__(create_5());
     }
 
 
@@ -97,13 +376,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  double cv::face::LBPHFaceRecognizer::getThreshold()
     //
 
-    //javadoc: LBPHFaceRecognizer::getThreshold()
-    public  double getThreshold()
-    {
-        
-        double retVal = getThreshold_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setThreshold
+     * @return automatically generated
+     */
+    public double getThreshold() {
+        return getThreshold_0(nativeObj);
     }
 
 
@@ -111,13 +389,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  int cv::face::LBPHFaceRecognizer::getGridX()
     //
 
-    //javadoc: LBPHFaceRecognizer::getGridX()
-    public  int getGridX()
-    {
-        
-        int retVal = getGridX_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setGridX
+     * @return automatically generated
+     */
+    public int getGridX() {
+        return getGridX_0(nativeObj);
     }
 
 
@@ -125,13 +402,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  int cv::face::LBPHFaceRecognizer::getGridY()
     //
 
-    //javadoc: LBPHFaceRecognizer::getGridY()
-    public  int getGridY()
-    {
-        
-        int retVal = getGridY_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setGridY
+     * @return automatically generated
+     */
+    public int getGridY() {
+        return getGridY_0(nativeObj);
     }
 
 
@@ -139,13 +415,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  int cv::face::LBPHFaceRecognizer::getNeighbors()
     //
 
-    //javadoc: LBPHFaceRecognizer::getNeighbors()
-    public  int getNeighbors()
-    {
-        
-        int retVal = getNeighbors_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setNeighbors
+     * @return automatically generated
+     */
+    public int getNeighbors() {
+        return getNeighbors_0(nativeObj);
     }
 
 
@@ -153,13 +428,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  int cv::face::LBPHFaceRecognizer::getRadius()
     //
 
-    //javadoc: LBPHFaceRecognizer::getRadius()
-    public  int getRadius()
-    {
-        
-        int retVal = getRadius_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setRadius
+     * @return automatically generated
+     */
+    public int getRadius() {
+        return getRadius_0(nativeObj);
     }
 
 
@@ -167,9 +441,7 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  vector_Mat cv::face::LBPHFaceRecognizer::getHistograms()
     //
 
-    //javadoc: LBPHFaceRecognizer::getHistograms()
-    public  List<Mat> getHistograms()
-    {
+    public List<Mat> getHistograms() {
         List<Mat> retVal = new ArrayList<Mat>();
         Mat retValMat = new Mat(getHistograms_0(nativeObj));
         Converters.Mat_to_vector_Mat(retValMat, retVal);
@@ -181,13 +453,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::LBPHFaceRecognizer::setGridX(int val)
     //
 
-    //javadoc: LBPHFaceRecognizer::setGridX(val)
-    public  void setGridX(int val)
-    {
-        
+    /**
+     *  getGridX SEE: getGridX
+     * @param val automatically generated
+     */
+    public void setGridX(int val) {
         setGridX_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -195,13 +466,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::LBPHFaceRecognizer::setGridY(int val)
     //
 
-    //javadoc: LBPHFaceRecognizer::setGridY(val)
-    public  void setGridY(int val)
-    {
-        
+    /**
+     *  getGridY SEE: getGridY
+     * @param val automatically generated
+     */
+    public void setGridY(int val) {
         setGridY_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -209,13 +479,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::LBPHFaceRecognizer::setNeighbors(int val)
     //
 
-    //javadoc: LBPHFaceRecognizer::setNeighbors(val)
-    public  void setNeighbors(int val)
-    {
-        
+    /**
+     *  getNeighbors SEE: getNeighbors
+     * @param val automatically generated
+     */
+    public void setNeighbors(int val) {
         setNeighbors_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -223,13 +492,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::LBPHFaceRecognizer::setRadius(int val)
     //
 
-    //javadoc: LBPHFaceRecognizer::setRadius(val)
-    public  void setRadius(int val)
-    {
-        
+    /**
+     *  getRadius SEE: getRadius
+     * @param val automatically generated
+     */
+    public void setRadius(int val) {
         setRadius_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -237,13 +505,12 @@ public class LBPHFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::LBPHFaceRecognizer::setThreshold(double val)
     //
 
-    //javadoc: LBPHFaceRecognizer::setThreshold(val)
-    public  void setThreshold(double val)
-    {
-        
+    /**
+     *  getThreshold SEE: getThreshold
+     * @param val automatically generated
+     */
+    public void setThreshold(double val) {
         setThreshold_0(nativeObj, val);
-        
-        return;
     }
 
 

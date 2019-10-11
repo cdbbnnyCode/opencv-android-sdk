@@ -7,8 +7,10 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class GraphSegmentation
-//javadoc: GraphSegmentation
-
+/**
+ * Graph Based Segmentation Algorithm.
+ *                         The class implements the algorithm described in CITE: PFF2004 .
+ */
 public class GraphSegmentation extends Algorithm {
 
     protected GraphSegmentation(long addr) { super(addr); }
@@ -20,13 +22,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  double cv::ximgproc::segmentation::GraphSegmentation::getSigma()
     //
 
-    //javadoc: GraphSegmentation::getSigma()
-    public  double getSigma()
-    {
-        
-        double retVal = getSigma_0(nativeObj);
-        
-        return retVal;
+    public double getSigma() {
+        return getSigma_0(nativeObj);
     }
 
 
@@ -34,13 +31,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  float cv::ximgproc::segmentation::GraphSegmentation::getK()
     //
 
-    //javadoc: GraphSegmentation::getK()
-    public  float getK()
-    {
-        
-        float retVal = getK_0(nativeObj);
-        
-        return retVal;
+    public float getK() {
+        return getK_0(nativeObj);
     }
 
 
@@ -48,13 +40,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  int cv::ximgproc::segmentation::GraphSegmentation::getMinSize()
     //
 
-    //javadoc: GraphSegmentation::getMinSize()
-    public  int getMinSize()
-    {
-        
-        int retVal = getMinSize_0(nativeObj);
-        
-        return retVal;
+    public int getMinSize() {
+        return getMinSize_0(nativeObj);
     }
 
 
@@ -62,13 +49,13 @@ public class GraphSegmentation extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::GraphSegmentation::processImage(Mat src, Mat& dst)
     //
 
-    //javadoc: GraphSegmentation::processImage(src, dst)
-    public  void processImage(Mat src, Mat dst)
-    {
-        
+    /**
+     * Segment an image and store output in dst
+     *                                 @param src The input image. Any number of channel (1 (Eg: Gray), 3 (Eg: RGB), 4 (Eg: RGB-D)) can be provided
+     *                                 @param dst The output segmentation. It's a CV_32SC1 Mat with the same number of cols and rows as input image, with an unique, sequential, id for each pixel.
+     */
+    public void processImage(Mat src, Mat dst) {
         processImage_0(nativeObj, src.nativeObj, dst.nativeObj);
-        
-        return;
     }
 
 
@@ -76,13 +63,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::GraphSegmentation::setK(float k)
     //
 
-    //javadoc: GraphSegmentation::setK(k)
-    public  void setK(float k)
-    {
-        
+    public void setK(float k) {
         setK_0(nativeObj, k);
-        
-        return;
     }
 
 
@@ -90,13 +72,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::GraphSegmentation::setMinSize(int min_size)
     //
 
-    //javadoc: GraphSegmentation::setMinSize(min_size)
-    public  void setMinSize(int min_size)
-    {
-        
+    public void setMinSize(int min_size) {
         setMinSize_0(nativeObj, min_size);
-        
-        return;
     }
 
 
@@ -104,13 +81,8 @@ public class GraphSegmentation extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::GraphSegmentation::setSigma(double sigma)
     //
 
-    //javadoc: GraphSegmentation::setSigma(sigma)
-    public  void setSigma(double sigma)
-    {
-        
+    public void setSigma(double sigma) {
         setSigma_0(nativeObj, sigma);
-        
-        return;
     }
 
 

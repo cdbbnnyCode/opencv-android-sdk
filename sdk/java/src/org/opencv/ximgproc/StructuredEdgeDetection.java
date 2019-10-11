@@ -7,8 +7,9 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class StructuredEdgeDetection
-//javadoc: StructuredEdgeDetection
-
+/**
+ * Class implementing edge detection algorithm from CITE: Dollar2013 :
+ */
 public class StructuredEdgeDetection extends Algorithm {
 
     protected StructuredEdgeDetection(long addr) { super(addr); }
@@ -20,13 +21,14 @@ public class StructuredEdgeDetection extends Algorithm {
     // C++:  void cv::ximgproc::StructuredEdgeDetection::computeOrientation(Mat _src, Mat& _dst)
     //
 
-    //javadoc: StructuredEdgeDetection::computeOrientation(_src, _dst)
-    public  void computeOrientation(Mat _src, Mat _dst)
-    {
-        
+    /**
+     * The function computes orientation from edge image.
+     *
+     *     @param _src edge image.
+     *     @param _dst orientation image.
+     */
+    public void computeOrientation(Mat _src, Mat _dst) {
         computeOrientation_0(nativeObj, _src.nativeObj, _dst.nativeObj);
-        
-        return;
     }
 
 
@@ -34,13 +36,17 @@ public class StructuredEdgeDetection extends Algorithm {
     // C++:  void cv::ximgproc::StructuredEdgeDetection::detectEdges(Mat _src, Mat& _dst)
     //
 
-    //javadoc: StructuredEdgeDetection::detectEdges(_src, _dst)
-    public  void detectEdges(Mat _src, Mat _dst)
-    {
-        
+    /**
+     * The function detects edges in src and draw them to dst.
+     *
+     *     The algorithm underlies this function is much more robust to texture presence, than common
+     *     approaches, e.g. Sobel
+     *     @param _src source image (RGB, float, in [0;1]) to detect edges
+     *     @param _dst destination image (grayscale, float, in [0;1]) where edges are drawn
+     *     SEE: Sobel, Canny
+     */
+    public void detectEdges(Mat _src, Mat _dst) {
         detectEdges_0(nativeObj, _src.nativeObj, _dst.nativeObj);
-        
-        return;
     }
 
 
@@ -48,49 +54,69 @@ public class StructuredEdgeDetection extends Algorithm {
     // C++:  void cv::ximgproc::StructuredEdgeDetection::edgesNms(Mat edge_image, Mat orientation_image, Mat& _dst, int r = 2, int s = 0, float m = 1, bool isParallel = true)
     //
 
-    //javadoc: StructuredEdgeDetection::edgesNms(edge_image, orientation_image, _dst, r, s, m, isParallel)
-    public  void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m, boolean isParallel)
-    {
-        
+    /**
+     * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+     *
+     *     @param edge_image edge image from detectEdges function.
+     *     @param orientation_image orientation image from computeOrientation function.
+     *     @param _dst suppressed image (grayscale, float, in [0;1])
+     *     @param r radius for NMS suppression.
+     *     @param s radius for boundary suppression.
+     *     @param m multiplier for conservative suppression.
+     *     @param isParallel enables/disables parallel computing.
+     */
+    public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m, boolean isParallel) {
         edgesNms_0(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s, m, isParallel);
-        
-        return;
     }
 
-    //javadoc: StructuredEdgeDetection::edgesNms(edge_image, orientation_image, _dst, r, s, m)
-    public  void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m)
-    {
-        
+    /**
+     * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+     *
+     *     @param edge_image edge image from detectEdges function.
+     *     @param orientation_image orientation image from computeOrientation function.
+     *     @param _dst suppressed image (grayscale, float, in [0;1])
+     *     @param r radius for NMS suppression.
+     *     @param s radius for boundary suppression.
+     *     @param m multiplier for conservative suppression.
+     */
+    public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m) {
         edgesNms_1(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s, m);
-        
-        return;
     }
 
-    //javadoc: StructuredEdgeDetection::edgesNms(edge_image, orientation_image, _dst, r, s)
-    public  void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s)
-    {
-        
+    /**
+     * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+     *
+     *     @param edge_image edge image from detectEdges function.
+     *     @param orientation_image orientation image from computeOrientation function.
+     *     @param _dst suppressed image (grayscale, float, in [0;1])
+     *     @param r radius for NMS suppression.
+     *     @param s radius for boundary suppression.
+     */
+    public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s) {
         edgesNms_2(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s);
-        
-        return;
     }
 
-    //javadoc: StructuredEdgeDetection::edgesNms(edge_image, orientation_image, _dst, r)
-    public  void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r)
-    {
-        
+    /**
+     * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+     *
+     *     @param edge_image edge image from detectEdges function.
+     *     @param orientation_image orientation image from computeOrientation function.
+     *     @param _dst suppressed image (grayscale, float, in [0;1])
+     *     @param r radius for NMS suppression.
+     */
+    public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r) {
         edgesNms_3(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r);
-        
-        return;
     }
 
-    //javadoc: StructuredEdgeDetection::edgesNms(edge_image, orientation_image, _dst)
-    public  void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst)
-    {
-        
+    /**
+     * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+     *
+     *     @param edge_image edge image from detectEdges function.
+     *     @param orientation_image orientation image from computeOrientation function.
+     *     @param _dst suppressed image (grayscale, float, in [0;1])
+     */
+    public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst) {
         edgesNms_4(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj);
-        
-        return;
     }
 
 

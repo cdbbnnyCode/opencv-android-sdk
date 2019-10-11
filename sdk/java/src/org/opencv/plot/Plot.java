@@ -6,7 +6,6 @@ package org.opencv.plot;
 
 
 // C++: class Plot
-//javadoc: Plot
 
 public class Plot {
 

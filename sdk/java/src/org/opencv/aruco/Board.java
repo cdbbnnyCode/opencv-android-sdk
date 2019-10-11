@@ -13,8 +13,16 @@ import org.opencv.core.MatOfPoint3f;
 import org.opencv.utils.Converters;
 
 // C++: class Board
-//javadoc: Board
-
+/**
+ * Board of markers
+ *
+ * A board is a set of markers in the 3D space with a common coordinate system.
+ * The common form of a board of marker is a planar (2D) board, however any 3D layout can be used.
+ * A Board object is composed by:
+ * - The object points of the marker corners, i.e. their coordinates respect to the board system.
+ * - The dictionary which indicates the type of markers of the board
+ * - The identifier of all the markers in the board.
+ */
 public class Board {
 
     protected final long nativeObj;
@@ -29,13 +37,18 @@ public class Board {
     // C++: static Ptr_Board cv::aruco::Board::create(vector_Mat objPoints, Ptr_Dictionary dictionary, Mat ids)
     //
 
-    //javadoc: Board::create(objPoints, dictionary, ids)
-    public static Board create(List<Mat> objPoints, Dictionary dictionary, Mat ids)
-    {
+    /**
+     * Provide way to create Board by passing necessary data. Specially needed in Python.
+     *
+     * @param objPoints array of object points of all the marker corners in the board
+     * @param dictionary the dictionary of markers employed for this board
+     * @param ids vector of the identifiers of the markers in the board
+     *
+     * @return automatically generated
+     */
+    public static Board create(List<Mat> objPoints, Dictionary dictionary, Mat ids) {
         Mat objPoints_mat = Converters.vector_Mat_to_Mat(objPoints);
-        Board retVal = Board.__fromPtr__(create_0(objPoints_mat.nativeObj, dictionary.getNativeObjAddr(), ids.nativeObj));
-        
-        return retVal;
+        return Board.__fromPtr__(create_0(objPoints_mat.nativeObj, dictionary.getNativeObjAddr(), ids.nativeObj));
     }
 
 
@@ -43,9 +56,7 @@ public class Board {
     // C++: vector_vector_Point3f Board::objPoints
     //
 
-    //javadoc: Board::get_objPoints()
-    public  List<MatOfPoint3f> get_objPoints()
-    {
+    public List<MatOfPoint3f> get_objPoints() {
         List<MatOfPoint3f> retVal = new ArrayList<MatOfPoint3f>();
         Mat retValMat = new Mat(get_objPoints_0(nativeObj));
         Converters.Mat_to_vector_vector_Point3f(retValMat, retVal);
@@ -57,13 +68,8 @@ public class Board {
     // C++: Ptr_Dictionary Board::dictionary
     //
 
-    //javadoc: Board::get_dictionary()
-    public  Dictionary get_dictionary()
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(get_dictionary_0(nativeObj));
-        
-        return retVal;
+    public Dictionary get_dictionary() {
+        return Dictionary.__fromPtr__(get_dictionary_0(nativeObj));
     }
 
 
@@ -71,13 +77,8 @@ public class Board {
     // C++: vector_int Board::ids
     //
 
-    //javadoc: Board::get_ids()
-    public  MatOfInt get_ids()
-    {
-        
-        MatOfInt retVal = MatOfInt.fromNativeAddr(get_ids_0(nativeObj));
-        
-        return retVal;
+    public MatOfInt get_ids() {
+        return MatOfInt.fromNativeAddr(get_ids_0(nativeObj));
     }
 
 

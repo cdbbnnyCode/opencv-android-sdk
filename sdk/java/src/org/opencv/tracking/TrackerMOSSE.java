@@ -7,8 +7,12 @@ import org.opencv.tracking.Tracker;
 import org.opencv.tracking.TrackerMOSSE;
 
 // C++: class TrackerMOSSE
-//javadoc: TrackerMOSSE
-
+/**
+ * the MOSSE (Minimum Output Sum of Squared %Error) tracker
+ *
+ * The implementation is based on CITE: MOSSE Visual Object Tracking using Adaptive Correlation Filters
+ * <b>Note:</b> this tracker works with grayscale images, if passed bgr ones, they will get converted internally.
+ */
 public class TrackerMOSSE extends Tracker {
 
     protected TrackerMOSSE(long addr) { super(addr); }
@@ -20,13 +24,12 @@ public class TrackerMOSSE extends Tracker {
     // C++: static Ptr_TrackerMOSSE cv::TrackerMOSSE::create()
     //
 
-    //javadoc: TrackerMOSSE::create()
-    public static TrackerMOSSE create()
-    {
-        
-        TrackerMOSSE retVal = TrackerMOSSE.__fromPtr__(create_0());
-        
-        return retVal;
+    /**
+     * Constructor
+     * @return automatically generated
+     */
+    public static TrackerMOSSE create() {
+        return TrackerMOSSE.__fromPtr__(create_0());
     }
 
 

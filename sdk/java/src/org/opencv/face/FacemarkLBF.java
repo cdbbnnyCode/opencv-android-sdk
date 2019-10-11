@@ -6,7 +6,6 @@ package org.opencv.face;
 import org.opencv.face.FacemarkTrain;
 
 // C++: class FacemarkLBF
-//javadoc: FacemarkLBF
 
 public class FacemarkLBF extends FacemarkTrain {
 

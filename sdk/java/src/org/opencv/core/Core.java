@@ -16,11 +16,11 @@ import org.opencv.utils.Converters;
 
 public class Core {
     // these constants are wrapped inside functions to prevent inlining
-    private static String getVersion() { return "4.1.1"; }
-    private static String getNativeLibraryName() { return "opencv_java411"; }
+    private static String getVersion() { return "4.1.2"; }
+    private static String getNativeLibraryName() { return "opencv_java412"; }
     private static int getVersionMajorJ() { return 4; }
     private static int getVersionMinorJ() { return 1; }
-    private static int getVersionRevisionJ() { return 1; }
+    private static int getVersionRevisionJ() { return 2; }
     private static String getVersionStatusJ() { return ""; }
 
     public static final String VERSION = getVersion();
@@ -51,6 +51,20 @@ public class Core {
             DECOMP_NORMAL = 16;
 
 
+    // C++: enum <unnamed>
+    public static final int
+            SVD_MODIFY_A = 1,
+            SVD_NO_UV = 2,
+            SVD_FULL_UV = 4,
+            FILLED = -1,
+            REDUCE_SUM = 0,
+            REDUCE_AVG = 1,
+            REDUCE_MAX = 2,
+            REDUCE_MIN = 3,
+            RNG_UNIFORM = 0,
+            RNG_NORMAL = 1;
+
+
     // C++: enum BorderTypes
     public static final int
             BORDER_CONSTANT = 0,
@@ -78,20 +92,6 @@ public class Core {
             KMEANS_USE_INITIAL_LABELS = 1;
 
 
-    // C++: enum <unnamed>
-    public static final int
-            SVD_MODIFY_A = 1,
-            SVD_NO_UV = 2,
-            SVD_FULL_UV = 4,
-            FILLED = -1,
-            REDUCE_SUM = 0,
-            REDUCE_AVG = 1,
-            REDUCE_MAX = 2,
-            REDUCE_MIN = 3,
-            RNG_UNIFORM = 0,
-            RNG_NORMAL = 1;
-
-
     // C++: enum CmpTypes
     public static final int
             CMP_EQ = 0,
@@ -109,11 +109,16 @@ public class Core {
             PCA_USE_AVG = 2;
 
 
-    // C++: enum RotateFlags
+    // C++: enum DftFlags
     public static final int
-            ROTATE_90_CLOCKWISE = 0,
-            ROTATE_180 = 1,
-            ROTATE_90_COUNTERCLOCKWISE = 2;
+            DFT_INVERSE = 1,
+            DFT_SCALE = 2,
+            DFT_ROWS = 4,
+            DFT_COMPLEX_OUTPUT = 16,
+            DFT_REAL_OUTPUT = 32,
+            DFT_COMPLEX_INPUT = 64,
+            DCT_INVERSE = DFT_INVERSE,
+            DCT_ROWS = DFT_ROWS;
 
 
     // C++: enum IMPL
@@ -182,18 +187,6 @@ public class Core {
             Param_SCALAR = 12;
 
 
-    // C++: enum DftFlags
-    public static final int
-            DFT_INVERSE = 1,
-            DFT_SCALE = 2,
-            DFT_ROWS = 4,
-            DFT_COMPLEX_OUTPUT = 16,
-            DFT_REAL_OUTPUT = 32,
-            DFT_COMPLEX_INPUT = 64,
-            DCT_INVERSE = DFT_INVERSE,
-            DCT_ROWS = DFT_ROWS;
-
-
     // C++: enum NormTypes
     public static final int
             NORM_INF = 1,
@@ -205,6 +198,13 @@ public class Core {
             NORM_TYPE_MASK = 7,
             NORM_RELATIVE = 8,
             NORM_MINMAX = 32;
+
+
+    // C++: enum RotateFlags
+    public static final int
+            ROTATE_90_CLOCKWISE = 0,
+            ROTATE_180 = 1,
+            ROTATE_90_COUNTERCLOCKWISE = 2;
 
 
     // C++: enum Code

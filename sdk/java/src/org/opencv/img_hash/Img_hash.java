@@ -6,7 +6,6 @@ package org.opencv.img_hash;
 import org.opencv.core.Mat;
 
 // C++: class Img_hash
-//javadoc: Img_hash
 
 public class Img_hash {
 
@@ -20,13 +19,13 @@ public class Img_hash {
     // C++:  void cv::img_hash::averageHash(Mat inputArr, Mat& outputArr)
     //
 
-    //javadoc: averageHash(inputArr, outputArr)
-    public static void averageHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Calculates img_hash::AverageHash in one call
+     * @param inputArr input image want to compute hash value, type should be CV_8UC4, CV_8UC3 or CV_8UC1.
+     * @param outputArr Hash value of input, it will contain 16 hex decimal number, return type is CV_8U
+     */
+    public static void averageHash(Mat inputArr, Mat outputArr) {
         averageHash_0(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 
@@ -34,22 +33,23 @@ public class Img_hash {
     // C++:  void cv::img_hash::blockMeanHash(Mat inputArr, Mat& outputArr, int mode = BLOCK_MEAN_HASH_MODE_0)
     //
 
-    //javadoc: blockMeanHash(inputArr, outputArr, mode)
-    public static void blockMeanHash(Mat inputArr, Mat outputArr, int mode)
-    {
-        
+    /**
+     * Computes block mean hash of the input image
+     *     @param inputArr input image want to compute hash value, type should be CV_8UC4, CV_8UC3 or CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 16 hex decimal number, return type is CV_8U
+     *     @param mode the mode
+     */
+    public static void blockMeanHash(Mat inputArr, Mat outputArr, int mode) {
         blockMeanHash_0(inputArr.nativeObj, outputArr.nativeObj, mode);
-        
-        return;
     }
 
-    //javadoc: blockMeanHash(inputArr, outputArr)
-    public static void blockMeanHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes block mean hash of the input image
+     *     @param inputArr input image want to compute hash value, type should be CV_8UC4, CV_8UC3 or CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 16 hex decimal number, return type is CV_8U
+     */
+    public static void blockMeanHash(Mat inputArr, Mat outputArr) {
         blockMeanHash_1(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 
@@ -57,13 +57,16 @@ public class Img_hash {
     // C++:  void cv::img_hash::colorMomentHash(Mat inputArr, Mat& outputArr)
     //
 
-    //javadoc: colorMomentHash(inputArr, outputArr)
-    public static void colorMomentHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes color moment hash of the input, the algorithm
+     *     is come from the paper "Perceptual  Hashing  for  Color  Images
+     *     Using  Invariant Moments"
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3 or CV_8UC1.
+     *     @param outputArr 42 hash values with type CV_64F(double)
+     */
+    public static void colorMomentHash(Mat inputArr, Mat outputArr) {
         colorMomentHash_0(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 
@@ -71,31 +74,40 @@ public class Img_hash {
     // C++:  void cv::img_hash::marrHildrethHash(Mat inputArr, Mat& outputArr, float alpha = 2.0f, float scale = 1.0f)
     //
 
-    //javadoc: marrHildrethHash(inputArr, outputArr, alpha, scale)
-    public static void marrHildrethHash(Mat inputArr, Mat outputArr, float alpha, float scale)
-    {
-        
+    /**
+     * Computes average hash value of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 16 hex
+     *     decimal number, return type is CV_8U
+     *     @param alpha int scale factor for marr wavelet (default=2).
+     *     @param scale int level of scale factor (default = 1)
+     */
+    public static void marrHildrethHash(Mat inputArr, Mat outputArr, float alpha, float scale) {
         marrHildrethHash_0(inputArr.nativeObj, outputArr.nativeObj, alpha, scale);
-        
-        return;
     }
 
-    //javadoc: marrHildrethHash(inputArr, outputArr, alpha)
-    public static void marrHildrethHash(Mat inputArr, Mat outputArr, float alpha)
-    {
-        
+    /**
+     * Computes average hash value of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 16 hex
+     *     decimal number, return type is CV_8U
+     *     @param alpha int scale factor for marr wavelet (default=2).
+     */
+    public static void marrHildrethHash(Mat inputArr, Mat outputArr, float alpha) {
         marrHildrethHash_1(inputArr.nativeObj, outputArr.nativeObj, alpha);
-        
-        return;
     }
 
-    //javadoc: marrHildrethHash(inputArr, outputArr)
-    public static void marrHildrethHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes average hash value of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 16 hex
+     *     decimal number, return type is CV_8U
+     */
+    public static void marrHildrethHash(Mat inputArr, Mat outputArr) {
         marrHildrethHash_2(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 
@@ -103,13 +115,14 @@ public class Img_hash {
     // C++:  void cv::img_hash::pHash(Mat inputArr, Mat& outputArr)
     //
 
-    //javadoc: pHash(inputArr, outputArr)
-    public static void pHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes pHash value of the input image
+     *     @param inputArr input image want to compute hash value,
+     *      type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input, it will contain 8 uchar value
+     */
+    public static void pHash(Mat inputArr, Mat outputArr) {
         pHash_0(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 
@@ -117,31 +130,37 @@ public class Img_hash {
     // C++:  void cv::img_hash::radialVarianceHash(Mat inputArr, Mat& outputArr, double sigma = 1, int numOfAngleLine = 180)
     //
 
-    //javadoc: radialVarianceHash(inputArr, outputArr, sigma, numOfAngleLine)
-    public static void radialVarianceHash(Mat inputArr, Mat outputArr, double sigma, int numOfAngleLine)
-    {
-        
+    /**
+     * Computes radial variance hash of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input
+     *     @param sigma Gaussian kernel standard deviation
+     *     @param numOfAngleLine The number of angles to consider
+     */
+    public static void radialVarianceHash(Mat inputArr, Mat outputArr, double sigma, int numOfAngleLine) {
         radialVarianceHash_0(inputArr.nativeObj, outputArr.nativeObj, sigma, numOfAngleLine);
-        
-        return;
     }
 
-    //javadoc: radialVarianceHash(inputArr, outputArr, sigma)
-    public static void radialVarianceHash(Mat inputArr, Mat outputArr, double sigma)
-    {
-        
+    /**
+     * Computes radial variance hash of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input
+     *     @param sigma Gaussian kernel standard deviation
+     */
+    public static void radialVarianceHash(Mat inputArr, Mat outputArr, double sigma) {
         radialVarianceHash_1(inputArr.nativeObj, outputArr.nativeObj, sigma);
-        
-        return;
     }
 
-    //javadoc: radialVarianceHash(inputArr, outputArr)
-    public static void radialVarianceHash(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes radial variance hash of the input image
+     *     @param inputArr input image want to compute hash value,
+     *     type should be CV_8UC4, CV_8UC3, CV_8UC1.
+     *     @param outputArr Hash value of input
+     */
+    public static void radialVarianceHash(Mat inputArr, Mat outputArr) {
         radialVarianceHash_2(inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 

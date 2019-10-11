@@ -7,8 +7,10 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class SparseMatchInterpolator
-//javadoc: SparseMatchInterpolator
-
+/**
+ * Main interface for all filters, that take sparse matches as an
+ * input and produce a dense per-pixel matching (optical flow) as an output.
+ */
 public class SparseMatchInterpolator extends Algorithm {
 
     protected SparseMatchInterpolator(long addr) { super(addr); }
@@ -20,13 +22,23 @@ public class SparseMatchInterpolator extends Algorithm {
     // C++:  void cv::ximgproc::SparseMatchInterpolator::interpolate(Mat from_image, Mat from_points, Mat to_image, Mat to_points, Mat& dense_flow)
     //
 
-    //javadoc: SparseMatchInterpolator::interpolate(from_image, from_points, to_image, to_points, dense_flow)
-    public  void interpolate(Mat from_image, Mat from_points, Mat to_image, Mat to_points, Mat dense_flow)
-    {
-        
+    /**
+     * Interpolate input sparse matches.
+     *
+     *     @param from_image first of the two matched images, 8-bit single-channel or three-channel.
+     *
+     *     @param from_points points of the from_image for which there are correspondences in the
+     *     to_image (Point2f vector, size shouldn't exceed 32767)
+     *
+     *     @param to_image second of the two matched images, 8-bit single-channel or three-channel.
+     *
+     *     @param to_points points in the to_image corresponding to from_points
+     *     (Point2f vector, size shouldn't exceed 32767)
+     *
+     *     @param dense_flow output dense matching (two-channel CV_32F image)
+     */
+    public void interpolate(Mat from_image, Mat from_points, Mat to_image, Mat to_points, Mat dense_flow) {
         interpolate_0(nativeObj, from_image.nativeObj, from_points.nativeObj, to_image.nativeObj, to_points.nativeObj, dense_flow.nativeObj);
-        
-        return;
     }
 
 

@@ -3,11 +3,15 @@
 //
 package org.opencv.img_hash;
 
+import org.opencv.img_hash.ImgHashBase;
 import org.opencv.img_hash.RadialVarianceHash;
 
 // C++: class RadialVarianceHash
-//javadoc: RadialVarianceHash
-
+/**
+ * Image hash based on Radon transform.
+ *
+ * See CITE: tang2012perceptual for details.
+ */
 public class RadialVarianceHash extends ImgHashBase {
 
     protected RadialVarianceHash(long addr) { super(addr); }
@@ -19,31 +23,16 @@ public class RadialVarianceHash extends ImgHashBase {
     // C++: static Ptr_RadialVarianceHash cv::img_hash::RadialVarianceHash::create(double sigma = 1, int numOfAngleLine = 180)
     //
 
-    //javadoc: RadialVarianceHash::create(sigma, numOfAngleLine)
-    public static RadialVarianceHash create(double sigma, int numOfAngleLine)
-    {
-        
-        RadialVarianceHash retVal = RadialVarianceHash.__fromPtr__(create_0(sigma, numOfAngleLine));
-        
-        return retVal;
+    public static RadialVarianceHash create(double sigma, int numOfAngleLine) {
+        return RadialVarianceHash.__fromPtr__(create_0(sigma, numOfAngleLine));
     }
 
-    //javadoc: RadialVarianceHash::create(sigma)
-    public static RadialVarianceHash create(double sigma)
-    {
-        
-        RadialVarianceHash retVal = RadialVarianceHash.__fromPtr__(create_1(sigma));
-        
-        return retVal;
+    public static RadialVarianceHash create(double sigma) {
+        return RadialVarianceHash.__fromPtr__(create_1(sigma));
     }
 
-    //javadoc: RadialVarianceHash::create()
-    public static RadialVarianceHash create()
-    {
-        
-        RadialVarianceHash retVal = RadialVarianceHash.__fromPtr__(create_2());
-        
-        return retVal;
+    public static RadialVarianceHash create() {
+        return RadialVarianceHash.__fromPtr__(create_2());
     }
 
 
@@ -51,13 +40,8 @@ public class RadialVarianceHash extends ImgHashBase {
     // C++:  double cv::img_hash::RadialVarianceHash::getSigma()
     //
 
-    //javadoc: RadialVarianceHash::getSigma()
-    public  double getSigma()
-    {
-        
-        double retVal = getSigma_0(nativeObj);
-        
-        return retVal;
+    public double getSigma() {
+        return getSigma_0(nativeObj);
     }
 
 
@@ -65,13 +49,8 @@ public class RadialVarianceHash extends ImgHashBase {
     // C++:  int cv::img_hash::RadialVarianceHash::getNumOfAngleLine()
     //
 
-    //javadoc: RadialVarianceHash::getNumOfAngleLine()
-    public  int getNumOfAngleLine()
-    {
-        
-        int retVal = getNumOfAngleLine_0(nativeObj);
-        
-        return retVal;
+    public int getNumOfAngleLine() {
+        return getNumOfAngleLine_0(nativeObj);
     }
 
 
@@ -79,13 +58,8 @@ public class RadialVarianceHash extends ImgHashBase {
     // C++:  void cv::img_hash::RadialVarianceHash::setNumOfAngleLine(int value)
     //
 
-    //javadoc: RadialVarianceHash::setNumOfAngleLine(value)
-    public  void setNumOfAngleLine(int value)
-    {
-        
+    public void setNumOfAngleLine(int value) {
         setNumOfAngleLine_0(nativeObj, value);
-        
-        return;
     }
 
 
@@ -93,13 +67,8 @@ public class RadialVarianceHash extends ImgHashBase {
     // C++:  void cv::img_hash::RadialVarianceHash::setSigma(double value)
     //
 
-    //javadoc: RadialVarianceHash::setSigma(value)
-    public  void setSigma(double value)
-    {
-        
+    public void setSigma(double value) {
         setSigma_0(nativeObj, value);
-        
-        return;
     }
 
 

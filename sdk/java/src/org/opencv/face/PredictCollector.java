@@ -6,8 +6,9 @@ package org.opencv.face;
 
 
 // C++: class PredictCollector
-//javadoc: PredictCollector
-
+/**
+ * Abstract base class for all strategies of prediction result handling
+ */
 public class PredictCollector {
 
     protected final long nativeObj;

@@ -6,8 +6,10 @@ package org.opencv.ximgproc;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategy;
 
 // C++: class SelectiveSearchSegmentationStrategySize
-//javadoc: SelectiveSearchSegmentationStrategySize
-
+/**
+ * Size-based strategy for the selective search segmentation algorithm
+ *                         The class is implemented from the algorithm described in CITE: uijlings2013selective.
+ */
 public class SelectiveSearchSegmentationStrategySize extends SelectiveSearchSegmentationStrategy {
 
     protected SelectiveSearchSegmentationStrategySize(long addr) { super(addr); }

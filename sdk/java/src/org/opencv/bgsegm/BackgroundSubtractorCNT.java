@@ -7,8 +7,14 @@ import org.opencv.core.Mat;
 import org.opencv.video.BackgroundSubtractor;
 
 // C++: class BackgroundSubtractorCNT
-//javadoc: BackgroundSubtractorCNT
-
+/**
+ * Background subtraction based on counting.
+ *
+ *   About as fast as MOG2 on a high end system.
+ *   More than twice faster than MOG2 on cheap hardware (benchmarked on Raspberry Pi3).
+ *
+ *   %Algorithm by Sagi Zeevi ( https://github.com/sagi-z/BackgroundSubtractorCNT )
+ */
 public class BackgroundSubtractorCNT extends BackgroundSubtractor {
 
     protected BackgroundSubtractorCNT(long addr) { super(addr); }
@@ -20,13 +26,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  bool cv::bgsegm::BackgroundSubtractorCNT::getIsParallel()
     //
 
-    //javadoc: BackgroundSubtractorCNT::getIsParallel()
-    public  boolean getIsParallel()
-    {
-        
-        boolean retVal = getIsParallel_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns if we're parallelizing the algorithm.
+     * @return automatically generated
+     */
+    public boolean getIsParallel() {
+        return getIsParallel_0(nativeObj);
     }
 
 
@@ -34,13 +39,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  bool cv::bgsegm::BackgroundSubtractorCNT::getUseHistory()
     //
 
-    //javadoc: BackgroundSubtractorCNT::getUseHistory()
-    public  boolean getUseHistory()
-    {
-        
-        boolean retVal = getUseHistory_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns if we're giving a pixel credit for being stable for a long time.
+     * @return automatically generated
+     */
+    public boolean getUseHistory() {
+        return getUseHistory_0(nativeObj);
     }
 
 
@@ -48,13 +52,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorCNT::getMaxPixelStability()
     //
 
-    //javadoc: BackgroundSubtractorCNT::getMaxPixelStability()
-    public  int getMaxPixelStability()
-    {
-        
-        int retVal = getMaxPixelStability_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns maximum allowed credit for a pixel in history.
+     * @return automatically generated
+     */
+    public int getMaxPixelStability() {
+        return getMaxPixelStability_0(nativeObj);
     }
 
 
@@ -62,13 +65,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorCNT::getMinPixelStability()
     //
 
-    //javadoc: BackgroundSubtractorCNT::getMinPixelStability()
-    public  int getMinPixelStability()
-    {
-        
-        int retVal = getMinPixelStability_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns number of frames with same pixel color to consider stable.
+     * @return automatically generated
+     */
+    public int getMinPixelStability() {
+        return getMinPixelStability_0(nativeObj);
     }
 
 
@@ -76,22 +78,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::apply(Mat image, Mat& fgmask, double learningRate = -1)
     //
 
-    //javadoc: BackgroundSubtractorCNT::apply(image, fgmask, learningRate)
-    public  void apply(Mat image, Mat fgmask, double learningRate)
-    {
-        
+    public void apply(Mat image, Mat fgmask, double learningRate) {
         apply_0(nativeObj, image.nativeObj, fgmask.nativeObj, learningRate);
-        
-        return;
     }
 
-    //javadoc: BackgroundSubtractorCNT::apply(image, fgmask)
-    public  void apply(Mat image, Mat fgmask)
-    {
-        
+    public void apply(Mat image, Mat fgmask) {
         apply_1(nativeObj, image.nativeObj, fgmask.nativeObj);
-        
-        return;
     }
 
 
@@ -99,13 +91,8 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::getBackgroundImage(Mat& backgroundImage)
     //
 
-    //javadoc: BackgroundSubtractorCNT::getBackgroundImage(backgroundImage)
-    public  void getBackgroundImage(Mat backgroundImage)
-    {
-        
+    public void getBackgroundImage(Mat backgroundImage) {
         getBackgroundImage_0(nativeObj, backgroundImage.nativeObj);
-        
-        return;
     }
 
 
@@ -113,13 +100,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::setIsParallel(bool value)
     //
 
-    //javadoc: BackgroundSubtractorCNT::setIsParallel(value)
-    public  void setIsParallel(boolean value)
-    {
-        
+    /**
+     * Sets if we're parallelizing the algorithm.
+     * @param value automatically generated
+     */
+    public void setIsParallel(boolean value) {
         setIsParallel_0(nativeObj, value);
-        
-        return;
     }
 
 
@@ -127,13 +113,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::setMaxPixelStability(int value)
     //
 
-    //javadoc: BackgroundSubtractorCNT::setMaxPixelStability(value)
-    public  void setMaxPixelStability(int value)
-    {
-        
+    /**
+     * Sets the maximum allowed credit for a pixel in history.
+     * @param value automatically generated
+     */
+    public void setMaxPixelStability(int value) {
         setMaxPixelStability_0(nativeObj, value);
-        
-        return;
     }
 
 
@@ -141,13 +126,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::setMinPixelStability(int value)
     //
 
-    //javadoc: BackgroundSubtractorCNT::setMinPixelStability(value)
-    public  void setMinPixelStability(int value)
-    {
-        
+    /**
+     * Sets the number of frames with same pixel color to consider stable.
+     * @param value automatically generated
+     */
+    public void setMinPixelStability(int value) {
         setMinPixelStability_0(nativeObj, value);
-        
-        return;
     }
 
 
@@ -155,13 +139,12 @@ public class BackgroundSubtractorCNT extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorCNT::setUseHistory(bool value)
     //
 
-    //javadoc: BackgroundSubtractorCNT::setUseHistory(value)
-    public  void setUseHistory(boolean value)
-    {
-        
+    /**
+     * Sets if we're giving a pixel credit for being stable for a long time.
+     * @param value automatically generated
+     */
+    public void setUseHistory(boolean value) {
         setUseHistory_0(nativeObj, value);
-        
-        return;
     }
 
 

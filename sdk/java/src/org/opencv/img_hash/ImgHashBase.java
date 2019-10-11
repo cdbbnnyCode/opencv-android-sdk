@@ -7,8 +7,9 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class ImgHashBase
-//javadoc: ImgHashBase
-
+/**
+ * The base class for image hash algorithms
+ */
 public class ImgHashBase extends Algorithm {
 
     protected ImgHashBase(long addr) { super(addr); }
@@ -20,13 +21,15 @@ public class ImgHashBase extends Algorithm {
     // C++:  double cv::img_hash::ImgHashBase::compare(Mat hashOne, Mat hashTwo)
     //
 
-    //javadoc: ImgHashBase::compare(hashOne, hashTwo)
-    public  double compare(Mat hashOne, Mat hashTwo)
-    {
-        
-        double retVal = compare_0(nativeObj, hashOne.nativeObj, hashTwo.nativeObj);
-        
-        return retVal;
+    /**
+     * Compare the hash value between inOne and inTwo
+     *         @param hashOne Hash value one
+     *         @param hashTwo Hash value two
+     *         @return value indicate similarity between inOne and inTwo, the meaning
+     *         of the value vary from algorithms to algorithms
+     */
+    public double compare(Mat hashOne, Mat hashTwo) {
+        return compare_0(nativeObj, hashOne.nativeObj, hashTwo.nativeObj);
     }
 
 
@@ -34,13 +37,13 @@ public class ImgHashBase extends Algorithm {
     // C++:  void cv::img_hash::ImgHashBase::compute(Mat inputArr, Mat& outputArr)
     //
 
-    //javadoc: ImgHashBase::compute(inputArr, outputArr)
-    public  void compute(Mat inputArr, Mat outputArr)
-    {
-        
+    /**
+     * Computes hash of the input image
+     *         @param inputArr input image want to compute hash value
+     *         @param outputArr hash of the image
+     */
+    public void compute(Mat inputArr, Mat outputArr) {
         compute_0(nativeObj, inputArr.nativeObj, outputArr.nativeObj);
-        
-        return;
     }
 
 

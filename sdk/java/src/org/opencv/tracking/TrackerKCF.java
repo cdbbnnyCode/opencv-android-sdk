@@ -7,8 +7,15 @@ import org.opencv.tracking.Tracker;
 import org.opencv.tracking.TrackerKCF;
 
 // C++: class TrackerKCF
-//javadoc: TrackerKCF
-
+/**
+ * the KCF (Kernelized Correlation Filter) tracker
+ *
+ * KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
+ * This tracking method is an implementation of CITE: KCF_ECCV which is extended to KCF with color-names features (CITE: KCF_CN).
+ * The original paper of KCF is available at &lt;http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf&gt;
+ * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
+ * &lt;http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html&gt;.
+ */
 public class TrackerKCF extends Tracker {
 
     protected TrackerKCF(long addr) { super(addr); }
@@ -27,13 +34,12 @@ public class TrackerKCF extends Tracker {
     // C++: static Ptr_TrackerKCF cv::TrackerKCF::create()
     //
 
-    //javadoc: TrackerKCF::create()
-    public static TrackerKCF create()
-    {
-        
-        TrackerKCF retVal = TrackerKCF.__fromPtr__(create_0());
-        
-        return retVal;
+    /**
+     * Constructor
+     * @return automatically generated
+     */
+    public static TrackerKCF create() {
+        return TrackerKCF.__fromPtr__(create_0());
     }
 
 

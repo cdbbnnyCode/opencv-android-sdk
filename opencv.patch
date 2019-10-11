@@ -1,0 +1,108 @@
+diff --git a/modules/java/android_sdk/build.gradle.in b/modules/java/android_sdk/build.gradle.in
+index 4335e5a4ea..ecaf3f2bb4 100644
+--- a/modules/java/android_sdk/build.gradle.in
++++ b/modules/java/android_sdk/build.gradle.in
+@@ -103,7 +103,7 @@ android {
+         externalNativeBuild {
+             cmake {
+                 arguments "-DANDROID_STL=@ANDROID_STL@"
+-                targets "opencv_jni_shared"
++                // targets "opencv_jni_shared"
+             }
+         }
+     }
+@@ -137,11 +137,11 @@ android {
+         }
+     }
+ 
+-    externalNativeBuild {
+-        cmake {
+-            path (project.projectDir.toString() + '/libcxx_helper/CMakeLists.txt')
+-        }
+-    }
++//    externalNativeBuild {
++//        cmake {
++//            path (project.projectDir.toString() + '/libcxx_helper/CMakeLists.txt')
++//        }
++//    }
+ }
+ 
+ dependencies {
+diff --git a/modules/java/generator/android/java/org/opencv/android/CameraBridgeViewBase.java b/modules/java/generator/android/java/org/opencv/android/CameraBridgeViewBase.java
+index 4ee14e008f..a0e73fb07d 100644
+--- a/modules/java/generator/android/java/org/opencv/android/CameraBridgeViewBase.java
++++ b/modules/java/generator/android/java/org/opencv/android/CameraBridgeViewBase.java
+@@ -424,23 +424,27 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
+ 
+         if (bmpValid && mCacheBitmap != null) {
+             Canvas canvas = getHolder().lockCanvas();
++            // Rotate canvas 90 degrees
++            canvas.rotate(90, canvas.getWidth()/2, canvas.getHeight()/2);
+             if (canvas != null) {
+                 canvas.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR);
+                 if (BuildConfig.DEBUG)
+                     Log.d(TAG, "mStretch value: " + mScale);
+ 
++                // Resize
++                Bitmap bitmap = Bitmap.createScaledBitmap(mCacheBitmap, canvas.getHeight(), canvas.getWidth(), true);
+                 if (mScale != 0) {
+-                    canvas.drawBitmap(mCacheBitmap, new Rect(0,0,mCacheBitmap.getWidth(), mCacheBitmap.getHeight()),
+-                         new Rect((int)((canvas.getWidth() - mScale*mCacheBitmap.getWidth()) / 2),
+-                         (int)((canvas.getHeight() - mScale*mCacheBitmap.getHeight()) / 2),
+-                         (int)((canvas.getWidth() - mScale*mCacheBitmap.getWidth()) / 2 + mScale*mCacheBitmap.getWidth()),
+-                         (int)((canvas.getHeight() - mScale*mCacheBitmap.getHeight()) / 2 + mScale*mCacheBitmap.getHeight())), null);
++                    canvas.drawBitmap(bitmap, new Rect(0,0,bitmap.getWidth(), bitmap.getHeight()), new Rect(
++                            (int)((canvas.getWidth() - mScale*bitmap.getWidth()) / 2),
++                            (int)((canvas.getHeight() - mScale*bitmap.getHeight()) / 2),
++                            (int)((canvas.getWidth() - mScale*bitmap.getWidth()) / 2 + mScale*bitmap.getWidth()),
++                            (int)((canvas.getHeight() - mScale*bitmap.getHeight()) / 2 + mScale*bitmap.getHeight())), null);
+                 } else {
+-                     canvas.drawBitmap(mCacheBitmap, new Rect(0,0,mCacheBitmap.getWidth(), mCacheBitmap.getHeight()),
+-                         new Rect((canvas.getWidth() - mCacheBitmap.getWidth()) / 2,
+-                         (canvas.getHeight() - mCacheBitmap.getHeight()) / 2,
+-                         (canvas.getWidth() - mCacheBitmap.getWidth()) / 2 + mCacheBitmap.getWidth(),
+-                         (canvas.getHeight() - mCacheBitmap.getHeight()) / 2 + mCacheBitmap.getHeight()), null);
++                     canvas.drawBitmap(bitmap, new Rect(0,0,bitmap.getWidth(), bitmap.getHeight()),
++                         new Rect((canvas.getWidth() - bitmap.getWidth()) / 2,
++                         (canvas.getHeight() - bitmap.getHeight()) / 2,
++                         (canvas.getWidth() - bitmap.getWidth()) / 2 + bitmap.getWidth(),
++                         (canvas.getHeight() - bitmap.getHeight()) / 2 + bitmap.getHeight()), null);
+                 }
+ 
+                 if (mFpsMeter != null) {
+diff --git a/patched.txt b/patched.txt
+new file mode 100644
+index 0000000000..68a73db763
+--- /dev/null
++++ b/patched.txt
+@@ -0,0 +1,5 @@
++This OpenCV has been patched to:
++-- Fix Python errors in build_sdk.py for OpenCV Android
++-- Rotate the JavaCameraView 90 degrees so that it won't be letterboxed
++-- Disable libcxx_helper since it breaks compilation
++-- Remove all ABIs in the Android build config except armeabi-v7a since we don't need the other ones
+diff --git a/platforms/android/build_sdk.py b/platforms/android/build_sdk.py
+index 6a52be7d29..38746f0300 100755
+--- a/platforms/android/build_sdk.py
++++ b/platforms/android/build_sdk.py
+@@ -58,7 +58,7 @@ def check_dir(d, create=False, clean=False):
+ def check_executable(cmd):
+     try:
+         log.debug("Executing: %s" % cmd)
+-        result = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
++        result = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
+         log.debug("Result: %s" % (result+'\n').split('\n')[0])
+         return True
+     except Exception as e:
+diff --git a/platforms/android/ndk-18-api-level-21.config.py b/platforms/android/ndk-18-api-level-21.config.py
+index 2019c913ae..bd43d197ea 100644
+--- a/platforms/android/ndk-18-api-level-21.config.py
++++ b/platforms/android/ndk-18-api-level-21.config.py
+@@ -1,6 +1,3 @@
+ ABIs = [
+-    ABI("2", "armeabi-v7a", None, 21, cmake_vars=dict(ANDROID_ABI='armeabi-v7a with NEON')),
+-    ABI("3", "arm64-v8a",   None, 21),
+-    ABI("5", "x86_64",      None, 21),
+-    ABI("4", "x86",         None, 21),
++    ABI("2", "armeabi-v7a", None, 21, cmake_vars=dict(ANDROID_ABI='armeabi-v7a with NEON'))
+ ]

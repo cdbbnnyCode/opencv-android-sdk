@@ -6,8 +6,16 @@ package org.opencv.text;
 
 
 // C++: class ClassifierCallback
-//javadoc: ClassifierCallback
-
+/**
+ * Callback with the character classifier is made a class.
+ *
+ *     This way it hides the feature extractor and the classifier itself, so developers can write
+ *     their own OCR code.
+ *
+ *     The default character classifier and feature extractor can be loaded using the utility function
+ *     loadOCRHMMClassifierNM and KNN model provided in
+ *     &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/OCRHMM_knn_model_data.xml.gz&gt;.
+ */
 public class ClassifierCallback {
 
     protected final long nativeObj;

@@ -10,7 +10,6 @@ import org.opencv.face.FaceRecognizer;
 import org.opencv.utils.Converters;
 
 // C++: class BasicFaceRecognizer
-//javadoc: BasicFaceRecognizer
 
 public class BasicFaceRecognizer extends FaceRecognizer {
 
@@ -23,13 +22,8 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  Mat cv::face::BasicFaceRecognizer::getEigenValues()
     //
 
-    //javadoc: BasicFaceRecognizer::getEigenValues()
-    public  Mat getEigenValues()
-    {
-        
-        Mat retVal = new Mat(getEigenValues_0(nativeObj));
-        
-        return retVal;
+    public Mat getEigenValues() {
+        return new Mat(getEigenValues_0(nativeObj));
     }
 
 
@@ -37,13 +31,8 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  Mat cv::face::BasicFaceRecognizer::getEigenVectors()
     //
 
-    //javadoc: BasicFaceRecognizer::getEigenVectors()
-    public  Mat getEigenVectors()
-    {
-        
-        Mat retVal = new Mat(getEigenVectors_0(nativeObj));
-        
-        return retVal;
+    public Mat getEigenVectors() {
+        return new Mat(getEigenVectors_0(nativeObj));
     }
 
 
@@ -51,13 +40,8 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  Mat cv::face::BasicFaceRecognizer::getLabels()
     //
 
-    //javadoc: BasicFaceRecognizer::getLabels()
-    public  Mat getLabels()
-    {
-        
-        Mat retVal = new Mat(getLabels_0(nativeObj));
-        
-        return retVal;
+    public Mat getLabels() {
+        return new Mat(getLabels_0(nativeObj));
     }
 
 
@@ -65,13 +49,8 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  Mat cv::face::BasicFaceRecognizer::getMean()
     //
 
-    //javadoc: BasicFaceRecognizer::getMean()
-    public  Mat getMean()
-    {
-        
-        Mat retVal = new Mat(getMean_0(nativeObj));
-        
-        return retVal;
+    public Mat getMean() {
+        return new Mat(getMean_0(nativeObj));
     }
 
 
@@ -79,13 +58,12 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  double cv::face::BasicFaceRecognizer::getThreshold()
     //
 
-    //javadoc: BasicFaceRecognizer::getThreshold()
-    public  double getThreshold()
-    {
-        
-        double retVal = getThreshold_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setThreshold
+     * @return automatically generated
+     */
+    public double getThreshold() {
+        return getThreshold_0(nativeObj);
     }
 
 
@@ -93,13 +71,12 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  int cv::face::BasicFaceRecognizer::getNumComponents()
     //
 
-    //javadoc: BasicFaceRecognizer::getNumComponents()
-    public  int getNumComponents()
-    {
-        
-        int retVal = getNumComponents_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setNumComponents
+     * @return automatically generated
+     */
+    public int getNumComponents() {
+        return getNumComponents_0(nativeObj);
     }
 
 
@@ -107,9 +84,7 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  vector_Mat cv::face::BasicFaceRecognizer::getProjections()
     //
 
-    //javadoc: BasicFaceRecognizer::getProjections()
-    public  List<Mat> getProjections()
-    {
+    public List<Mat> getProjections() {
         List<Mat> retVal = new ArrayList<Mat>();
         Mat retValMat = new Mat(getProjections_0(nativeObj));
         Converters.Mat_to_vector_Mat(retValMat, retVal);
@@ -121,13 +96,12 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::BasicFaceRecognizer::setNumComponents(int val)
     //
 
-    //javadoc: BasicFaceRecognizer::setNumComponents(val)
-    public  void setNumComponents(int val)
-    {
-        
+    /**
+     *  getNumComponents SEE: getNumComponents
+     * @param val automatically generated
+     */
+    public void setNumComponents(int val) {
         setNumComponents_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -135,13 +109,12 @@ public class BasicFaceRecognizer extends FaceRecognizer {
     // C++:  void cv::face::BasicFaceRecognizer::setThreshold(double val)
     //
 
-    //javadoc: BasicFaceRecognizer::setThreshold(val)
-    public  void setThreshold(double val)
-    {
-        
+    /**
+     *  getThreshold SEE: getThreshold
+     * @param val automatically generated
+     */
+    public void setThreshold(double val) {
         setThreshold_0(nativeObj, val);
-        
-        return;
     }
 
 

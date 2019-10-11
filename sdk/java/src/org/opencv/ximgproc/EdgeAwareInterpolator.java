@@ -6,8 +6,10 @@ package org.opencv.ximgproc;
 import org.opencv.ximgproc.SparseMatchInterpolator;
 
 // C++: class EdgeAwareInterpolator
-//javadoc: EdgeAwareInterpolator
-
+/**
+ * Sparse match interpolation algorithm based on modified locally-weighted affine
+ * estimator from CITE: Revaud2015 and Fast Global Smoother as post-processing filter.
+ */
 public class EdgeAwareInterpolator extends SparseMatchInterpolator {
 
     protected EdgeAwareInterpolator(long addr) { super(addr); }
@@ -19,13 +21,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  bool cv::ximgproc::EdgeAwareInterpolator::getUsePostProcessing()
     //
 
-    //javadoc: EdgeAwareInterpolator::getUsePostProcessing()
-    public  boolean getUsePostProcessing()
-    {
-        
-        boolean retVal = getUsePostProcessing_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setUsePostProcessing
+     * @return automatically generated
+     */
+    public boolean getUsePostProcessing() {
+        return getUsePostProcessing_0(nativeObj);
     }
 
 
@@ -33,13 +34,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  float cv::ximgproc::EdgeAwareInterpolator::getFGSLambda()
     //
 
-    //javadoc: EdgeAwareInterpolator::getFGSLambda()
-    public  float getFGSLambda()
-    {
-        
-        float retVal = getFGSLambda_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setFGSLambda
+     * @return automatically generated
+     */
+    public float getFGSLambda() {
+        return getFGSLambda_0(nativeObj);
     }
 
 
@@ -47,13 +47,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  float cv::ximgproc::EdgeAwareInterpolator::getFGSSigma()
     //
 
-    //javadoc: EdgeAwareInterpolator::getFGSSigma()
-    public  float getFGSSigma()
-    {
-        
-        float retVal = getFGSSigma_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setFGSLambda
+     * @return automatically generated
+     */
+    public float getFGSSigma() {
+        return getFGSSigma_0(nativeObj);
     }
 
 
@@ -61,13 +60,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  float cv::ximgproc::EdgeAwareInterpolator::getLambda()
     //
 
-    //javadoc: EdgeAwareInterpolator::getLambda()
-    public  float getLambda()
-    {
-        
-        float retVal = getLambda_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setLambda
+     * @return automatically generated
+     */
+    public float getLambda() {
+        return getLambda_0(nativeObj);
     }
 
 
@@ -75,13 +73,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  float cv::ximgproc::EdgeAwareInterpolator::getSigma()
     //
 
-    //javadoc: EdgeAwareInterpolator::getSigma()
-    public  float getSigma()
-    {
-        
-        float retVal = getSigma_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setSigma
+     * @return automatically generated
+     */
+    public float getSigma() {
+        return getSigma_0(nativeObj);
     }
 
 
@@ -89,13 +86,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  int cv::ximgproc::EdgeAwareInterpolator::getK()
     //
 
-    //javadoc: EdgeAwareInterpolator::getK()
-    public  int getK()
-    {
-        
-        int retVal = getK_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SEE: setK
+     * @return automatically generated
+     */
+    public int getK() {
+        return getK_0(nativeObj);
     }
 
 
@@ -103,13 +99,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setFGSLambda(float _lambda)
     //
 
-    //javadoc: EdgeAwareInterpolator::setFGSLambda(_lambda)
-    public  void setFGSLambda(float _lambda)
-    {
-        
+    /**
+     * Sets the respective fastGlobalSmootherFilter() parameter.
+     * @param _lambda automatically generated
+     */
+    public void setFGSLambda(float _lambda) {
         setFGSLambda_0(nativeObj, _lambda);
-        
-        return;
     }
 
 
@@ -117,13 +112,12 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setFGSSigma(float _sigma)
     //
 
-    //javadoc: EdgeAwareInterpolator::setFGSSigma(_sigma)
-    public  void setFGSSigma(float _sigma)
-    {
-        
+    /**
+     * SEE: setFGSLambda
+     * @param _sigma automatically generated
+     */
+    public void setFGSSigma(float _sigma) {
         setFGSSigma_0(nativeObj, _sigma);
-        
-        return;
     }
 
 
@@ -131,13 +125,14 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setK(int _k)
     //
 
-    //javadoc: EdgeAwareInterpolator::setK(_k)
-    public  void setK(int _k)
-    {
-        
+    /**
+     * K is a number of nearest-neighbor matches considered, when fitting a locally affine
+     *     model. Usually it should be around 128. However, lower values would make the interpolation
+     *     noticeably faster.
+     * @param _k automatically generated
+     */
+    public void setK(int _k) {
         setK_0(nativeObj, _k);
-        
-        return;
     }
 
 
@@ -145,13 +140,13 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setLambda(float _lambda)
     //
 
-    //javadoc: EdgeAwareInterpolator::setLambda(_lambda)
-    public  void setLambda(float _lambda)
-    {
-        
+    /**
+     * Lambda is a parameter defining the weight of the edge-aware term in geodesic distance,
+     *     should be in the range of 0 to 1000.
+     * @param _lambda automatically generated
+     */
+    public void setLambda(float _lambda) {
         setLambda_0(nativeObj, _lambda);
-        
-        return;
     }
 
 
@@ -159,13 +154,14 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setSigma(float _sigma)
     //
 
-    //javadoc: EdgeAwareInterpolator::setSigma(_sigma)
-    public  void setSigma(float _sigma)
-    {
-        
+    /**
+     * Sigma is a parameter defining how fast the weights decrease in the locally-weighted affine
+     *     fitting. Higher values can help preserve fine details, lower values can help to get rid of noise in the
+     *     output flow.
+     * @param _sigma automatically generated
+     */
+    public void setSigma(float _sigma) {
         setSigma_0(nativeObj, _sigma);
-        
-        return;
     }
 
 
@@ -173,13 +169,13 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setUsePostProcessing(bool _use_post_proc)
     //
 
-    //javadoc: EdgeAwareInterpolator::setUsePostProcessing(_use_post_proc)
-    public  void setUsePostProcessing(boolean _use_post_proc)
-    {
-        
+    /**
+     * Sets whether the fastGlobalSmootherFilter() post-processing is employed. It is turned on by
+     *     default.
+     * @param _use_post_proc automatically generated
+     */
+    public void setUsePostProcessing(boolean _use_post_proc) {
         setUsePostProcessing_0(nativeObj, _use_post_proc);
-        
-        return;
     }
 
 

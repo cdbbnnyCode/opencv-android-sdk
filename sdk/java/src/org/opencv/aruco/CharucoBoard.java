@@ -14,8 +14,14 @@ import org.opencv.core.Size;
 import org.opencv.utils.Converters;
 
 // C++: class CharucoBoard
-//javadoc: CharucoBoard
-
+/**
+ * ChArUco board
+ * Specific class for ChArUco boards. A ChArUco board is a planar board where the markers are placed
+ * inside the white squares of a chessboard. The benefits of ChArUco boards is that they provide
+ * both, ArUco markers versatility and chessboard corner precision, which is important for
+ * calibration and pose estimation.
+ * This class also allows the easy creation and drawing of ChArUco boards.
+ */
 public class CharucoBoard extends Board {
 
     protected CharucoBoard(long addr) { super(addr); }
@@ -27,13 +33,22 @@ public class CharucoBoard extends Board {
     // C++: static Ptr_CharucoBoard cv::aruco::CharucoBoard::create(int squaresX, int squaresY, float squareLength, float markerLength, Ptr_Dictionary dictionary)
     //
 
-    //javadoc: CharucoBoard::create(squaresX, squaresY, squareLength, markerLength, dictionary)
-    public static CharucoBoard create(int squaresX, int squaresY, float squareLength, float markerLength, Dictionary dictionary)
-    {
-        
-        CharucoBoard retVal = CharucoBoard.__fromPtr__(create_0(squaresX, squaresY, squareLength, markerLength, dictionary.getNativeObjAddr()));
-        
-        return retVal;
+    /**
+     * Create a CharucoBoard object
+     *
+     * @param squaresX number of chessboard squares in X direction
+     * @param squaresY number of chessboard squares in Y direction
+     * @param squareLength chessboard square side length (normally in meters)
+     * @param markerLength marker side length (same unit than squareLength)
+     * @param dictionary dictionary of markers indicating the type of markers.
+     * The first markers in the dictionary are used to fill the white chessboard squares.
+     * @return the output CharucoBoard object
+     *
+     * This functions creates a CharucoBoard object given the number of squares in each direction
+     * and the size of the markers and chessboard squares.
+     */
+    public static CharucoBoard create(int squaresX, int squaresY, float squareLength, float markerLength, Dictionary dictionary) {
+        return CharucoBoard.__fromPtr__(create_0(squaresX, squaresY, squareLength, markerLength, dictionary.getNativeObjAddr()));
     }
 
 
@@ -41,13 +56,8 @@ public class CharucoBoard extends Board {
     // C++:  Size cv::aruco::CharucoBoard::getChessboardSize()
     //
 
-    //javadoc: CharucoBoard::getChessboardSize()
-    public  Size getChessboardSize()
-    {
-        
-        Size retVal = new Size(getChessboardSize_0(nativeObj));
-        
-        return retVal;
+    public Size getChessboardSize() {
+        return new Size(getChessboardSize_0(nativeObj));
     }
 
 
@@ -55,13 +65,8 @@ public class CharucoBoard extends Board {
     // C++:  float cv::aruco::CharucoBoard::getMarkerLength()
     //
 
-    //javadoc: CharucoBoard::getMarkerLength()
-    public  float getMarkerLength()
-    {
-        
-        float retVal = getMarkerLength_0(nativeObj);
-        
-        return retVal;
+    public float getMarkerLength() {
+        return getMarkerLength_0(nativeObj);
     }
 
 
@@ -69,13 +74,8 @@ public class CharucoBoard extends Board {
     // C++:  float cv::aruco::CharucoBoard::getSquareLength()
     //
 
-    //javadoc: CharucoBoard::getSquareLength()
-    public  float getSquareLength()
-    {
-        
-        float retVal = getSquareLength_0(nativeObj);
-        
-        return retVal;
+    public float getSquareLength() {
+        return getSquareLength_0(nativeObj);
     }
 
 
@@ -83,31 +83,46 @@ public class CharucoBoard extends Board {
     // C++:  void cv::aruco::CharucoBoard::draw(Size outSize, Mat& img, int marginSize = 0, int borderBits = 1)
     //
 
-    //javadoc: CharucoBoard::draw(outSize, img, marginSize, borderBits)
-    public  void draw(Size outSize, Mat img, int marginSize, int borderBits)
-    {
-        
+    /**
+     * Draw a ChArUco board
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     * @param marginSize minimum margins (in pixels) of the board in the output image
+     * @param borderBits width of the marker borders.
+     *
+     * This function return the image of the ChArUco board, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img, int marginSize, int borderBits) {
         draw_0(nativeObj, outSize.width, outSize.height, img.nativeObj, marginSize, borderBits);
-        
-        return;
     }
 
-    //javadoc: CharucoBoard::draw(outSize, img, marginSize)
-    public  void draw(Size outSize, Mat img, int marginSize)
-    {
-        
+    /**
+     * Draw a ChArUco board
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     * @param marginSize minimum margins (in pixels) of the board in the output image
+     *
+     * This function return the image of the ChArUco board, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img, int marginSize) {
         draw_1(nativeObj, outSize.width, outSize.height, img.nativeObj, marginSize);
-        
-        return;
     }
 
-    //javadoc: CharucoBoard::draw(outSize, img)
-    public  void draw(Size outSize, Mat img)
-    {
-        
+    /**
+     * Draw a ChArUco board
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     *
+     * This function return the image of the ChArUco board, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img) {
         draw_2(nativeObj, outSize.width, outSize.height, img.nativeObj);
-        
-        return;
     }
 
 
@@ -115,13 +130,8 @@ public class CharucoBoard extends Board {
     // C++: vector_Point3f CharucoBoard::chessboardCorners
     //
 
-    //javadoc: CharucoBoard::get_chessboardCorners()
-    public  MatOfPoint3f get_chessboardCorners()
-    {
-        
-        MatOfPoint3f retVal = MatOfPoint3f.fromNativeAddr(get_chessboardCorners_0(nativeObj));
-        
-        return retVal;
+    public MatOfPoint3f get_chessboardCorners() {
+        return MatOfPoint3f.fromNativeAddr(get_chessboardCorners_0(nativeObj));
     }
 
 

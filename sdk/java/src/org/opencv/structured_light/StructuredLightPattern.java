@@ -10,8 +10,9 @@ import org.opencv.core.Mat;
 import org.opencv.utils.Converters;
 
 // C++: class StructuredLightPattern
-//javadoc: StructuredLightPattern
-
+/**
+ * Abstract base class for generating and decoding structured light patterns.
+ */
 public class StructuredLightPattern extends Algorithm {
 
     protected StructuredLightPattern(long addr) { super(addr); }
@@ -30,9 +31,13 @@ public class StructuredLightPattern extends Algorithm {
     // C++:  bool cv::structured_light::StructuredLightPattern::generate(vector_Mat& patternImages)
     //
 
-    //javadoc: StructuredLightPattern::generate(patternImages)
-    public  boolean generate(List<Mat> patternImages)
-    {
+    /**
+     * Generates the structured light pattern to project.
+     *
+     *    @param patternImages The generated pattern: a vector&lt;Mat&gt;, in which each image is a CV_8U Mat at projector's resolution.
+     * @return automatically generated
+     */
+    public boolean generate(List<Mat> patternImages) {
         Mat patternImages_mat = new Mat();
         boolean retVal = generate_0(nativeObj, patternImages_mat.nativeObj);
         Converters.Mat_to_vector_Mat(patternImages_mat, patternImages);

@@ -7,8 +7,10 @@ import org.opencv.features2d.Feature2D;
 import org.opencv.xfeatures2d.SIFT;
 
 // C++: class SIFT
-//javadoc: SIFT
-
+/**
+ * Class for extracting keypoints and computing descriptors using the Scale Invariant Feature Transform
+ * (SIFT) algorithm by D. Lowe CITE: Lowe04 .
+ */
 public class SIFT extends Feature2D {
 
     protected SIFT(long addr) { super(addr); }
@@ -20,58 +22,121 @@ public class SIFT extends Feature2D {
     // C++: static Ptr_SIFT cv::xfeatures2d::SIFT::create(int nfeatures = 0, int nOctaveLayers = 3, double contrastThreshold = 0.04, double edgeThreshold = 10, double sigma = 1.6)
     //
 
-    //javadoc: SIFT::create(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma)
-    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold, double sigma)
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_0(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma));
-        
-        return retVal;
+    /**
+     * @param nfeatures The number of best features to retain. The features are ranked by their scores
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     @param sigma The sigma of the Gaussian applied to the input image at the octave \#0. If your image
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold, double sigma) {
+        return SIFT.__fromPtr__(create_0(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold, sigma));
     }
 
-    //javadoc: SIFT::create(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold)
-    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold)
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_1(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold));
-        
-        return retVal;
+    /**
+     * @param nfeatures The number of best features to retain. The features are ranked by their scores
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     @param edgeThreshold The threshold used to filter out edge-like features. Note that the its meaning
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold) {
+        return SIFT.__fromPtr__(create_1(nfeatures, nOctaveLayers, contrastThreshold, edgeThreshold));
     }
 
-    //javadoc: SIFT::create(nfeatures, nOctaveLayers, contrastThreshold)
-    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold)
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_2(nfeatures, nOctaveLayers, contrastThreshold));
-        
-        return retVal;
+    /**
+     * @param nfeatures The number of best features to retain. The features are ranked by their scores
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     @param contrastThreshold The contrast threshold used to filter out weak features in semi-uniform
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold) {
+        return SIFT.__fromPtr__(create_2(nfeatures, nOctaveLayers, contrastThreshold));
     }
 
-    //javadoc: SIFT::create(nfeatures, nOctaveLayers)
-    public static SIFT create(int nfeatures, int nOctaveLayers)
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_3(nfeatures, nOctaveLayers));
-        
-        return retVal;
+    /**
+     * @param nfeatures The number of best features to retain. The features are ranked by their scores
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     @param nOctaveLayers The number of layers in each octave. 3 is the value used in D. Lowe paper. The
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create(int nfeatures, int nOctaveLayers) {
+        return SIFT.__fromPtr__(create_3(nfeatures, nOctaveLayers));
     }
 
-    //javadoc: SIFT::create(nfeatures)
-    public static SIFT create(int nfeatures)
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_4(nfeatures));
-        
-        return retVal;
+    /**
+     * @param nfeatures The number of best features to retain. The features are ranked by their scores
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create(int nfeatures) {
+        return SIFT.__fromPtr__(create_4(nfeatures));
     }
 
-    //javadoc: SIFT::create()
-    public static SIFT create()
-    {
-        
-        SIFT retVal = SIFT.__fromPtr__(create_5());
-        
-        return retVal;
+    /**
+     *     (measured in SIFT algorithm as the local contrast)
+     *
+     *     number of octaves is computed automatically from the image resolution.
+     *
+     *     (low-contrast) regions. The larger the threshold, the less features are produced by the detector.
+     *
+     *     is different from the contrastThreshold, i.e. the larger the edgeThreshold, the less features are
+     *     filtered out (more features are retained).
+     *
+     *     is captured with a weak camera with soft lenses, you might want to reduce the number.
+     * @return automatically generated
+     */
+    public static SIFT create() {
+        return SIFT.__fromPtr__(create_5());
     }
 
 

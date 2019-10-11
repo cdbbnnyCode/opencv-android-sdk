@@ -6,7 +6,6 @@ package org.opencv.bioinspired;
 
 
 // C++: class Bioinspired
-//javadoc: Bioinspired
 
 public class Bioinspired {
 

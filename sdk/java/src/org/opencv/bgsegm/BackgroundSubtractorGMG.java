@@ -6,8 +6,15 @@ package org.opencv.bgsegm;
 import org.opencv.video.BackgroundSubtractor;
 
 // C++: class BackgroundSubtractorGMG
-//javadoc: BackgroundSubtractorGMG
-
+/**
+ * Background Subtractor module based on the algorithm given in CITE: Gold2012 .
+ *
+ *  Takes a series of images and returns a sequence of mask (8UC1)
+ *  images of the same size, where 255 indicates Foreground and 0 represents Background.
+ *  This class implements an algorithm described in "Visual Tracking of Human Visitors under
+ *  Variable-Lighting Conditions for a Responsive Audio Art Installation," A. Godbehere,
+ *  A. Matsukawa, K. Goldberg, American Control Conference, Montreal, June 2012.
+ */
 public class BackgroundSubtractorGMG extends BackgroundSubtractor {
 
     protected BackgroundSubtractorGMG(long addr) { super(addr); }
@@ -19,13 +26,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  bool cv::bgsegm::BackgroundSubtractorGMG::getUpdateBackgroundModel()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getUpdateBackgroundModel()
-    public  boolean getUpdateBackgroundModel()
-    {
-        
-        boolean retVal = getUpdateBackgroundModel_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the status of background model update
+     * @return automatically generated
+     */
+    public boolean getUpdateBackgroundModel() {
+        return getUpdateBackgroundModel_0(nativeObj);
     }
 
 
@@ -33,13 +39,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorGMG::getBackgroundPrior()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getBackgroundPrior()
-    public  double getBackgroundPrior()
-    {
-        
-        double retVal = getBackgroundPrior_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the prior probability that each individual pixel is a background pixel.
+     * @return automatically generated
+     */
+    public double getBackgroundPrior() {
+        return getBackgroundPrior_0(nativeObj);
     }
 
 
@@ -47,13 +52,14 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorGMG::getDecisionThreshold()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getDecisionThreshold()
-    public  double getDecisionThreshold()
-    {
-        
-        double retVal = getDecisionThreshold_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the value of decision threshold.
+     *
+     *     Decision value is the value above which pixel is determined to be FG.
+     * @return automatically generated
+     */
+    public double getDecisionThreshold() {
+        return getDecisionThreshold_0(nativeObj);
     }
 
 
@@ -61,13 +67,15 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorGMG::getDefaultLearningRate()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getDefaultLearningRate()
-    public  double getDefaultLearningRate()
-    {
-        
-        double retVal = getDefaultLearningRate_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the learning rate of the algorithm.
+     *
+     *     It lies between 0.0 and 1.0. It determines how quickly features are "forgotten" from
+     *     histograms.
+     * @return automatically generated
+     */
+    public double getDefaultLearningRate() {
+        return getDefaultLearningRate_0(nativeObj);
     }
 
 
@@ -75,13 +83,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorGMG::getMaxVal()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getMaxVal()
-    public  double getMaxVal()
-    {
-        
-        double retVal = getMaxVal_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the maximum value taken on by pixels in image sequence. e.g. 1.0 or 255.
+     * @return automatically generated
+     */
+    public double getMaxVal() {
+        return getMaxVal_0(nativeObj);
     }
 
 
@@ -89,13 +96,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorGMG::getMinVal()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getMinVal()
-    public  double getMinVal()
-    {
-        
-        double retVal = getMinVal_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the minimum value taken on by pixels in image sequence. Usually 0.
+     * @return automatically generated
+     */
+    public double getMinVal() {
+        return getMinVal_0(nativeObj);
     }
 
 
@@ -103,13 +109,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorGMG::getMaxFeatures()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getMaxFeatures()
-    public  int getMaxFeatures()
-    {
-        
-        int retVal = getMaxFeatures_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns total number of distinct colors to maintain in histogram.
+     * @return automatically generated
+     */
+    public int getMaxFeatures() {
+        return getMaxFeatures_0(nativeObj);
     }
 
 
@@ -117,13 +122,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorGMG::getNumFrames()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getNumFrames()
-    public  int getNumFrames()
-    {
-        
-        int retVal = getNumFrames_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the number of frames used to initialize background model.
+     * @return automatically generated
+     */
+    public int getNumFrames() {
+        return getNumFrames_0(nativeObj);
     }
 
 
@@ -131,13 +135,14 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorGMG::getQuantizationLevels()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getQuantizationLevels()
-    public  int getQuantizationLevels()
-    {
-        
-        int retVal = getQuantizationLevels_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the parameter used for quantization of color-space.
+     *
+     *     It is the number of discrete levels in each channel to be used in histograms.
+     * @return automatically generated
+     */
+    public int getQuantizationLevels() {
+        return getQuantizationLevels_0(nativeObj);
     }
 
 
@@ -145,13 +150,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorGMG::getSmoothingRadius()
     //
 
-    //javadoc: BackgroundSubtractorGMG::getSmoothingRadius()
-    public  int getSmoothingRadius()
-    {
-        
-        int retVal = getSmoothingRadius_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns the kernel radius used for morphological operations
+     * @return automatically generated
+     */
+    public int getSmoothingRadius() {
+        return getSmoothingRadius_0(nativeObj);
     }
 
 
@@ -159,13 +163,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setBackgroundPrior(double bgprior)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setBackgroundPrior(bgprior)
-    public  void setBackgroundPrior(double bgprior)
-    {
-        
+    /**
+     * Sets the prior probability that each individual pixel is a background pixel.
+     * @param bgprior automatically generated
+     */
+    public void setBackgroundPrior(double bgprior) {
         setBackgroundPrior_0(nativeObj, bgprior);
-        
-        return;
     }
 
 
@@ -173,13 +176,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setDecisionThreshold(double thresh)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setDecisionThreshold(thresh)
-    public  void setDecisionThreshold(double thresh)
-    {
-        
+    /**
+     * Sets the value of decision threshold.
+     * @param thresh automatically generated
+     */
+    public void setDecisionThreshold(double thresh) {
         setDecisionThreshold_0(nativeObj, thresh);
-        
-        return;
     }
 
 
@@ -187,13 +189,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setDefaultLearningRate(double lr)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setDefaultLearningRate(lr)
-    public  void setDefaultLearningRate(double lr)
-    {
-        
+    /**
+     * Sets the learning rate of the algorithm.
+     * @param lr automatically generated
+     */
+    public void setDefaultLearningRate(double lr) {
         setDefaultLearningRate_0(nativeObj, lr);
-        
-        return;
     }
 
 
@@ -201,13 +202,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setMaxFeatures(int maxFeatures)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setMaxFeatures(maxFeatures)
-    public  void setMaxFeatures(int maxFeatures)
-    {
-        
+    /**
+     * Sets total number of distinct colors to maintain in histogram.
+     * @param maxFeatures automatically generated
+     */
+    public void setMaxFeatures(int maxFeatures) {
         setMaxFeatures_0(nativeObj, maxFeatures);
-        
-        return;
     }
 
 
@@ -215,13 +215,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setMaxVal(double val)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setMaxVal(val)
-    public  void setMaxVal(double val)
-    {
-        
+    /**
+     * Sets the maximum value taken on by pixels in image sequence.
+     * @param val automatically generated
+     */
+    public void setMaxVal(double val) {
         setMaxVal_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -229,13 +228,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setMinVal(double val)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setMinVal(val)
-    public  void setMinVal(double val)
-    {
-        
+    /**
+     * Sets the minimum value taken on by pixels in image sequence.
+     * @param val automatically generated
+     */
+    public void setMinVal(double val) {
         setMinVal_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -243,13 +241,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setNumFrames(int nframes)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setNumFrames(nframes)
-    public  void setNumFrames(int nframes)
-    {
-        
+    /**
+     * Sets the number of frames used to initialize background model.
+     * @param nframes automatically generated
+     */
+    public void setNumFrames(int nframes) {
         setNumFrames_0(nativeObj, nframes);
-        
-        return;
     }
 
 
@@ -257,13 +254,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setQuantizationLevels(int nlevels)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setQuantizationLevels(nlevels)
-    public  void setQuantizationLevels(int nlevels)
-    {
-        
+    /**
+     * Sets the parameter used for quantization of color-space
+     * @param nlevels automatically generated
+     */
+    public void setQuantizationLevels(int nlevels) {
         setQuantizationLevels_0(nativeObj, nlevels);
-        
-        return;
     }
 
 
@@ -271,13 +267,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setSmoothingRadius(int radius)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setSmoothingRadius(radius)
-    public  void setSmoothingRadius(int radius)
-    {
-        
+    /**
+     * Sets the kernel radius used for morphological operations
+     * @param radius automatically generated
+     */
+    public void setSmoothingRadius(int radius) {
         setSmoothingRadius_0(nativeObj, radius);
-        
-        return;
     }
 
 
@@ -285,13 +280,12 @@ public class BackgroundSubtractorGMG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGMG::setUpdateBackgroundModel(bool update)
     //
 
-    //javadoc: BackgroundSubtractorGMG::setUpdateBackgroundModel(update)
-    public  void setUpdateBackgroundModel(boolean update)
-    {
-        
+    /**
+     * Sets the status of background model update
+     * @param update automatically generated
+     */
+    public void setUpdateBackgroundModel(boolean update) {
         setUpdateBackgroundModel_0(nativeObj, update);
-        
-        return;
     }
 
 

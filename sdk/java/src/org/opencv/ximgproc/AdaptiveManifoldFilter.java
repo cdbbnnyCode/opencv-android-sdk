@@ -8,8 +8,39 @@ import org.opencv.core.Mat;
 import org.opencv.ximgproc.AdaptiveManifoldFilter;
 
 // C++: class AdaptiveManifoldFilter
-//javadoc: AdaptiveManifoldFilter
-
+/**
+ * Interface for Adaptive Manifold Filter realizations.
+ *
+ * For more details about this filter see CITE: Gastal12 and References_.
+ *
+ * Below listed optional parameters which may be set up with Algorithm::set function.
+ * <ul>
+ *   <li>
+ *    member double sigma_s = 16.0
+ * Spatial standard deviation.
+ *   </li>
+ *   <li>
+ *    member double sigma_r = 0.2
+ * Color space standard deviation.
+ *   </li>
+ *   <li>
+ *    member int tree_height = -1
+ * Height of the manifold tree (default = -1 : automatically computed).
+ *   </li>
+ *   <li>
+ *    member int num_pca_iterations = 1
+ * Number of iterations to computed the eigenvector.
+ *   </li>
+ *   <li>
+ *    member bool adjust_outliers = false
+ * Specify adjust outliers using Eq. 9 or not.
+ *   </li>
+ *   <li>
+ *    member bool use_RNG = true
+ * Specify use random number generator to compute eigenvector or not.
+ *   </li>
+ * </ul>
+ */
 public class AdaptiveManifoldFilter extends Algorithm {
 
     protected AdaptiveManifoldFilter(long addr) { super(addr); }
@@ -21,13 +52,8 @@ public class AdaptiveManifoldFilter extends Algorithm {
     // C++: static Ptr_AdaptiveManifoldFilter cv::ximgproc::AdaptiveManifoldFilter::create()
     //
 
-    //javadoc: AdaptiveManifoldFilter::create()
-    public static AdaptiveManifoldFilter create()
-    {
-        
-        AdaptiveManifoldFilter retVal = AdaptiveManifoldFilter.__fromPtr__(create_0());
-        
-        return retVal;
+    public static AdaptiveManifoldFilter create() {
+        return AdaptiveManifoldFilter.__fromPtr__(create_0());
     }
 
 
@@ -35,13 +61,8 @@ public class AdaptiveManifoldFilter extends Algorithm {
     // C++:  void cv::ximgproc::AdaptiveManifoldFilter::collectGarbage()
     //
 
-    //javadoc: AdaptiveManifoldFilter::collectGarbage()
-    public  void collectGarbage()
-    {
-        
+    public void collectGarbage() {
         collectGarbage_0(nativeObj);
-        
-        return;
     }
 
 
@@ -49,22 +70,29 @@ public class AdaptiveManifoldFilter extends Algorithm {
     // C++:  void cv::ximgproc::AdaptiveManifoldFilter::filter(Mat src, Mat& dst, Mat joint = Mat())
     //
 
-    //javadoc: AdaptiveManifoldFilter::filter(src, dst, joint)
-    public  void filter(Mat src, Mat dst, Mat joint)
-    {
-        
+    /**
+     * Apply high-dimensional filtering using adaptive manifolds.
+     *
+     *     @param src filtering image with any numbers of channels.
+     *
+     *     @param dst output image.
+     *
+     *     @param joint optional joint (also called as guided) image with any numbers of channels.
+     */
+    public void filter(Mat src, Mat dst, Mat joint) {
         filter_0(nativeObj, src.nativeObj, dst.nativeObj, joint.nativeObj);
-        
-        return;
     }
 
-    //javadoc: AdaptiveManifoldFilter::filter(src, dst)
-    public  void filter(Mat src, Mat dst)
-    {
-        
+    /**
+     * Apply high-dimensional filtering using adaptive manifolds.
+     *
+     *     @param src filtering image with any numbers of channels.
+     *
+     *     @param dst output image.
+     *
+     */
+    public void filter(Mat src, Mat dst) {
         filter_1(nativeObj, src.nativeObj, dst.nativeObj);
-        
-        return;
     }
 
 

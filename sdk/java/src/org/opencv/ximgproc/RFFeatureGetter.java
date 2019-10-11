@@ -7,8 +7,11 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class RFFeatureGetter
-//javadoc: RFFeatureGetter
-
+/**
+ *
+ *  Jun 17, 2014
+ * @author Yury Gitman
+ */
 public class RFFeatureGetter extends Algorithm {
 
     protected RFFeatureGetter(long addr) { super(addr); }
@@ -20,13 +23,8 @@ public class RFFeatureGetter extends Algorithm {
     // C++:  void cv::ximgproc::RFFeatureGetter::getFeatures(Mat src, Mat features, int gnrmRad, int gsmthRad, int shrink, int outNum, int gradNum)
     //
 
-    //javadoc: RFFeatureGetter::getFeatures(src, features, gnrmRad, gsmthRad, shrink, outNum, gradNum)
-    public  void getFeatures(Mat src, Mat features, int gnrmRad, int gsmthRad, int shrink, int outNum, int gradNum)
-    {
-        
+    public void getFeatures(Mat src, Mat features, int gnrmRad, int gsmthRad, int shrink, int outNum, int gradNum) {
         getFeatures_0(nativeObj, src.nativeObj, features.nativeObj, gnrmRad, gsmthRad, shrink, outNum, gradNum);
-        
-        return;
     }
 
 

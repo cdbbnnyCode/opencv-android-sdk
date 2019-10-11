@@ -7,8 +7,9 @@ import org.opencv.features2d.Feature2D;
 import org.opencv.xfeatures2d.HarrisLaplaceFeatureDetector;
 
 // C++: class HarrisLaplaceFeatureDetector
-//javadoc: HarrisLaplaceFeatureDetector
-
+/**
+ * Class implementing the Harris-Laplace feature detector as described in CITE: Mikolajczyk2004.
+ */
 public class HarrisLaplaceFeatureDetector extends Feature2D {
 
     protected HarrisLaplaceFeatureDetector(long addr) { super(addr); }
@@ -20,58 +21,73 @@ public class HarrisLaplaceFeatureDetector extends Feature2D {
     // C++: static Ptr_HarrisLaplaceFeatureDetector cv::xfeatures2d::HarrisLaplaceFeatureDetector::create(int numOctaves = 6, float corn_thresh = 0.01f, float DOG_thresh = 0.01f, int maxCorners = 5000, int num_layers = 4)
     //
 
-    //javadoc: HarrisLaplaceFeatureDetector::create(numOctaves, corn_thresh, DOG_thresh, maxCorners, num_layers)
-    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh, int maxCorners, int num_layers)
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_0(numOctaves, corn_thresh, DOG_thresh, maxCorners, num_layers));
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @param numOctaves the number of octaves in the scale-space pyramid
+     * @param corn_thresh the threshold for the Harris cornerness measure
+     * @param DOG_thresh the threshold for the Difference-of-Gaussians scale selection
+     * @param maxCorners the maximum number of corners to consider
+     * @param num_layers the number of intermediate scales per octave
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh, int maxCorners, int num_layers) {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_0(numOctaves, corn_thresh, DOG_thresh, maxCorners, num_layers));
     }
 
-    //javadoc: HarrisLaplaceFeatureDetector::create(numOctaves, corn_thresh, DOG_thresh, maxCorners)
-    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh, int maxCorners)
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_1(numOctaves, corn_thresh, DOG_thresh, maxCorners));
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @param numOctaves the number of octaves in the scale-space pyramid
+     * @param corn_thresh the threshold for the Harris cornerness measure
+     * @param DOG_thresh the threshold for the Difference-of-Gaussians scale selection
+     * @param maxCorners the maximum number of corners to consider
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh, int maxCorners) {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_1(numOctaves, corn_thresh, DOG_thresh, maxCorners));
     }
 
-    //javadoc: HarrisLaplaceFeatureDetector::create(numOctaves, corn_thresh, DOG_thresh)
-    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh)
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_2(numOctaves, corn_thresh, DOG_thresh));
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @param numOctaves the number of octaves in the scale-space pyramid
+     * @param corn_thresh the threshold for the Harris cornerness measure
+     * @param DOG_thresh the threshold for the Difference-of-Gaussians scale selection
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh, float DOG_thresh) {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_2(numOctaves, corn_thresh, DOG_thresh));
     }
 
-    //javadoc: HarrisLaplaceFeatureDetector::create(numOctaves, corn_thresh)
-    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh)
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_3(numOctaves, corn_thresh));
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @param numOctaves the number of octaves in the scale-space pyramid
+     * @param corn_thresh the threshold for the Harris cornerness measure
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create(int numOctaves, float corn_thresh) {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_3(numOctaves, corn_thresh));
     }
 
-    //javadoc: HarrisLaplaceFeatureDetector::create(numOctaves)
-    public static HarrisLaplaceFeatureDetector create(int numOctaves)
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_4(numOctaves));
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @param numOctaves the number of octaves in the scale-space pyramid
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create(int numOctaves) {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_4(numOctaves));
     }
 
-    //javadoc: HarrisLaplaceFeatureDetector::create()
-    public static HarrisLaplaceFeatureDetector create()
-    {
-        
-        HarrisLaplaceFeatureDetector retVal = HarrisLaplaceFeatureDetector.__fromPtr__(create_5());
-        
-        return retVal;
+    /**
+     * Creates a new implementation instance.
+     *
+     * @return automatically generated
+     */
+    public static HarrisLaplaceFeatureDetector create() {
+        return HarrisLaplaceFeatureDetector.__fromPtr__(create_5());
     }
 
 

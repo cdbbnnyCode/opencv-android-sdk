@@ -7,8 +7,15 @@ import org.opencv.tracking.Tracker;
 import org.opencv.tracking.TrackerMIL;
 
 // C++: class TrackerMIL
-//javadoc: TrackerMIL
-
+/**
+ * The MIL algorithm trains a classifier in an online manner to separate the object from the
+ * background.
+ *
+ * Multiple Instance Learning avoids the drift problem for a robust tracking. The implementation is
+ * based on CITE: MIL .
+ *
+ * Original code can be found here &lt;http://vision.ucsd.edu/~bbabenko/project_miltrack.shtml&gt;
+ */
 public class TrackerMIL extends Tracker {
 
     protected TrackerMIL(long addr) { super(addr); }
@@ -20,13 +27,12 @@ public class TrackerMIL extends Tracker {
     // C++: static Ptr_TrackerMIL cv::TrackerMIL::create()
     //
 
-    //javadoc: TrackerMIL::create()
-    public static TrackerMIL create()
-    {
-        
-        TrackerMIL retVal = TrackerMIL.__fromPtr__(create_0());
-        
-        return retVal;
+    /**
+     * Constructor
+     * @return automatically generated
+     */
+    public static TrackerMIL create() {
+        return TrackerMIL.__fromPtr__(create_0());
     }
 
 

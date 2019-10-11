@@ -6,8 +6,17 @@ package org.opencv.structured_light;
 
 
 // C++: class Params
-//javadoc: Params
-
+/**
+ * Parameters of SinusoidalPattern constructor
+ * width Projector's width.
+ * height Projector's height.
+ * nbrOfPeriods Number of period along the patterns direction.
+ * shiftValue Phase shift between two consecutive patterns.
+ * methodId Allow to choose between FTP, PSP and FAPS.
+ * nbrOfPixelsBetweenMarkers Number of pixels between two consecutive markers on the same row.
+ * setMarkers Allow to set markers on the patterns.
+ * markersLocation vector used to store markers location on the patterns.
+ */
 public class Params {
 
     protected final long nativeObj;
@@ -22,13 +31,8 @@ public class Params {
     // C++:   cv::structured_light::SinusoidalPattern::Params::Params()
     //
 
-    //javadoc: Params::Params()
-    public   Params()
-    {
-        
+    public Params() {
         nativeObj = Params_0();
-        
-        return;
     }
 
 

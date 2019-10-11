@@ -7,8 +7,11 @@ import org.opencv.core.Mat;
 import org.opencv.video.BackgroundSubtractor;
 
 // C++: class BackgroundSubtractorGSOC
-//javadoc: BackgroundSubtractorGSOC
-
+/**
+ * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+ *
+ * This algorithm demonstrates better performance on CDNET 2014 dataset compared to other algorithms in OpenCV.
+ */
 public class BackgroundSubtractorGSOC extends BackgroundSubtractor {
 
     protected BackgroundSubtractorGSOC(long addr) { super(addr); }
@@ -20,22 +23,12 @@ public class BackgroundSubtractorGSOC extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGSOC::apply(Mat image, Mat& fgmask, double learningRate = -1)
     //
 
-    //javadoc: BackgroundSubtractorGSOC::apply(image, fgmask, learningRate)
-    public  void apply(Mat image, Mat fgmask, double learningRate)
-    {
-        
+    public void apply(Mat image, Mat fgmask, double learningRate) {
         apply_0(nativeObj, image.nativeObj, fgmask.nativeObj, learningRate);
-        
-        return;
     }
 
-    //javadoc: BackgroundSubtractorGSOC::apply(image, fgmask)
-    public  void apply(Mat image, Mat fgmask)
-    {
-        
+    public void apply(Mat image, Mat fgmask) {
         apply_1(nativeObj, image.nativeObj, fgmask.nativeObj);
-        
-        return;
     }
 
 
@@ -43,13 +36,8 @@ public class BackgroundSubtractorGSOC extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorGSOC::getBackgroundImage(Mat& backgroundImage)
     //
 
-    //javadoc: BackgroundSubtractorGSOC::getBackgroundImage(backgroundImage)
-    public  void getBackgroundImage(Mat backgroundImage)
-    {
-        
+    public void getBackgroundImage(Mat backgroundImage) {
         getBackgroundImage_0(nativeObj, backgroundImage.nativeObj);
-        
-        return;
     }
 
 

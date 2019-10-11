@@ -7,8 +7,11 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class GuidedFilter
-//javadoc: GuidedFilter
-
+/**
+ * Interface for realizations of Guided Filter.
+ *
+ * For more details about this filter see CITE: Kaiming10 .
+ */
 public class GuidedFilter extends Algorithm {
 
     protected GuidedFilter(long addr) { super(addr); }
@@ -20,22 +23,31 @@ public class GuidedFilter extends Algorithm {
     // C++:  void cv::ximgproc::GuidedFilter::filter(Mat src, Mat& dst, int dDepth = -1)
     //
 
-    //javadoc: GuidedFilter::filter(src, dst, dDepth)
-    public  void filter(Mat src, Mat dst, int dDepth)
-    {
-        
+    /**
+     * Apply Guided Filter to the filtering image.
+     *
+     *     @param src filtering image with any numbers of channels.
+     *
+     *     @param dst output image.
+     *
+     *     @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
+     *     to src.depth().
+     */
+    public void filter(Mat src, Mat dst, int dDepth) {
         filter_0(nativeObj, src.nativeObj, dst.nativeObj, dDepth);
-        
-        return;
     }
 
-    //javadoc: GuidedFilter::filter(src, dst)
-    public  void filter(Mat src, Mat dst)
-    {
-        
+    /**
+     * Apply Guided Filter to the filtering image.
+     *
+     *     @param src filtering image with any numbers of channels.
+     *
+     *     @param dst output image.
+     *
+     *     to src.depth().
+     */
+    public void filter(Mat src, Mat dst) {
         filter_1(nativeObj, src.nativeObj, dst.nativeObj);
-        
-        return;
     }
 
 

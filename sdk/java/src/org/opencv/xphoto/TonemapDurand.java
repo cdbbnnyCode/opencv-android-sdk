@@ -6,8 +6,16 @@ package org.opencv.xphoto;
 import org.opencv.photo.Tonemap;
 
 // C++: class TonemapDurand
-//javadoc: TonemapDurand
-
+/**
+ * This algorithm decomposes image into two layers: base layer and detail layer using bilateral filter
+ * and compresses contrast of the base layer thus preserving all the details.
+ *
+ * This implementation uses regular bilateral filter from OpenCV.
+ *
+ * Saturation enhancement is possible as in cv::TonemapDrago.
+ *
+ * For more information see CITE: DD02 .
+ */
 public class TonemapDurand extends Tonemap {
 
     protected TonemapDurand(long addr) { super(addr); }
@@ -19,13 +27,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  float cv::xphoto::TonemapDurand::getContrast()
     //
 
-    //javadoc: TonemapDurand::getContrast()
-    public  float getContrast()
-    {
-        
-        float retVal = getContrast_0(nativeObj);
-        
-        return retVal;
+    public float getContrast() {
+        return getContrast_0(nativeObj);
     }
 
 
@@ -33,13 +36,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  float cv::xphoto::TonemapDurand::getSaturation()
     //
 
-    //javadoc: TonemapDurand::getSaturation()
-    public  float getSaturation()
-    {
-        
-        float retVal = getSaturation_0(nativeObj);
-        
-        return retVal;
+    public float getSaturation() {
+        return getSaturation_0(nativeObj);
     }
 
 
@@ -47,13 +45,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  float cv::xphoto::TonemapDurand::getSigmaColor()
     //
 
-    //javadoc: TonemapDurand::getSigmaColor()
-    public  float getSigmaColor()
-    {
-        
-        float retVal = getSigmaColor_0(nativeObj);
-        
-        return retVal;
+    public float getSigmaColor() {
+        return getSigmaColor_0(nativeObj);
     }
 
 
@@ -61,13 +54,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  float cv::xphoto::TonemapDurand::getSigmaSpace()
     //
 
-    //javadoc: TonemapDurand::getSigmaSpace()
-    public  float getSigmaSpace()
-    {
-        
-        float retVal = getSigmaSpace_0(nativeObj);
-        
-        return retVal;
+    public float getSigmaSpace() {
+        return getSigmaSpace_0(nativeObj);
     }
 
 
@@ -75,13 +63,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  void cv::xphoto::TonemapDurand::setContrast(float contrast)
     //
 
-    //javadoc: TonemapDurand::setContrast(contrast)
-    public  void setContrast(float contrast)
-    {
-        
+    public void setContrast(float contrast) {
         setContrast_0(nativeObj, contrast);
-        
-        return;
     }
 
 
@@ -89,13 +72,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  void cv::xphoto::TonemapDurand::setSaturation(float saturation)
     //
 
-    //javadoc: TonemapDurand::setSaturation(saturation)
-    public  void setSaturation(float saturation)
-    {
-        
+    public void setSaturation(float saturation) {
         setSaturation_0(nativeObj, saturation);
-        
-        return;
     }
 
 
@@ -103,13 +81,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  void cv::xphoto::TonemapDurand::setSigmaColor(float sigma_color)
     //
 
-    //javadoc: TonemapDurand::setSigmaColor(sigma_color)
-    public  void setSigmaColor(float sigma_color)
-    {
-        
+    public void setSigmaColor(float sigma_color) {
         setSigmaColor_0(nativeObj, sigma_color);
-        
-        return;
     }
 
 
@@ -117,13 +90,8 @@ public class TonemapDurand extends Tonemap {
     // C++:  void cv::xphoto::TonemapDurand::setSigmaSpace(float sigma_space)
     //
 
-    //javadoc: TonemapDurand::setSigmaSpace(sigma_space)
-    public  void setSigmaSpace(float sigma_space)
-    {
-        
+    public void setSigmaSpace(float sigma_space) {
         setSigmaSpace_0(nativeObj, sigma_space);
-        
-        return;
     }
 
 

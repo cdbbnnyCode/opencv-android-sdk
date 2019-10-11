@@ -12,7 +12,6 @@ import org.opencv.core.Size;
 import org.opencv.utils.Converters;
 
 // C++: class Xfeatures2d
-//javadoc: Xfeatures2d
 
 public class Xfeatures2d {
 
@@ -32,52 +31,94 @@ public class Xfeatures2d {
     // C++:  void cv::xfeatures2d::matchGMS(Size size1, Size size2, vector_KeyPoint keypoints1, vector_KeyPoint keypoints2, vector_DMatch matches1to2, vector_DMatch& matchesGMS, bool withRotation = false, bool withScale = false, double thresholdFactor = 6.0)
     //
 
-    //javadoc: matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, matchesGMS, withRotation, withScale, thresholdFactor)
-    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation, boolean withScale, double thresholdFactor)
-    {
+    /**
+     * GMS  (Grid-based Motion Statistics) feature matching strategy by CITE: Bian2017gms .
+     *     @param size1 Input size of image1.
+     *     @param size2 Input size of image2.
+     *     @param keypoints1 Input keypoints of image1.
+     *     @param keypoints2 Input keypoints of image2.
+     *     @param matches1to2 Input 1-nearest neighbor matches.
+     *     @param matchesGMS Matches returned by the GMS matching strategy.
+     *     @param withRotation Take rotation transformation into account.
+     *     @param withScale Take scale transformation into account.
+     *     @param thresholdFactor The higher, the less matches.
+     *     <b>Note:</b>
+     *         Since GMS works well when the number of features is large, we recommend to use the ORB feature and set FastThreshold to 0 to get as many as possible features quickly.
+     *         If matching results are not satisfying, please add more features. (We use 10000 for images with 640 X 480).
+     *         If your images have big rotation and scale changes, please set withRotation or withScale to true.
+     */
+    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation, boolean withScale, double thresholdFactor) {
         Mat keypoints1_mat = keypoints1;
         Mat keypoints2_mat = keypoints2;
         Mat matches1to2_mat = matches1to2;
         Mat matchesGMS_mat = matchesGMS;
         matchGMS_0(size1.width, size1.height, size2.width, size2.height, keypoints1_mat.nativeObj, keypoints2_mat.nativeObj, matches1to2_mat.nativeObj, matchesGMS_mat.nativeObj, withRotation, withScale, thresholdFactor);
-        
-        return;
     }
 
-    //javadoc: matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, matchesGMS, withRotation, withScale)
-    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation, boolean withScale)
-    {
+    /**
+     * GMS  (Grid-based Motion Statistics) feature matching strategy by CITE: Bian2017gms .
+     *     @param size1 Input size of image1.
+     *     @param size2 Input size of image2.
+     *     @param keypoints1 Input keypoints of image1.
+     *     @param keypoints2 Input keypoints of image2.
+     *     @param matches1to2 Input 1-nearest neighbor matches.
+     *     @param matchesGMS Matches returned by the GMS matching strategy.
+     *     @param withRotation Take rotation transformation into account.
+     *     @param withScale Take scale transformation into account.
+     *     <b>Note:</b>
+     *         Since GMS works well when the number of features is large, we recommend to use the ORB feature and set FastThreshold to 0 to get as many as possible features quickly.
+     *         If matching results are not satisfying, please add more features. (We use 10000 for images with 640 X 480).
+     *         If your images have big rotation and scale changes, please set withRotation or withScale to true.
+     */
+    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation, boolean withScale) {
         Mat keypoints1_mat = keypoints1;
         Mat keypoints2_mat = keypoints2;
         Mat matches1to2_mat = matches1to2;
         Mat matchesGMS_mat = matchesGMS;
         matchGMS_1(size1.width, size1.height, size2.width, size2.height, keypoints1_mat.nativeObj, keypoints2_mat.nativeObj, matches1to2_mat.nativeObj, matchesGMS_mat.nativeObj, withRotation, withScale);
-        
-        return;
     }
 
-    //javadoc: matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, matchesGMS, withRotation)
-    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation)
-    {
+    /**
+     * GMS  (Grid-based Motion Statistics) feature matching strategy by CITE: Bian2017gms .
+     *     @param size1 Input size of image1.
+     *     @param size2 Input size of image2.
+     *     @param keypoints1 Input keypoints of image1.
+     *     @param keypoints2 Input keypoints of image2.
+     *     @param matches1to2 Input 1-nearest neighbor matches.
+     *     @param matchesGMS Matches returned by the GMS matching strategy.
+     *     @param withRotation Take rotation transformation into account.
+     *     <b>Note:</b>
+     *         Since GMS works well when the number of features is large, we recommend to use the ORB feature and set FastThreshold to 0 to get as many as possible features quickly.
+     *         If matching results are not satisfying, please add more features. (We use 10000 for images with 640 X 480).
+     *         If your images have big rotation and scale changes, please set withRotation or withScale to true.
+     */
+    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, boolean withRotation) {
         Mat keypoints1_mat = keypoints1;
         Mat keypoints2_mat = keypoints2;
         Mat matches1to2_mat = matches1to2;
         Mat matchesGMS_mat = matchesGMS;
         matchGMS_2(size1.width, size1.height, size2.width, size2.height, keypoints1_mat.nativeObj, keypoints2_mat.nativeObj, matches1to2_mat.nativeObj, matchesGMS_mat.nativeObj, withRotation);
-        
-        return;
     }
 
-    //javadoc: matchGMS(size1, size2, keypoints1, keypoints2, matches1to2, matchesGMS)
-    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS)
-    {
+    /**
+     * GMS  (Grid-based Motion Statistics) feature matching strategy by CITE: Bian2017gms .
+     *     @param size1 Input size of image1.
+     *     @param size2 Input size of image2.
+     *     @param keypoints1 Input keypoints of image1.
+     *     @param keypoints2 Input keypoints of image2.
+     *     @param matches1to2 Input 1-nearest neighbor matches.
+     *     @param matchesGMS Matches returned by the GMS matching strategy.
+     *     <b>Note:</b>
+     *         Since GMS works well when the number of features is large, we recommend to use the ORB feature and set FastThreshold to 0 to get as many as possible features quickly.
+     *         If matching results are not satisfying, please add more features. (We use 10000 for images with 640 X 480).
+     *         If your images have big rotation and scale changes, please set withRotation or withScale to true.
+     */
+    public static void matchGMS(Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS) {
         Mat keypoints1_mat = keypoints1;
         Mat keypoints2_mat = keypoints2;
         Mat matches1to2_mat = matches1to2;
         Mat matchesGMS_mat = matchesGMS;
         matchGMS_3(size1.width, size1.height, size2.width, size2.height, keypoints1_mat.nativeObj, keypoints2_mat.nativeObj, matches1to2_mat.nativeObj, matchesGMS_mat.nativeObj);
-        
-        return;
     }
 
 

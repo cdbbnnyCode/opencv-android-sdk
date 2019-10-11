@@ -97,7 +97,7 @@ android {
     //buildToolsVersion "x.y.z" // not needed since com.android.tools.build:gradle:3.0.0
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
 
         externalNativeBuild {
@@ -137,11 +137,11 @@ android {
         }
     }
 
-    externalNativeBuild {
-        cmake {
-            path (project.projectDir.toString() + '/libcxx_helper/CMakeLists.txt')
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path (project.projectDir.toString() + '/libcxx_helper/CMakeLists.txt')
+//        }
+//    }
 }
 
 dependencies {

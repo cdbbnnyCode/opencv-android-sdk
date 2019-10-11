@@ -7,8 +7,9 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class WhiteBalancer
-//javadoc: WhiteBalancer
-
+/**
+ * The base class for auto white balance algorithms.
+ */
 public class WhiteBalancer extends Algorithm {
 
     protected WhiteBalancer(long addr) { super(addr); }
@@ -20,13 +21,15 @@ public class WhiteBalancer extends Algorithm {
     // C++:  void cv::xphoto::WhiteBalancer::balanceWhite(Mat src, Mat& dst)
     //
 
-    //javadoc: WhiteBalancer::balanceWhite(src, dst)
-    public  void balanceWhite(Mat src, Mat dst)
-    {
-        
+    /**
+     * Applies white balancing to the input image
+     *
+     *     @param src Input image
+     *     @param dst White balancing result
+     *     SEE: cvtColor, equalizeHist
+     */
+    public void balanceWhite(Mat src, Mat dst) {
         balanceWhite_0(nativeObj, src.nativeObj, dst.nativeObj);
-        
-        return;
     }
 
 

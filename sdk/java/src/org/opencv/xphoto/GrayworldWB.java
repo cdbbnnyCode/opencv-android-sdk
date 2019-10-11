@@ -6,8 +6,29 @@ package org.opencv.xphoto;
 import org.opencv.xphoto.WhiteBalancer;
 
 // C++: class GrayworldWB
-//javadoc: GrayworldWB
-
+/**
+ * Gray-world white balance algorithm
+ *
+ * This algorithm scales the values of pixels based on a
+ * gray-world assumption which states that the average of all channels
+ * should result in a gray image.
+ *
+ * It adds a modification which thresholds pixels based on their
+ * saturation value and only uses pixels below the provided threshold in
+ * finding average pixel values.
+ *
+ * Saturation is calculated using the following for a 3-channel RGB image per
+ * pixel I and is in the range [0, 1]:
+ *
+ * \( \texttt{Saturation} [I] = \frac{\textrm{max}(R,G,B) - \textrm{min}(R,G,B)
+ * }{\textrm{max}(R,G,B)} \)
+ *
+ * A threshold of 1 means that all pixels are used to white-balance, while a
+ * threshold of 0 means no pixels are used. Lower thresholds are useful in
+ * white-balancing saturated images.
+ *
+ * Currently supports images of type REF: CV_8UC3 and REF: CV_16UC3.
+ */
 public class GrayworldWB extends WhiteBalancer {
 
     protected GrayworldWB(long addr) { super(addr); }
@@ -19,13 +40,14 @@ public class GrayworldWB extends WhiteBalancer {
     // C++:  float cv::xphoto::GrayworldWB::getSaturationThreshold()
     //
 
-    //javadoc: GrayworldWB::getSaturationThreshold()
-    public  float getSaturationThreshold()
-    {
-        
-        float retVal = getSaturationThreshold_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Maximum saturation for a pixel to be included in the
+     *         gray-world assumption
+     * SEE: setSaturationThreshold
+     * @return automatically generated
+     */
+    public float getSaturationThreshold() {
+        return getSaturationThreshold_0(nativeObj);
     }
 
 
@@ -33,13 +55,12 @@ public class GrayworldWB extends WhiteBalancer {
     // C++:  void cv::xphoto::GrayworldWB::setSaturationThreshold(float val)
     //
 
-    //javadoc: GrayworldWB::setSaturationThreshold(val)
-    public  void setSaturationThreshold(float val)
-    {
-        
+    /**
+     *  getSaturationThreshold SEE: getSaturationThreshold
+     * @param val automatically generated
+     */
+    public void setSaturationThreshold(float val) {
         setSaturationThreshold_0(nativeObj, val);
-        
-        return;
     }
 
 

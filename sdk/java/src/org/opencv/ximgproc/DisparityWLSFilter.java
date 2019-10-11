@@ -8,8 +8,11 @@ import org.opencv.core.Rect;
 import org.opencv.ximgproc.DisparityFilter;
 
 // C++: class DisparityWLSFilter
-//javadoc: DisparityWLSFilter
-
+/**
+ * Disparity map filter based on Weighted Least Squares filter (in form of Fast Global Smoother that
+ * is a lot faster than traditional Weighted Least Squares filter implementations) and optional use of
+ * left-right-consistency-based confidence to refine the results in half-occlusions and uniform areas.
+ */
 public class DisparityWLSFilter extends DisparityFilter {
 
     protected DisparityWLSFilter(long addr) { super(addr); }
@@ -21,13 +24,14 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  Mat cv::ximgproc::DisparityWLSFilter::getConfidenceMap()
     //
 
-    //javadoc: DisparityWLSFilter::getConfidenceMap()
-    public  Mat getConfidenceMap()
-    {
-        
-        Mat retVal = new Mat(getConfidenceMap_0(nativeObj));
-        
-        return retVal;
+    /**
+     * Get the confidence map that was used in the last filter call. It is a CV_32F one-channel image
+     *     with values ranging from 0.0 (totally untrusted regions of the raw disparity map) to 255.0 (regions containing
+     *     correct disparity values with a high degree of confidence).
+     * @return automatically generated
+     */
+    public Mat getConfidenceMap() {
+        return new Mat(getConfidenceMap_0(nativeObj));
     }
 
 
@@ -35,13 +39,12 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  Rect cv::ximgproc::DisparityWLSFilter::getROI()
     //
 
-    //javadoc: DisparityWLSFilter::getROI()
-    public  Rect getROI()
-    {
-        
-        Rect retVal = new Rect(getROI_0(nativeObj));
-        
-        return retVal;
+    /**
+     * Get the ROI used in the last filter call
+     * @return automatically generated
+     */
+    public Rect getROI() {
+        return new Rect(getROI_0(nativeObj));
     }
 
 
@@ -49,13 +52,13 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  double cv::ximgproc::DisparityWLSFilter::getLambda()
     //
 
-    //javadoc: DisparityWLSFilter::getLambda()
-    public  double getLambda()
-    {
-        
-        double retVal = getLambda_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Lambda is a parameter defining the amount of regularization during filtering. Larger values force
+     *     filtered disparity map edges to adhere more to source image edges. Typical value is 8000.
+     * @return automatically generated
+     */
+    public double getLambda() {
+        return getLambda_0(nativeObj);
     }
 
 
@@ -63,13 +66,14 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  double cv::ximgproc::DisparityWLSFilter::getSigmaColor()
     //
 
-    //javadoc: DisparityWLSFilter::getSigmaColor()
-    public  double getSigmaColor()
-    {
-        
-        double retVal = getSigmaColor_0(nativeObj);
-        
-        return retVal;
+    /**
+     * SigmaColor is a parameter defining how sensitive the filtering process is to source image edges.
+     *     Large values can lead to disparity leakage through low-contrast edges. Small values can make the filter too
+     *     sensitive to noise and textures in the source image. Typical values range from 0.8 to 2.0.
+     * @return automatically generated
+     */
+    public double getSigmaColor() {
+        return getSigmaColor_0(nativeObj);
     }
 
 
@@ -77,13 +81,13 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  int cv::ximgproc::DisparityWLSFilter::getDepthDiscontinuityRadius()
     //
 
-    //javadoc: DisparityWLSFilter::getDepthDiscontinuityRadius()
-    public  int getDepthDiscontinuityRadius()
-    {
-        
-        int retVal = getDepthDiscontinuityRadius_0(nativeObj);
-        
-        return retVal;
+    /**
+     * DepthDiscontinuityRadius is a parameter used in confidence computation. It defines the size of
+     *     low-confidence regions around depth discontinuities.
+     * @return automatically generated
+     */
+    public int getDepthDiscontinuityRadius() {
+        return getDepthDiscontinuityRadius_0(nativeObj);
     }
 
 
@@ -91,13 +95,13 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  int cv::ximgproc::DisparityWLSFilter::getLRCthresh()
     //
 
-    //javadoc: DisparityWLSFilter::getLRCthresh()
-    public  int getLRCthresh()
-    {
-        
-        int retVal = getLRCthresh_0(nativeObj);
-        
-        return retVal;
+    /**
+     * LRCthresh is a threshold of disparity difference used in left-right-consistency check during
+     *     confidence map computation. The default value of 24 (1.5 pixels) is virtually always good enough.
+     * @return automatically generated
+     */
+    public int getLRCthresh() {
+        return getLRCthresh_0(nativeObj);
     }
 
 
@@ -105,13 +109,12 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  void cv::ximgproc::DisparityWLSFilter::setDepthDiscontinuityRadius(int _disc_radius)
     //
 
-    //javadoc: DisparityWLSFilter::setDepthDiscontinuityRadius(_disc_radius)
-    public  void setDepthDiscontinuityRadius(int _disc_radius)
-    {
-        
+    /**
+     * SEE: getDepthDiscontinuityRadius
+     * @param _disc_radius automatically generated
+     */
+    public void setDepthDiscontinuityRadius(int _disc_radius) {
         setDepthDiscontinuityRadius_0(nativeObj, _disc_radius);
-        
-        return;
     }
 
 
@@ -119,13 +122,12 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  void cv::ximgproc::DisparityWLSFilter::setLRCthresh(int _LRC_thresh)
     //
 
-    //javadoc: DisparityWLSFilter::setLRCthresh(_LRC_thresh)
-    public  void setLRCthresh(int _LRC_thresh)
-    {
-        
+    /**
+     * SEE: getLRCthresh
+     * @param _LRC_thresh automatically generated
+     */
+    public void setLRCthresh(int _LRC_thresh) {
         setLRCthresh_0(nativeObj, _LRC_thresh);
-        
-        return;
     }
 
 
@@ -133,13 +135,12 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  void cv::ximgproc::DisparityWLSFilter::setLambda(double _lambda)
     //
 
-    //javadoc: DisparityWLSFilter::setLambda(_lambda)
-    public  void setLambda(double _lambda)
-    {
-        
+    /**
+     * SEE: getLambda
+     * @param _lambda automatically generated
+     */
+    public void setLambda(double _lambda) {
         setLambda_0(nativeObj, _lambda);
-        
-        return;
     }
 
 
@@ -147,13 +148,12 @@ public class DisparityWLSFilter extends DisparityFilter {
     // C++:  void cv::ximgproc::DisparityWLSFilter::setSigmaColor(double _sigma_color)
     //
 
-    //javadoc: DisparityWLSFilter::setSigmaColor(_sigma_color)
-    public  void setSigmaColor(double _sigma_color)
-    {
-        
+    /**
+     * SEE: getSigmaColor
+     * @param _sigma_color automatically generated
+     */
+    public void setSigmaColor(double _sigma_color) {
         setSigmaColor_0(nativeObj, _sigma_color);
-        
-        return;
     }
 
 

@@ -4,10 +4,15 @@
 package org.opencv.img_hash;
 
 import org.opencv.img_hash.AverageHash;
+import org.opencv.img_hash.ImgHashBase;
 
 // C++: class AverageHash
-//javadoc: AverageHash
-
+/**
+ * Computes average hash value of the input image
+ *
+ * This is a fast image hashing algorithm, but only work on simple case. For more details, please
+ * refer to CITE: lookslikeit
+ */
 public class AverageHash extends ImgHashBase {
 
     protected AverageHash(long addr) { super(addr); }
@@ -19,13 +24,8 @@ public class AverageHash extends ImgHashBase {
     // C++: static Ptr_AverageHash cv::img_hash::AverageHash::create()
     //
 
-    //javadoc: AverageHash::create()
-    public static AverageHash create()
-    {
-        
-        AverageHash retVal = AverageHash.__fromPtr__(create_0());
-        
-        return retVal;
+    public static AverageHash create() {
+        return AverageHash.__fromPtr__(create_0());
     }
 
 

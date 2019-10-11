@@ -3,14 +3,23 @@
 //
 package org.opencv.text;
 
-import java.lang.String;
 import org.opencv.core.Mat;
 import org.opencv.text.BaseOCR;
 import org.opencv.text.OCRBeamSearchDecoder;
 
 // C++: class OCRBeamSearchDecoder
-//javadoc: OCRBeamSearchDecoder
-
+/**
+ * OCRBeamSearchDecoder class provides an interface for OCR using Beam Search algorithm.
+ *
+ * <b>Note:</b>
+ * <ul>
+ *   <li>
+ *       (C++) An example on using OCRBeamSearchDecoder recognition combined with scene text detection can
+ *         be found at the demo sample:
+ *         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/word_recognition.cpp&gt;
+ *   </li>
+ * </ul>
+ */
 public class OCRBeamSearchDecoder extends BaseOCR {
 
     protected OCRBeamSearchDecoder(long addr) { super(addr); }
@@ -29,31 +38,49 @@ public class OCRBeamSearchDecoder extends BaseOCR {
     // C++: static Ptr_OCRBeamSearchDecoder cv::text::OCRBeamSearchDecoder::create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode = OCR_DECODER_VITERBI, int beam_size = 500)
     //
 
-    //javadoc: OCRBeamSearchDecoder::create(filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode, beam_size)
-    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode, int beam_size)
-    {
-        
-        OCRBeamSearchDecoder retVal = OCRBeamSearchDecoder.__fromPtr__(create_0(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj, mode, beam_size));
-        
-        return retVal;
+    /**
+     * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder from the specified path.
+     *
+     *     
+     * @param filename automatically generated
+     * @param vocabulary automatically generated
+     * @param transition_probabilities_table automatically generated
+     * @param emission_probabilities_table automatically generated
+     * @param mode automatically generated
+     * @param beam_size automatically generated
+     * @return automatically generated
+     */
+    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode, int beam_size) {
+        return OCRBeamSearchDecoder.__fromPtr__(create_0(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj, mode, beam_size));
     }
 
-    //javadoc: OCRBeamSearchDecoder::create(filename, vocabulary, transition_probabilities_table, emission_probabilities_table, mode)
-    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode)
-    {
-        
-        OCRBeamSearchDecoder retVal = OCRBeamSearchDecoder.__fromPtr__(create_1(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj, mode));
-        
-        return retVal;
+    /**
+     * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder from the specified path.
+     *
+     *     
+     * @param filename automatically generated
+     * @param vocabulary automatically generated
+     * @param transition_probabilities_table automatically generated
+     * @param emission_probabilities_table automatically generated
+     * @param mode automatically generated
+     * @return automatically generated
+     */
+    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode) {
+        return OCRBeamSearchDecoder.__fromPtr__(create_1(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj, mode));
     }
 
-    //javadoc: OCRBeamSearchDecoder::create(filename, vocabulary, transition_probabilities_table, emission_probabilities_table)
-    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)
-    {
-        
-        OCRBeamSearchDecoder retVal = OCRBeamSearchDecoder.__fromPtr__(create_2(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj));
-        
-        return retVal;
+    /**
+     * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder from the specified path.
+     *
+     *     
+     * @param filename automatically generated
+     * @param vocabulary automatically generated
+     * @param transition_probabilities_table automatically generated
+     * @param emission_probabilities_table automatically generated
+     * @return automatically generated
+     */
+    public static OCRBeamSearchDecoder create(String filename, String vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table) {
+        return OCRBeamSearchDecoder.__fromPtr__(create_2(filename, vocabulary, transition_probabilities_table.nativeObj, emission_probabilities_table.nativeObj));
     }
 
 
@@ -61,22 +88,12 @@ public class OCRBeamSearchDecoder extends BaseOCR {
     // C++:  String cv::text::OCRBeamSearchDecoder::run(Mat image, Mat mask, int min_confidence, int component_level = 0)
     //
 
-    //javadoc: OCRBeamSearchDecoder::run(image, mask, min_confidence, component_level)
-    public  String run(Mat image, Mat mask, int min_confidence, int component_level)
-    {
-        
-        String retVal = run_0(nativeObj, image.nativeObj, mask.nativeObj, min_confidence, component_level);
-        
-        return retVal;
+    public String run(Mat image, Mat mask, int min_confidence, int component_level) {
+        return run_0(nativeObj, image.nativeObj, mask.nativeObj, min_confidence, component_level);
     }
 
-    //javadoc: OCRBeamSearchDecoder::run(image, mask, min_confidence)
-    public  String run(Mat image, Mat mask, int min_confidence)
-    {
-        
-        String retVal = run_1(nativeObj, image.nativeObj, mask.nativeObj, min_confidence);
-        
-        return retVal;
+    public String run(Mat image, Mat mask, int min_confidence) {
+        return run_1(nativeObj, image.nativeObj, mask.nativeObj, min_confidence);
     }
 
 
@@ -84,22 +101,51 @@ public class OCRBeamSearchDecoder extends BaseOCR {
     // C++:  String cv::text::OCRBeamSearchDecoder::run(Mat image, int min_confidence, int component_level = 0)
     //
 
-    //javadoc: OCRBeamSearchDecoder::run(image, min_confidence, component_level)
-    public  String run(Mat image, int min_confidence, int component_level)
-    {
-        
-        String retVal = run_2(nativeObj, image.nativeObj, min_confidence, component_level);
-        
-        return retVal;
+    /**
+     * Recognize text using Beam Search.
+     *
+     *     Takes image on input and returns recognized text in the output_text parameter. Optionally
+     *     provides also the Rects for individual text elements found (e.g. words), and the list of those
+     *     text elements with their confidence values.
+     *
+     *     @param image Input binary image CV_8UC1 with a single text line (or word).
+     *
+     *
+     *     text elements found (e.g. words).
+     *
+     *     recognition of individual text elements found (e.g. words).
+     *
+     *     for the recognition of individual text elements found (e.g. words).
+     *
+     *     @param component_level Only OCR_LEVEL_WORD is supported.
+     * @param min_confidence automatically generated
+     * @return automatically generated
+     */
+    public String run(Mat image, int min_confidence, int component_level) {
+        return run_2(nativeObj, image.nativeObj, min_confidence, component_level);
     }
 
-    //javadoc: OCRBeamSearchDecoder::run(image, min_confidence)
-    public  String run(Mat image, int min_confidence)
-    {
-        
-        String retVal = run_3(nativeObj, image.nativeObj, min_confidence);
-        
-        return retVal;
+    /**
+     * Recognize text using Beam Search.
+     *
+     *     Takes image on input and returns recognized text in the output_text parameter. Optionally
+     *     provides also the Rects for individual text elements found (e.g. words), and the list of those
+     *     text elements with their confidence values.
+     *
+     *     @param image Input binary image CV_8UC1 with a single text line (or word).
+     *
+     *
+     *     text elements found (e.g. words).
+     *
+     *     recognition of individual text elements found (e.g. words).
+     *
+     *     for the recognition of individual text elements found (e.g. words).
+     *
+     * @param min_confidence automatically generated
+     * @return automatically generated
+     */
+    public String run(Mat image, int min_confidence) {
+        return run_3(nativeObj, image.nativeObj, min_confidence);
     }
 
 

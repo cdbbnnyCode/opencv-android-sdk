@@ -10,8 +10,11 @@ import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
 // C++: class GridBoard
-//javadoc: GridBoard
-
+/**
+ * Planar board with grid arrangement of markers
+ * More common type of board. All markers are placed in the same plane in a grid arrangement.
+ * The board can be drawn using drawPlanarBoard() function (SEE: drawPlanarBoard)
+ */
 public class GridBoard extends Board {
 
     protected GridBoard(long addr) { super(addr); }
@@ -23,22 +26,39 @@ public class GridBoard extends Board {
     // C++: static Ptr_GridBoard cv::aruco::GridBoard::create(int markersX, int markersY, float markerLength, float markerSeparation, Ptr_Dictionary dictionary, int firstMarker = 0)
     //
 
-    //javadoc: GridBoard::create(markersX, markersY, markerLength, markerSeparation, dictionary, firstMarker)
-    public static GridBoard create(int markersX, int markersY, float markerLength, float markerSeparation, Dictionary dictionary, int firstMarker)
-    {
-        
-        GridBoard retVal = GridBoard.__fromPtr__(create_0(markersX, markersY, markerLength, markerSeparation, dictionary.getNativeObjAddr(), firstMarker));
-        
-        return retVal;
+    /**
+     * Create a GridBoard object
+     *
+     * @param markersX number of markers in X direction
+     * @param markersY number of markers in Y direction
+     * @param markerLength marker side length (normally in meters)
+     * @param markerSeparation separation between two markers (same unit as markerLength)
+     * @param dictionary dictionary of markers indicating the type of markers
+     * @param firstMarker id of first marker in dictionary to use on board.
+     * @return the output GridBoard object
+     *
+     * This functions creates a GridBoard object given the number of markers in each direction and
+     * the marker size and marker separation.
+     */
+    public static GridBoard create(int markersX, int markersY, float markerLength, float markerSeparation, Dictionary dictionary, int firstMarker) {
+        return GridBoard.__fromPtr__(create_0(markersX, markersY, markerLength, markerSeparation, dictionary.getNativeObjAddr(), firstMarker));
     }
 
-    //javadoc: GridBoard::create(markersX, markersY, markerLength, markerSeparation, dictionary)
-    public static GridBoard create(int markersX, int markersY, float markerLength, float markerSeparation, Dictionary dictionary)
-    {
-        
-        GridBoard retVal = GridBoard.__fromPtr__(create_1(markersX, markersY, markerLength, markerSeparation, dictionary.getNativeObjAddr()));
-        
-        return retVal;
+    /**
+     * Create a GridBoard object
+     *
+     * @param markersX number of markers in X direction
+     * @param markersY number of markers in Y direction
+     * @param markerLength marker side length (normally in meters)
+     * @param markerSeparation separation between two markers (same unit as markerLength)
+     * @param dictionary dictionary of markers indicating the type of markers
+     * @return the output GridBoard object
+     *
+     * This functions creates a GridBoard object given the number of markers in each direction and
+     * the marker size and marker separation.
+     */
+    public static GridBoard create(int markersX, int markersY, float markerLength, float markerSeparation, Dictionary dictionary) {
+        return GridBoard.__fromPtr__(create_1(markersX, markersY, markerLength, markerSeparation, dictionary.getNativeObjAddr()));
     }
 
 
@@ -46,13 +66,8 @@ public class GridBoard extends Board {
     // C++:  Size cv::aruco::GridBoard::getGridSize()
     //
 
-    //javadoc: GridBoard::getGridSize()
-    public  Size getGridSize()
-    {
-        
-        Size retVal = new Size(getGridSize_0(nativeObj));
-        
-        return retVal;
+    public Size getGridSize() {
+        return new Size(getGridSize_0(nativeObj));
     }
 
 
@@ -60,13 +75,8 @@ public class GridBoard extends Board {
     // C++:  float cv::aruco::GridBoard::getMarkerLength()
     //
 
-    //javadoc: GridBoard::getMarkerLength()
-    public  float getMarkerLength()
-    {
-        
-        float retVal = getMarkerLength_0(nativeObj);
-        
-        return retVal;
+    public float getMarkerLength() {
+        return getMarkerLength_0(nativeObj);
     }
 
 
@@ -74,13 +84,8 @@ public class GridBoard extends Board {
     // C++:  float cv::aruco::GridBoard::getMarkerSeparation()
     //
 
-    //javadoc: GridBoard::getMarkerSeparation()
-    public  float getMarkerSeparation()
-    {
-        
-        float retVal = getMarkerSeparation_0(nativeObj);
-        
-        return retVal;
+    public float getMarkerSeparation() {
+        return getMarkerSeparation_0(nativeObj);
     }
 
 
@@ -88,31 +93,46 @@ public class GridBoard extends Board {
     // C++:  void cv::aruco::GridBoard::draw(Size outSize, Mat& img, int marginSize = 0, int borderBits = 1)
     //
 
-    //javadoc: GridBoard::draw(outSize, img, marginSize, borderBits)
-    public  void draw(Size outSize, Mat img, int marginSize, int borderBits)
-    {
-        
+    /**
+     * Draw a GridBoard
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     * @param marginSize minimum margins (in pixels) of the board in the output image
+     * @param borderBits width of the marker borders.
+     *
+     * This function return the image of the GridBoard, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img, int marginSize, int borderBits) {
         draw_0(nativeObj, outSize.width, outSize.height, img.nativeObj, marginSize, borderBits);
-        
-        return;
     }
 
-    //javadoc: GridBoard::draw(outSize, img, marginSize)
-    public  void draw(Size outSize, Mat img, int marginSize)
-    {
-        
+    /**
+     * Draw a GridBoard
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     * @param marginSize minimum margins (in pixels) of the board in the output image
+     *
+     * This function return the image of the GridBoard, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img, int marginSize) {
         draw_1(nativeObj, outSize.width, outSize.height, img.nativeObj, marginSize);
-        
-        return;
     }
 
-    //javadoc: GridBoard::draw(outSize, img)
-    public  void draw(Size outSize, Mat img)
-    {
-        
+    /**
+     * Draw a GridBoard
+     *
+     * @param outSize size of the output image in pixels.
+     * @param img output image with the board. The size of this image will be outSize
+     * and the board will be on the center, keeping the board proportions.
+     *
+     * This function return the image of the GridBoard, ready to be printed.
+     */
+    public void draw(Size outSize, Mat img) {
         draw_2(nativeObj, outSize.width, outSize.height, img.nativeObj);
-        
-        return;
     }
 
 

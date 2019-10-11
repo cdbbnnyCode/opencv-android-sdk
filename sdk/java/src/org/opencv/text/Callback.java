@@ -6,8 +6,12 @@ package org.opencv.text;
 
 
 // C++: class Callback
-//javadoc: Callback
-
+/**
+ * Callback with the classifier is made a class.
+ *
+ *     By doing it we hide SVM, Boost etc. Developers can provide their own classifiers to the
+ *     ERFilter algorithm.
+ */
 public class Callback {
 
     protected final long nativeObj;

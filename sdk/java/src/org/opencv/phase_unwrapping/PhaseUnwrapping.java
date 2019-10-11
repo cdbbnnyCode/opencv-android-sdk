@@ -7,8 +7,9 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class PhaseUnwrapping
-//javadoc: PhaseUnwrapping
-
+/**
+ * Abstract base class for phase unwrapping.
+ */
 public class PhaseUnwrapping extends Algorithm {
 
     protected PhaseUnwrapping(long addr) { super(addr); }
@@ -20,22 +21,25 @@ public class PhaseUnwrapping extends Algorithm {
     // C++:  void cv::phase_unwrapping::PhaseUnwrapping::unwrapPhaseMap(Mat wrappedPhaseMap, Mat& unwrappedPhaseMap, Mat shadowMask = Mat())
     //
 
-    //javadoc: PhaseUnwrapping::unwrapPhaseMap(wrappedPhaseMap, unwrappedPhaseMap, shadowMask)
-    public  void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap, Mat shadowMask)
-    {
-        
+    /**
+     * Unwraps a 2D phase map.
+     *
+     * @param wrappedPhaseMap The wrapped phase map that needs to be unwrapped.
+     * @param unwrappedPhaseMap The unwrapped phase map.
+     * @param shadowMask Optional parameter used when some pixels do not hold any phase information in the wrapped phase map.
+     */
+    public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap, Mat shadowMask) {
         unwrapPhaseMap_0(nativeObj, wrappedPhaseMap.nativeObj, unwrappedPhaseMap.nativeObj, shadowMask.nativeObj);
-        
-        return;
     }
 
-    //javadoc: PhaseUnwrapping::unwrapPhaseMap(wrappedPhaseMap, unwrappedPhaseMap)
-    public  void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap)
-    {
-        
+    /**
+     * Unwraps a 2D phase map.
+     *
+     * @param wrappedPhaseMap The wrapped phase map that needs to be unwrapped.
+     * @param unwrappedPhaseMap The unwrapped phase map.
+     */
+    public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap) {
         unwrapPhaseMap_1(nativeObj, wrappedPhaseMap.nativeObj, unwrappedPhaseMap.nativeObj);
-        
-        return;
     }
 
 

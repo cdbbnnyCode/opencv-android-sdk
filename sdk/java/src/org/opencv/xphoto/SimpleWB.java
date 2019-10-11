@@ -6,8 +6,11 @@ package org.opencv.xphoto;
 import org.opencv.xphoto.WhiteBalancer;
 
 // C++: class SimpleWB
-//javadoc: SimpleWB
-
+/**
+ * A simple white balance algorithm that works by independently stretching
+ *     each of the input image channels to the specified range. For increased robustness
+ *     it ignores the top and bottom \(p\%\) of pixel values.
+ */
 public class SimpleWB extends WhiteBalancer {
 
     protected SimpleWB(long addr) { super(addr); }
@@ -19,13 +22,13 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  float cv::xphoto::SimpleWB::getInputMax()
     //
 
-    //javadoc: SimpleWB::getInputMax()
-    public  float getInputMax()
-    {
-        
-        float retVal = getInputMax_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Input image range maximum value
+     * SEE: setInputMax
+     * @return automatically generated
+     */
+    public float getInputMax() {
+        return getInputMax_0(nativeObj);
     }
 
 
@@ -33,13 +36,13 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  float cv::xphoto::SimpleWB::getInputMin()
     //
 
-    //javadoc: SimpleWB::getInputMin()
-    public  float getInputMin()
-    {
-        
-        float retVal = getInputMin_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Input image range minimum value
+     * SEE: setInputMin
+     * @return automatically generated
+     */
+    public float getInputMin() {
+        return getInputMin_0(nativeObj);
     }
 
 
@@ -47,13 +50,13 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  float cv::xphoto::SimpleWB::getOutputMax()
     //
 
-    //javadoc: SimpleWB::getOutputMax()
-    public  float getOutputMax()
-    {
-        
-        float retVal = getOutputMax_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Output image range maximum value
+     * SEE: setOutputMax
+     * @return automatically generated
+     */
+    public float getOutputMax() {
+        return getOutputMax_0(nativeObj);
     }
 
 
@@ -61,13 +64,13 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  float cv::xphoto::SimpleWB::getOutputMin()
     //
 
-    //javadoc: SimpleWB::getOutputMin()
-    public  float getOutputMin()
-    {
-        
-        float retVal = getOutputMin_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Output image range minimum value
+     * SEE: setOutputMin
+     * @return automatically generated
+     */
+    public float getOutputMin() {
+        return getOutputMin_0(nativeObj);
     }
 
 
@@ -75,13 +78,13 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  float cv::xphoto::SimpleWB::getP()
     //
 
-    //javadoc: SimpleWB::getP()
-    public  float getP()
-    {
-        
-        float retVal = getP_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Percent of top/bottom values to ignore
+     * SEE: setP
+     * @return automatically generated
+     */
+    public float getP() {
+        return getP_0(nativeObj);
     }
 
 
@@ -89,13 +92,12 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  void cv::xphoto::SimpleWB::setInputMax(float val)
     //
 
-    //javadoc: SimpleWB::setInputMax(val)
-    public  void setInputMax(float val)
-    {
-        
+    /**
+     *  getInputMax SEE: getInputMax
+     * @param val automatically generated
+     */
+    public void setInputMax(float val) {
         setInputMax_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -103,13 +105,12 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  void cv::xphoto::SimpleWB::setInputMin(float val)
     //
 
-    //javadoc: SimpleWB::setInputMin(val)
-    public  void setInputMin(float val)
-    {
-        
+    /**
+     *  getInputMin SEE: getInputMin
+     * @param val automatically generated
+     */
+    public void setInputMin(float val) {
         setInputMin_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -117,13 +118,12 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  void cv::xphoto::SimpleWB::setOutputMax(float val)
     //
 
-    //javadoc: SimpleWB::setOutputMax(val)
-    public  void setOutputMax(float val)
-    {
-        
+    /**
+     *  getOutputMax SEE: getOutputMax
+     * @param val automatically generated
+     */
+    public void setOutputMax(float val) {
         setOutputMax_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -131,13 +131,12 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  void cv::xphoto::SimpleWB::setOutputMin(float val)
     //
 
-    //javadoc: SimpleWB::setOutputMin(val)
-    public  void setOutputMin(float val)
-    {
-        
+    /**
+     *  getOutputMin SEE: getOutputMin
+     * @param val automatically generated
+     */
+    public void setOutputMin(float val) {
         setOutputMin_0(nativeObj, val);
-        
-        return;
     }
 
 
@@ -145,13 +144,12 @@ public class SimpleWB extends WhiteBalancer {
     // C++:  void cv::xphoto::SimpleWB::setP(float val)
     //
 
-    //javadoc: SimpleWB::setP(val)
-    public  void setP(float val)
-    {
-        
+    /**
+     *  getP SEE: getP
+     * @param val automatically generated
+     */
+    public void setP(float val) {
         setP_0(nativeObj, val);
-        
-        return;
     }
 
 

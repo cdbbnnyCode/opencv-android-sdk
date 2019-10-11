@@ -6,8 +6,9 @@ package org.opencv.bgsegm;
 
 
 // C++: class BackgroundSubtractorLSBPDesc
-//javadoc: BackgroundSubtractorLSBPDesc
-
+/**
+ * This is for calculation of the LSBP descriptors.
+ */
 public class BackgroundSubtractorLSBPDesc {
 
     protected final long nativeObj;

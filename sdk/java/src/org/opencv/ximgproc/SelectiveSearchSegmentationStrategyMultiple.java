@@ -6,8 +6,9 @@ package org.opencv.ximgproc;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategy;
 
 // C++: class SelectiveSearchSegmentationStrategyMultiple
-//javadoc: SelectiveSearchSegmentationStrategyMultiple
-
+/**
+ * Regroup multiple strategies for the selective search segmentation algorithm
+ */
 public class SelectiveSearchSegmentationStrategyMultiple extends SelectiveSearchSegmentationStrategy {
 
     protected SelectiveSearchSegmentationStrategyMultiple(long addr) { super(addr); }
@@ -19,13 +20,13 @@ public class SelectiveSearchSegmentationStrategyMultiple extends SelectiveSearch
     // C++:  void cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::addStrategy(Ptr_SelectiveSearchSegmentationStrategy g, float weight)
     //
 
-    //javadoc: SelectiveSearchSegmentationStrategyMultiple::addStrategy(g, weight)
-    public  void addStrategy(SelectiveSearchSegmentationStrategy g, float weight)
-    {
-        
+    /**
+     * Add a new sub-strategy
+     *                                 @param g The strategy
+     *                                 @param weight The weight of the strategy
+     */
+    public void addStrategy(SelectiveSearchSegmentationStrategy g, float weight) {
         addStrategy_0(nativeObj, g.getNativeObjAddr(), weight);
-        
-        return;
     }
 
 
@@ -33,13 +34,11 @@ public class SelectiveSearchSegmentationStrategyMultiple extends SelectiveSearch
     // C++:  void cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::clearStrategies()
     //
 
-    //javadoc: SelectiveSearchSegmentationStrategyMultiple::clearStrategies()
-    public  void clearStrategies()
-    {
-        
+    /**
+     * Remove all sub-strategies
+     */
+    public void clearStrategies() {
         clearStrategies_0(nativeObj);
-        
-        return;
     }
 
 

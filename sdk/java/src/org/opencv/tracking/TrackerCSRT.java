@@ -8,8 +8,11 @@ import org.opencv.tracking.Tracker;
 import org.opencv.tracking.TrackerCSRT;
 
 // C++: class TrackerCSRT
-//javadoc: TrackerCSRT
-
+/**
+ * the CSRT tracker
+ *
+ * The implementation is based on CITE: Lukezic_IJCV2018 Discriminative Correlation Filter with Channel and Spatial Reliability
+ */
 public class TrackerCSRT extends Tracker {
 
     protected TrackerCSRT(long addr) { super(addr); }
@@ -21,13 +24,12 @@ public class TrackerCSRT extends Tracker {
     // C++: static Ptr_TrackerCSRT cv::TrackerCSRT::create()
     //
 
-    //javadoc: TrackerCSRT::create()
-    public static TrackerCSRT create()
-    {
-        
-        TrackerCSRT retVal = TrackerCSRT.__fromPtr__(create_0());
-        
-        return retVal;
+    /**
+     * Constructor
+     * @return automatically generated
+     */
+    public static TrackerCSRT create() {
+        return TrackerCSRT.__fromPtr__(create_0());
     }
 
 
@@ -35,13 +37,8 @@ public class TrackerCSRT extends Tracker {
     // C++:  void cv::TrackerCSRT::setInitialMask(Mat mask)
     //
 
-    //javadoc: TrackerCSRT::setInitialMask(mask)
-    public  void setInitialMask(Mat mask)
-    {
-        
+    public void setInitialMask(Mat mask) {
         setInitialMask_0(nativeObj, mask.nativeObj);
-        
-        return;
     }
 
 

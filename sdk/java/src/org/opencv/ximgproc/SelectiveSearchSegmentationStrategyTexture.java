@@ -6,8 +6,10 @@ package org.opencv.ximgproc;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategy;
 
 // C++: class SelectiveSearchSegmentationStrategyTexture
-//javadoc: SelectiveSearchSegmentationStrategyTexture
-
+/**
+ * Texture-based strategy for the selective search segmentation algorithm
+ *                         The class is implemented from the algorithm described in CITE: uijlings2013selective.
+ */
 public class SelectiveSearchSegmentationStrategyTexture extends SelectiveSearchSegmentationStrategy {
 
     protected SelectiveSearchSegmentationStrategyTexture(long addr) { super(addr); }

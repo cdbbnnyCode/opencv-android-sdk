@@ -6,8 +6,10 @@ package org.opencv.ximgproc;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategy;
 
 // C++: class SelectiveSearchSegmentationStrategyFill
-//javadoc: SelectiveSearchSegmentationStrategyFill
-
+/**
+ * Fill-based strategy for the selective search segmentation algorithm
+ *                         The class is implemented from the algorithm described in CITE: uijlings2013selective.
+ */
 public class SelectiveSearchSegmentationStrategyFill extends SelectiveSearchSegmentationStrategy {
 
     protected SelectiveSearchSegmentationStrategyFill(long addr) { super(addr); }

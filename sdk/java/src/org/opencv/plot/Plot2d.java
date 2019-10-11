@@ -9,8 +9,9 @@ import org.opencv.core.Scalar;
 import org.opencv.plot.Plot2d;
 
 // C++: class Plot2d
-//javadoc: Plot2d
-
+/**
+ *  plot Plot function for Mat data
+ */
 public class Plot2d extends Algorithm {
 
     protected Plot2d(long addr) { super(addr); }
@@ -22,13 +23,15 @@ public class Plot2d extends Algorithm {
     // C++: static Ptr_Plot2d cv::plot::Plot2d::create(Mat data)
     //
 
-    //javadoc: Plot2d::create(data)
-    public static Plot2d create(Mat data)
-    {
-        
-        Plot2d retVal = Plot2d.__fromPtr__(create_0(data.nativeObj));
-        
-        return retVal;
+    /**
+     * Creates Plot2d object
+     *
+     * @param data \(1xN\) or \(Nx1\) matrix containing \(Y\) values of points to plot. \(X\) values
+     * will be equal to indexes of correspondind elements in data matrix.
+     * @return automatically generated
+     */
+    public static Plot2d create(Mat data) {
+        return Plot2d.__fromPtr__(create_0(data.nativeObj));
     }
 
 
@@ -36,13 +39,15 @@ public class Plot2d extends Algorithm {
     // C++: static Ptr_Plot2d cv::plot::Plot2d::create(Mat dataX, Mat dataY)
     //
 
-    //javadoc: Plot2d::create(dataX, dataY)
-    public static Plot2d create(Mat dataX, Mat dataY)
-    {
-        
-        Plot2d retVal = Plot2d.__fromPtr__(create_1(dataX.nativeObj, dataY.nativeObj));
-        
-        return retVal;
+    /**
+     * Creates Plot2d object
+     *
+     * @param dataX \(1xN\) or \(Nx1\) matrix \(X\) values of points to plot.
+     * @param dataY \(1xN\) or \(Nx1\) matrix containing \(Y\) values of points to plot.
+     * @return automatically generated
+     */
+    public static Plot2d create(Mat dataX, Mat dataY) {
+        return Plot2d.__fromPtr__(create_1(dataX.nativeObj, dataY.nativeObj));
     }
 
 
@@ -50,13 +55,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::render(Mat& _plotResult)
     //
 
-    //javadoc: Plot2d::render(_plotResult)
-    public  void render(Mat _plotResult)
-    {
-        
+    public void render(Mat _plotResult) {
         render_0(nativeObj, _plotResult.nativeObj);
-        
-        return;
     }
 
 
@@ -64,13 +64,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setGridLinesNumber(int gridLinesNumber)
     //
 
-    //javadoc: Plot2d::setGridLinesNumber(gridLinesNumber)
-    public  void setGridLinesNumber(int gridLinesNumber)
-    {
-        
+    public void setGridLinesNumber(int gridLinesNumber) {
         setGridLinesNumber_0(nativeObj, gridLinesNumber);
-        
-        return;
     }
 
 
@@ -78,13 +73,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setInvertOrientation(bool _invertOrientation)
     //
 
-    //javadoc: Plot2d::setInvertOrientation(_invertOrientation)
-    public  void setInvertOrientation(boolean _invertOrientation)
-    {
-        
+    public void setInvertOrientation(boolean _invertOrientation) {
         setInvertOrientation_0(nativeObj, _invertOrientation);
-        
-        return;
     }
 
 
@@ -92,13 +82,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setMaxX(double _plotMaxX)
     //
 
-    //javadoc: Plot2d::setMaxX(_plotMaxX)
-    public  void setMaxX(double _plotMaxX)
-    {
-        
+    public void setMaxX(double _plotMaxX) {
         setMaxX_0(nativeObj, _plotMaxX);
-        
-        return;
     }
 
 
@@ -106,13 +91,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setMaxY(double _plotMaxY)
     //
 
-    //javadoc: Plot2d::setMaxY(_plotMaxY)
-    public  void setMaxY(double _plotMaxY)
-    {
-        
+    public void setMaxY(double _plotMaxY) {
         setMaxY_0(nativeObj, _plotMaxY);
-        
-        return;
     }
 
 
@@ -120,13 +100,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setMinX(double _plotMinX)
     //
 
-    //javadoc: Plot2d::setMinX(_plotMinX)
-    public  void setMinX(double _plotMinX)
-    {
-        
+    public void setMinX(double _plotMinX) {
         setMinX_0(nativeObj, _plotMinX);
-        
-        return;
     }
 
 
@@ -134,13 +109,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setMinY(double _plotMinY)
     //
 
-    //javadoc: Plot2d::setMinY(_plotMinY)
-    public  void setMinY(double _plotMinY)
-    {
-        
+    public void setMinY(double _plotMinY) {
         setMinY_0(nativeObj, _plotMinY);
-        
-        return;
     }
 
 
@@ -148,13 +118,14 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setNeedPlotLine(bool _needPlotLine)
     //
 
-    //javadoc: Plot2d::setNeedPlotLine(_needPlotLine)
-    public  void setNeedPlotLine(boolean _needPlotLine)
-    {
-        
+    /**
+     * Switches data visualization mode
+     *
+     * @param _needPlotLine if true then neighbour plot points will be connected by lines.
+     * In other case data will be plotted as a set of standalone points.
+     */
+    public void setNeedPlotLine(boolean _needPlotLine) {
         setNeedPlotLine_0(nativeObj, _needPlotLine);
-        
-        return;
     }
 
 
@@ -162,13 +133,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotAxisColor(Scalar _plotAxisColor)
     //
 
-    //javadoc: Plot2d::setPlotAxisColor(_plotAxisColor)
-    public  void setPlotAxisColor(Scalar _plotAxisColor)
-    {
-        
+    public void setPlotAxisColor(Scalar _plotAxisColor) {
         setPlotAxisColor_0(nativeObj, _plotAxisColor.val[0], _plotAxisColor.val[1], _plotAxisColor.val[2], _plotAxisColor.val[3]);
-        
-        return;
     }
 
 
@@ -176,13 +142,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotBackgroundColor(Scalar _plotBackgroundColor)
     //
 
-    //javadoc: Plot2d::setPlotBackgroundColor(_plotBackgroundColor)
-    public  void setPlotBackgroundColor(Scalar _plotBackgroundColor)
-    {
-        
+    public void setPlotBackgroundColor(Scalar _plotBackgroundColor) {
         setPlotBackgroundColor_0(nativeObj, _plotBackgroundColor.val[0], _plotBackgroundColor.val[1], _plotBackgroundColor.val[2], _plotBackgroundColor.val[3]);
-        
-        return;
     }
 
 
@@ -190,13 +151,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotGridColor(Scalar _plotGridColor)
     //
 
-    //javadoc: Plot2d::setPlotGridColor(_plotGridColor)
-    public  void setPlotGridColor(Scalar _plotGridColor)
-    {
-        
+    public void setPlotGridColor(Scalar _plotGridColor) {
         setPlotGridColor_0(nativeObj, _plotGridColor.val[0], _plotGridColor.val[1], _plotGridColor.val[2], _plotGridColor.val[3]);
-        
-        return;
     }
 
 
@@ -204,13 +160,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotLineColor(Scalar _plotLineColor)
     //
 
-    //javadoc: Plot2d::setPlotLineColor(_plotLineColor)
-    public  void setPlotLineColor(Scalar _plotLineColor)
-    {
-        
+    public void setPlotLineColor(Scalar _plotLineColor) {
         setPlotLineColor_0(nativeObj, _plotLineColor.val[0], _plotLineColor.val[1], _plotLineColor.val[2], _plotLineColor.val[3]);
-        
-        return;
     }
 
 
@@ -218,13 +169,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotLineWidth(int _plotLineWidth)
     //
 
-    //javadoc: Plot2d::setPlotLineWidth(_plotLineWidth)
-    public  void setPlotLineWidth(int _plotLineWidth)
-    {
-        
+    public void setPlotLineWidth(int _plotLineWidth) {
         setPlotLineWidth_0(nativeObj, _plotLineWidth);
-        
-        return;
     }
 
 
@@ -232,13 +178,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotSize(int _plotSizeWidth, int _plotSizeHeight)
     //
 
-    //javadoc: Plot2d::setPlotSize(_plotSizeWidth, _plotSizeHeight)
-    public  void setPlotSize(int _plotSizeWidth, int _plotSizeHeight)
-    {
-        
+    public void setPlotSize(int _plotSizeWidth, int _plotSizeHeight) {
         setPlotSize_0(nativeObj, _plotSizeWidth, _plotSizeHeight);
-        
-        return;
     }
 
 
@@ -246,13 +187,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPlotTextColor(Scalar _plotTextColor)
     //
 
-    //javadoc: Plot2d::setPlotTextColor(_plotTextColor)
-    public  void setPlotTextColor(Scalar _plotTextColor)
-    {
-        
+    public void setPlotTextColor(Scalar _plotTextColor) {
         setPlotTextColor_0(nativeObj, _plotTextColor.val[0], _plotTextColor.val[1], _plotTextColor.val[2], _plotTextColor.val[3]);
-        
-        return;
     }
 
 
@@ -260,13 +196,13 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setPointIdxToPrint(int pointIdx)
     //
 
-    //javadoc: Plot2d::setPointIdxToPrint(pointIdx)
-    public  void setPointIdxToPrint(int pointIdx)
-    {
-        
+    /**
+     * Sets the index of a point which coordinates will be printed on the top left corner of the plot (if ShowText flag is true).
+     *
+     * @param pointIdx index of the required point in data array.
+     */
+    public void setPointIdxToPrint(int pointIdx) {
         setPointIdxToPrint_0(nativeObj, pointIdx);
-        
-        return;
     }
 
 
@@ -274,13 +210,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setShowGrid(bool needShowGrid)
     //
 
-    //javadoc: Plot2d::setShowGrid(needShowGrid)
-    public  void setShowGrid(boolean needShowGrid)
-    {
-        
+    public void setShowGrid(boolean needShowGrid) {
         setShowGrid_0(nativeObj, needShowGrid);
-        
-        return;
     }
 
 
@@ -288,13 +219,8 @@ public class Plot2d extends Algorithm {
     // C++:  void cv::plot::Plot2d::setShowText(bool needShowText)
     //
 
-    //javadoc: Plot2d::setShowText(needShowText)
-    public  void setShowText(boolean needShowText)
-    {
-        
+    public void setShowText(boolean needShowText) {
         setShowText_0(nativeObj, needShowText);
-        
-        return;
     }
 
 

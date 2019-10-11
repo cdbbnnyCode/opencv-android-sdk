@@ -8,8 +8,12 @@ import org.opencv.core.Mat;
 import org.opencv.ximgproc.RidgeDetectionFilter;
 
 // C++: class RidgeDetectionFilter
-//javadoc: RidgeDetectionFilter
-
+/**
+ *  Applies Ridge Detection Filter to an input image.
+ * Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html)
+ * using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives.
+ * Additional refinement can be done using Skeletonization and Binarization. Adapted from CITE: segleafvein and CITE: M_RF
+ */
 public class RidgeDetectionFilter extends Algorithm {
 
     protected RidgeDetectionFilter(long addr) { super(addr); }
@@ -21,85 +25,121 @@ public class RidgeDetectionFilter extends Algorithm {
     // C++: static Ptr_RidgeDetectionFilter cv::ximgproc::RidgeDetectionFilter::create(int ddepth = CV_32FC1, int dx = 1, int dy = 1, int ksize = 3, int out_dtype = CV_8UC1, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT)
     //
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy, ksize, out_dtype, scale, delta, borderType)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta, int borderType)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_0(ddepth, dx, dy, ksize, out_dtype, scale, delta, borderType));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     @param ksize Sobel kernel size , default is 3
+     *     @param out_dtype Converted format for output, default is CV_8UC1
+     *     @param scale Optional scale value for derivative values, default is 1
+     *     @param delta  Optional bias added to output, default is 0
+     *     @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta, int borderType) {
+        return RidgeDetectionFilter.__fromPtr__(create_0(ddepth, dx, dy, ksize, out_dtype, scale, delta, borderType));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy, ksize, out_dtype, scale, delta)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_1(ddepth, dx, dy, ksize, out_dtype, scale, delta));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     @param ksize Sobel kernel size , default is 3
+     *     @param out_dtype Converted format for output, default is CV_8UC1
+     *     @param scale Optional scale value for derivative values, default is 1
+     *     @param delta  Optional bias added to output, default is 0
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta) {
+        return RidgeDetectionFilter.__fromPtr__(create_1(ddepth, dx, dy, ksize, out_dtype, scale, delta));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy, ksize, out_dtype, scale)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_2(ddepth, dx, dy, ksize, out_dtype, scale));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     @param ksize Sobel kernel size , default is 3
+     *     @param out_dtype Converted format for output, default is CV_8UC1
+     *     @param scale Optional scale value for derivative values, default is 1
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale) {
+        return RidgeDetectionFilter.__fromPtr__(create_2(ddepth, dx, dy, ksize, out_dtype, scale));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy, ksize, out_dtype)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_3(ddepth, dx, dy, ksize, out_dtype));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     @param ksize Sobel kernel size , default is 3
+     *     @param out_dtype Converted format for output, default is CV_8UC1
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype) {
+        return RidgeDetectionFilter.__fromPtr__(create_3(ddepth, dx, dy, ksize, out_dtype));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy, ksize)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_4(ddepth, dx, dy, ksize));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     @param ksize Sobel kernel size , default is 3
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize) {
+        return RidgeDetectionFilter.__fromPtr__(create_4(ddepth, dx, dy, ksize));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx, dy)
-    public static RidgeDetectionFilter create(int ddepth, int dx, int dy)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_5(ddepth, dx, dy));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     @param dy  Order of derivative y, default is 1
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx, int dy) {
+        return RidgeDetectionFilter.__fromPtr__(create_5(ddepth, dx, dy));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth, dx)
-    public static RidgeDetectionFilter create(int ddepth, int dx)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_6(ddepth, dx));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     @param dx Order of derivative x, default is 1
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth, int dx) {
+        return RidgeDetectionFilter.__fromPtr__(create_6(ddepth, dx));
     }
 
-    //javadoc: RidgeDetectionFilter::create(ddepth)
-    public static RidgeDetectionFilter create(int ddepth)
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_7(ddepth));
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create(int ddepth) {
+        return RidgeDetectionFilter.__fromPtr__(create_7(ddepth));
     }
 
-    //javadoc: RidgeDetectionFilter::create()
-    public static RidgeDetectionFilter create()
-    {
-        
-        RidgeDetectionFilter retVal = RidgeDetectionFilter.__fromPtr__(create_8());
-        
-        return retVal;
+    /**
+     * Create pointer to the Ridge detection filter.
+     *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
+     * @return automatically generated
+     */
+    public static RidgeDetectionFilter create() {
+        return RidgeDetectionFilter.__fromPtr__(create_8());
     }
 
 
@@ -107,13 +147,13 @@ public class RidgeDetectionFilter extends Algorithm {
     // C++:  void cv::ximgproc::RidgeDetectionFilter::getRidgeFilteredImage(Mat _img, Mat& out)
     //
 
-    //javadoc: RidgeDetectionFilter::getRidgeFilteredImage(_img, out)
-    public  void getRidgeFilteredImage(Mat _img, Mat out)
-    {
-        
+    /**
+     * Apply Ridge detection filter on input image.
+     *     @param _img InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
+     *     @param out OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.
+     */
+    public void getRidgeFilteredImage(Mat _img, Mat out) {
         getRidgeFilteredImage_0(nativeObj, _img.nativeObj, out.nativeObj);
-        
-        return;
     }
 
 

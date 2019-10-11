@@ -7,7 +7,6 @@ import org.opencv.face.BasicFaceRecognizer;
 import org.opencv.face.EigenFaceRecognizer;
 
 // C++: class EigenFaceRecognizer
-//javadoc: EigenFaceRecognizer
 
 public class EigenFaceRecognizer extends BasicFaceRecognizer {
 
@@ -20,31 +19,175 @@ public class EigenFaceRecognizer extends BasicFaceRecognizer {
     // C++: static Ptr_EigenFaceRecognizer cv::face::EigenFaceRecognizer::create(int num_components = 0, double threshold = DBL_MAX)
     //
 
-    //javadoc: EigenFaceRecognizer::create(num_components, threshold)
-    public static EigenFaceRecognizer create(int num_components, double threshold)
-    {
-        
-        EigenFaceRecognizer retVal = EigenFaceRecognizer.__fromPtr__(create_0(num_components, threshold));
-        
-        return retVal;
+    /**
+     * @param num_components The number of components (read: Eigenfaces) kept for this Principal
+     *     Component Analysis. As a hint: There's no rule how many components (read: Eigenfaces) should be
+     *     kept for good reconstruction capabilities. It is based on your input data, so experiment with the
+     *     number. Keeping 80 components should almost always be sufficient.
+     *     @param threshold The threshold applied in the prediction.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        Training and prediction must be done on grayscale images, use cvtColor to convert between the
+     *         color spaces.
+     *   </li>
+     *   <li>
+     *        <b>THE EIGENFACES METHOD MAKES THE ASSUMPTION, THAT THE TRAINING AND TEST IMAGES ARE OF EQUAL
+     *         SIZE.</b> (caps-lock, because I got so many mails asking for this). You have to make sure your
+     *         input data has the correct shape, else a meaningful exception is thrown. Use resize to resize
+     *         the images.
+     *   </li>
+     *   <li>
+     *        This model does not support updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        num_components see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        eigenvalues The eigenvalues for this Principal Component Analysis (ordered descending).
+     *   </li>
+     *   <li>
+     *        eigenvectors The eigenvectors for this Principal Component Analysis (ordered by their
+     *         eigenvalue).
+     *   </li>
+     *   <li>
+     *        mean The sample mean calculated from the training data.
+     *   </li>
+     *   <li>
+     *        projections The projections of the training data.
+     *   </li>
+     *   <li>
+     *        labels The threshold applied in the prediction. If the distance to the nearest neighbor is
+     *         larger than the threshold, this method returns -1.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static EigenFaceRecognizer create(int num_components, double threshold) {
+        return EigenFaceRecognizer.__fromPtr__(create_0(num_components, threshold));
     }
 
-    //javadoc: EigenFaceRecognizer::create(num_components)
-    public static EigenFaceRecognizer create(int num_components)
-    {
-        
-        EigenFaceRecognizer retVal = EigenFaceRecognizer.__fromPtr__(create_1(num_components));
-        
-        return retVal;
+    /**
+     * @param num_components The number of components (read: Eigenfaces) kept for this Principal
+     *     Component Analysis. As a hint: There's no rule how many components (read: Eigenfaces) should be
+     *     kept for good reconstruction capabilities. It is based on your input data, so experiment with the
+     *     number. Keeping 80 components should almost always be sufficient.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        Training and prediction must be done on grayscale images, use cvtColor to convert between the
+     *         color spaces.
+     *   </li>
+     *   <li>
+     *        <b>THE EIGENFACES METHOD MAKES THE ASSUMPTION, THAT THE TRAINING AND TEST IMAGES ARE OF EQUAL
+     *         SIZE.</b> (caps-lock, because I got so many mails asking for this). You have to make sure your
+     *         input data has the correct shape, else a meaningful exception is thrown. Use resize to resize
+     *         the images.
+     *   </li>
+     *   <li>
+     *        This model does not support updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        num_components see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        eigenvalues The eigenvalues for this Principal Component Analysis (ordered descending).
+     *   </li>
+     *   <li>
+     *        eigenvectors The eigenvectors for this Principal Component Analysis (ordered by their
+     *         eigenvalue).
+     *   </li>
+     *   <li>
+     *        mean The sample mean calculated from the training data.
+     *   </li>
+     *   <li>
+     *        projections The projections of the training data.
+     *   </li>
+     *   <li>
+     *        labels The threshold applied in the prediction. If the distance to the nearest neighbor is
+     *         larger than the threshold, this method returns -1.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static EigenFaceRecognizer create(int num_components) {
+        return EigenFaceRecognizer.__fromPtr__(create_1(num_components));
     }
 
-    //javadoc: EigenFaceRecognizer::create()
-    public static EigenFaceRecognizer create()
-    {
-        
-        EigenFaceRecognizer retVal = EigenFaceRecognizer.__fromPtr__(create_2());
-        
-        return retVal;
+    /**
+     *     Component Analysis. As a hint: There's no rule how many components (read: Eigenfaces) should be
+     *     kept for good reconstruction capabilities. It is based on your input data, so experiment with the
+     *     number. Keeping 80 components should almost always be sufficient.
+     *
+     *     ### Notes:
+     *
+     * <ul>
+     *   <li>
+     *        Training and prediction must be done on grayscale images, use cvtColor to convert between the
+     *         color spaces.
+     *   </li>
+     *   <li>
+     *        <b>THE EIGENFACES METHOD MAKES THE ASSUMPTION, THAT THE TRAINING AND TEST IMAGES ARE OF EQUAL
+     *         SIZE.</b> (caps-lock, because I got so many mails asking for this). You have to make sure your
+     *         input data has the correct shape, else a meaningful exception is thrown. Use resize to resize
+     *         the images.
+     *   </li>
+     *   <li>
+     *        This model does not support updating.
+     *   </li>
+     * </ul>
+     *
+     *     ### Model internal data:
+     *
+     * <ul>
+     *   <li>
+     *        num_components see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        threshold see EigenFaceRecognizer::create.
+     *   </li>
+     *   <li>
+     *        eigenvalues The eigenvalues for this Principal Component Analysis (ordered descending).
+     *   </li>
+     *   <li>
+     *        eigenvectors The eigenvectors for this Principal Component Analysis (ordered by their
+     *         eigenvalue).
+     *   </li>
+     *   <li>
+     *        mean The sample mean calculated from the training data.
+     *   </li>
+     *   <li>
+     *        projections The projections of the training data.
+     *   </li>
+     *   <li>
+     *        labels The threshold applied in the prediction. If the distance to the nearest neighbor is
+     *         larger than the threshold, this method returns -1.
+     *   </li>
+     * </ul>
+     * @return automatically generated
+     */
+    public static EigenFaceRecognizer create() {
+        return EigenFaceRecognizer.__fromPtr__(create_2());
     }
 
 

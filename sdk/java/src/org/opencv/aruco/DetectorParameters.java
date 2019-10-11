@@ -6,8 +6,68 @@ package org.opencv.aruco;
 import org.opencv.aruco.DetectorParameters;
 
 // C++: class DetectorParameters
-//javadoc: DetectorParameters
-
+/**
+ * Parameters for the detectMarker process:
+ * - adaptiveThreshWinSizeMin: minimum window size for adaptive thresholding before finding
+ * contours (default 3).
+ * - adaptiveThreshWinSizeMax: maximum window size for adaptive thresholding before finding
+ * contours (default 23).
+ * - adaptiveThreshWinSizeStep: increments from adaptiveThreshWinSizeMin to adaptiveThreshWinSizeMax
+ * during the thresholding (default 10).
+ * - adaptiveThreshConstant: constant for adaptive thresholding before finding contours (default 7)
+ * - minMarkerPerimeterRate: determine minimum perimeter for marker contour to be detected. This
+ * is defined as a rate respect to the maximum dimension of the input image (default 0.03).
+ * - maxMarkerPerimeterRate:  determine maximum perimeter for marker contour to be detected. This
+ * is defined as a rate respect to the maximum dimension of the input image (default 4.0).
+ * - polygonalApproxAccuracyRate: minimum accuracy during the polygonal approximation process to
+ * determine which contours are squares.
+ * - minCornerDistanceRate: minimum distance between corners for detected markers relative to its
+ * perimeter (default 0.05)
+ * - minDistanceToBorder: minimum distance of any corner to the image border for detected markers
+ * (in pixels) (default 3)
+ * - minMarkerDistanceRate: minimum mean distance beetween two marker corners to be considered
+ * similar, so that the smaller one is removed. The rate is relative to the smaller perimeter
+ * of the two markers (default 0.05).
+ * - cornerRefinementMethod: corner refinement method. (CORNER_REFINE_NONE, no refinement.
+ * CORNER_REFINE_SUBPIX, do subpixel refinement. CORNER_REFINE_CONTOUR use contour-Points,
+ * CORNER_REFINE_APRILTAG  use the AprilTag2 approach)
+ * - cornerRefinementWinSize: window size for the corner refinement process (in pixels) (default 5).
+ * - cornerRefinementMaxIterations: maximum number of iterations for stop criteria of the corner
+ * refinement process (default 30).
+ * - cornerRefinementMinAccuracy: minimum error for the stop cristeria of the corner refinement
+ * process (default: 0.1)
+ * - markerBorderBits: number of bits of the marker border, i.e. marker border width (default 1).
+ * - perspectiveRemovePixelPerCell: number of bits (per dimension) for each cell of the marker
+ * when removing the perspective (default 8).
+ * - perspectiveRemoveIgnoredMarginPerCell: width of the margin of pixels on each cell not
+ * considered for the determination of the cell bit. Represents the rate respect to the total
+ * size of the cell, i.e. perspectiveRemovePixelPerCell (default 0.13)
+ * - maxErroneousBitsInBorderRate: maximum number of accepted erroneous bits in the border (i.e.
+ * number of allowed white bits in the border). Represented as a rate respect to the total
+ * number of bits per marker (default 0.35).
+ * - minOtsuStdDev: minimun standard deviation in pixels values during the decodification step to
+ * apply Otsu thresholding (otherwise, all the bits are set to 0 or 1 depending on mean higher
+ * than 128 or not) (default 5.0)
+ * - errorCorrectionRate error correction rate respect to the maximun error correction capability
+ * for each dictionary. (default 0.6).
+ * - aprilTagMinClusterPixels: reject quads containing too few pixels.
+ * - aprilTagMaxNmaxima: how many corner candidates to consider when segmenting a group of pixels into a quad.
+ * - aprilTagCriticalRad: Reject quads where pairs of edges have angles that are close to straight or close to
+ * 180 degrees. Zero means that no quads are rejected. (In radians).
+ * - aprilTagMaxLineFitMse:  When fitting lines to the contours, what is the maximum mean squared error
+ * allowed?  This is useful in rejecting contours that are far from being quad shaped; rejecting
+ * these quads "early" saves expensive decoding processing.
+ * - aprilTagMinWhiteBlackDiff: When we build our model of black &amp; white pixels, we add an extra check that
+ * the white model must be (overall) brighter than the black model.  How much brighter? (in pixel values, [0,255]).
+ * - aprilTagDeglitch:  should the thresholded image be deglitched? Only useful for very noisy images
+ * - aprilTagQuadDecimate: Detection of quads can be done on a lower-resolution image, improving speed at a
+ * cost of pose accuracy and a slight decrease in detection rate. Decoding the binary payload is still
+ * done at full resolution.
+ * - aprilTagQuadSigma: What Gaussian blur should be applied to the segmented image (used for quad detection?)
+ * Parameter is the standard deviation in pixels.  Very noisy images benefit from non-zero values (e.g. 0.8).
+ * - detectInvertedMarker: to check if there is a white marker. In order to generate a "white" marker just
+ * invert a normal marker by using a tilde, ~markerImage. (default false)
+ */
 public class DetectorParameters {
 
     protected final long nativeObj;
@@ -22,13 +82,8 @@ public class DetectorParameters {
     // C++: static Ptr_DetectorParameters cv::aruco::DetectorParameters::create()
     //
 
-    //javadoc: DetectorParameters::create()
-    public static DetectorParameters create()
-    {
-        
-        DetectorParameters retVal = DetectorParameters.__fromPtr__(create_0());
-        
-        return retVal;
+    public static DetectorParameters create() {
+        return DetectorParameters.__fromPtr__(create_0());
     }
 
 
@@ -36,13 +91,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::adaptiveThreshWinSizeMin
     //
 
-    //javadoc: DetectorParameters::get_adaptiveThreshWinSizeMin()
-    public  int get_adaptiveThreshWinSizeMin()
-    {
-        
-        int retVal = get_adaptiveThreshWinSizeMin_0(nativeObj);
-        
-        return retVal;
+    public int get_adaptiveThreshWinSizeMin() {
+        return get_adaptiveThreshWinSizeMin_0(nativeObj);
     }
 
 
@@ -50,13 +100,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::adaptiveThreshWinSizeMin
     //
 
-    //javadoc: DetectorParameters::set_adaptiveThreshWinSizeMin(adaptiveThreshWinSizeMin)
-    public  void set_adaptiveThreshWinSizeMin(int adaptiveThreshWinSizeMin)
-    {
-        
+    public void set_adaptiveThreshWinSizeMin(int adaptiveThreshWinSizeMin) {
         set_adaptiveThreshWinSizeMin_0(nativeObj, adaptiveThreshWinSizeMin);
-        
-        return;
     }
 
 
@@ -64,13 +109,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::adaptiveThreshWinSizeMax
     //
 
-    //javadoc: DetectorParameters::get_adaptiveThreshWinSizeMax()
-    public  int get_adaptiveThreshWinSizeMax()
-    {
-        
-        int retVal = get_adaptiveThreshWinSizeMax_0(nativeObj);
-        
-        return retVal;
+    public int get_adaptiveThreshWinSizeMax() {
+        return get_adaptiveThreshWinSizeMax_0(nativeObj);
     }
 
 
@@ -78,13 +118,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::adaptiveThreshWinSizeMax
     //
 
-    //javadoc: DetectorParameters::set_adaptiveThreshWinSizeMax(adaptiveThreshWinSizeMax)
-    public  void set_adaptiveThreshWinSizeMax(int adaptiveThreshWinSizeMax)
-    {
-        
+    public void set_adaptiveThreshWinSizeMax(int adaptiveThreshWinSizeMax) {
         set_adaptiveThreshWinSizeMax_0(nativeObj, adaptiveThreshWinSizeMax);
-        
-        return;
     }
 
 
@@ -92,13 +127,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::adaptiveThreshWinSizeStep
     //
 
-    //javadoc: DetectorParameters::get_adaptiveThreshWinSizeStep()
-    public  int get_adaptiveThreshWinSizeStep()
-    {
-        
-        int retVal = get_adaptiveThreshWinSizeStep_0(nativeObj);
-        
-        return retVal;
+    public int get_adaptiveThreshWinSizeStep() {
+        return get_adaptiveThreshWinSizeStep_0(nativeObj);
     }
 
 
@@ -106,13 +136,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::adaptiveThreshWinSizeStep
     //
 
-    //javadoc: DetectorParameters::set_adaptiveThreshWinSizeStep(adaptiveThreshWinSizeStep)
-    public  void set_adaptiveThreshWinSizeStep(int adaptiveThreshWinSizeStep)
-    {
-        
+    public void set_adaptiveThreshWinSizeStep(int adaptiveThreshWinSizeStep) {
         set_adaptiveThreshWinSizeStep_0(nativeObj, adaptiveThreshWinSizeStep);
-        
-        return;
     }
 
 
@@ -120,13 +145,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::adaptiveThreshConstant
     //
 
-    //javadoc: DetectorParameters::get_adaptiveThreshConstant()
-    public  double get_adaptiveThreshConstant()
-    {
-        
-        double retVal = get_adaptiveThreshConstant_0(nativeObj);
-        
-        return retVal;
+    public double get_adaptiveThreshConstant() {
+        return get_adaptiveThreshConstant_0(nativeObj);
     }
 
 
@@ -134,13 +154,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::adaptiveThreshConstant
     //
 
-    //javadoc: DetectorParameters::set_adaptiveThreshConstant(adaptiveThreshConstant)
-    public  void set_adaptiveThreshConstant(double adaptiveThreshConstant)
-    {
-        
+    public void set_adaptiveThreshConstant(double adaptiveThreshConstant) {
         set_adaptiveThreshConstant_0(nativeObj, adaptiveThreshConstant);
-        
-        return;
     }
 
 
@@ -148,13 +163,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::minMarkerPerimeterRate
     //
 
-    //javadoc: DetectorParameters::get_minMarkerPerimeterRate()
-    public  double get_minMarkerPerimeterRate()
-    {
-        
-        double retVal = get_minMarkerPerimeterRate_0(nativeObj);
-        
-        return retVal;
+    public double get_minMarkerPerimeterRate() {
+        return get_minMarkerPerimeterRate_0(nativeObj);
     }
 
 
@@ -162,13 +172,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::minMarkerPerimeterRate
     //
 
-    //javadoc: DetectorParameters::set_minMarkerPerimeterRate(minMarkerPerimeterRate)
-    public  void set_minMarkerPerimeterRate(double minMarkerPerimeterRate)
-    {
-        
+    public void set_minMarkerPerimeterRate(double minMarkerPerimeterRate) {
         set_minMarkerPerimeterRate_0(nativeObj, minMarkerPerimeterRate);
-        
-        return;
     }
 
 
@@ -176,13 +181,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::maxMarkerPerimeterRate
     //
 
-    //javadoc: DetectorParameters::get_maxMarkerPerimeterRate()
-    public  double get_maxMarkerPerimeterRate()
-    {
-        
-        double retVal = get_maxMarkerPerimeterRate_0(nativeObj);
-        
-        return retVal;
+    public double get_maxMarkerPerimeterRate() {
+        return get_maxMarkerPerimeterRate_0(nativeObj);
     }
 
 
@@ -190,13 +190,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::maxMarkerPerimeterRate
     //
 
-    //javadoc: DetectorParameters::set_maxMarkerPerimeterRate(maxMarkerPerimeterRate)
-    public  void set_maxMarkerPerimeterRate(double maxMarkerPerimeterRate)
-    {
-        
+    public void set_maxMarkerPerimeterRate(double maxMarkerPerimeterRate) {
         set_maxMarkerPerimeterRate_0(nativeObj, maxMarkerPerimeterRate);
-        
-        return;
     }
 
 
@@ -204,13 +199,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::polygonalApproxAccuracyRate
     //
 
-    //javadoc: DetectorParameters::get_polygonalApproxAccuracyRate()
-    public  double get_polygonalApproxAccuracyRate()
-    {
-        
-        double retVal = get_polygonalApproxAccuracyRate_0(nativeObj);
-        
-        return retVal;
+    public double get_polygonalApproxAccuracyRate() {
+        return get_polygonalApproxAccuracyRate_0(nativeObj);
     }
 
 
@@ -218,13 +208,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::polygonalApproxAccuracyRate
     //
 
-    //javadoc: DetectorParameters::set_polygonalApproxAccuracyRate(polygonalApproxAccuracyRate)
-    public  void set_polygonalApproxAccuracyRate(double polygonalApproxAccuracyRate)
-    {
-        
+    public void set_polygonalApproxAccuracyRate(double polygonalApproxAccuracyRate) {
         set_polygonalApproxAccuracyRate_0(nativeObj, polygonalApproxAccuracyRate);
-        
-        return;
     }
 
 
@@ -232,13 +217,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::minCornerDistanceRate
     //
 
-    //javadoc: DetectorParameters::get_minCornerDistanceRate()
-    public  double get_minCornerDistanceRate()
-    {
-        
-        double retVal = get_minCornerDistanceRate_0(nativeObj);
-        
-        return retVal;
+    public double get_minCornerDistanceRate() {
+        return get_minCornerDistanceRate_0(nativeObj);
     }
 
 
@@ -246,13 +226,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::minCornerDistanceRate
     //
 
-    //javadoc: DetectorParameters::set_minCornerDistanceRate(minCornerDistanceRate)
-    public  void set_minCornerDistanceRate(double minCornerDistanceRate)
-    {
-        
+    public void set_minCornerDistanceRate(double minCornerDistanceRate) {
         set_minCornerDistanceRate_0(nativeObj, minCornerDistanceRate);
-        
-        return;
     }
 
 
@@ -260,13 +235,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::minDistanceToBorder
     //
 
-    //javadoc: DetectorParameters::get_minDistanceToBorder()
-    public  int get_minDistanceToBorder()
-    {
-        
-        int retVal = get_minDistanceToBorder_0(nativeObj);
-        
-        return retVal;
+    public int get_minDistanceToBorder() {
+        return get_minDistanceToBorder_0(nativeObj);
     }
 
 
@@ -274,13 +244,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::minDistanceToBorder
     //
 
-    //javadoc: DetectorParameters::set_minDistanceToBorder(minDistanceToBorder)
-    public  void set_minDistanceToBorder(int minDistanceToBorder)
-    {
-        
+    public void set_minDistanceToBorder(int minDistanceToBorder) {
         set_minDistanceToBorder_0(nativeObj, minDistanceToBorder);
-        
-        return;
     }
 
 
@@ -288,13 +253,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::minMarkerDistanceRate
     //
 
-    //javadoc: DetectorParameters::get_minMarkerDistanceRate()
-    public  double get_minMarkerDistanceRate()
-    {
-        
-        double retVal = get_minMarkerDistanceRate_0(nativeObj);
-        
-        return retVal;
+    public double get_minMarkerDistanceRate() {
+        return get_minMarkerDistanceRate_0(nativeObj);
     }
 
 
@@ -302,13 +262,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::minMarkerDistanceRate
     //
 
-    //javadoc: DetectorParameters::set_minMarkerDistanceRate(minMarkerDistanceRate)
-    public  void set_minMarkerDistanceRate(double minMarkerDistanceRate)
-    {
-        
+    public void set_minMarkerDistanceRate(double minMarkerDistanceRate) {
         set_minMarkerDistanceRate_0(nativeObj, minMarkerDistanceRate);
-        
-        return;
     }
 
 
@@ -316,13 +271,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::cornerRefinementMethod
     //
 
-    //javadoc: DetectorParameters::get_cornerRefinementMethod()
-    public  int get_cornerRefinementMethod()
-    {
-        
-        int retVal = get_cornerRefinementMethod_0(nativeObj);
-        
-        return retVal;
+    public int get_cornerRefinementMethod() {
+        return get_cornerRefinementMethod_0(nativeObj);
     }
 
 
@@ -330,13 +280,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::cornerRefinementMethod
     //
 
-    //javadoc: DetectorParameters::set_cornerRefinementMethod(cornerRefinementMethod)
-    public  void set_cornerRefinementMethod(int cornerRefinementMethod)
-    {
-        
+    public void set_cornerRefinementMethod(int cornerRefinementMethod) {
         set_cornerRefinementMethod_0(nativeObj, cornerRefinementMethod);
-        
-        return;
     }
 
 
@@ -344,13 +289,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::cornerRefinementWinSize
     //
 
-    //javadoc: DetectorParameters::get_cornerRefinementWinSize()
-    public  int get_cornerRefinementWinSize()
-    {
-        
-        int retVal = get_cornerRefinementWinSize_0(nativeObj);
-        
-        return retVal;
+    public int get_cornerRefinementWinSize() {
+        return get_cornerRefinementWinSize_0(nativeObj);
     }
 
 
@@ -358,13 +298,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::cornerRefinementWinSize
     //
 
-    //javadoc: DetectorParameters::set_cornerRefinementWinSize(cornerRefinementWinSize)
-    public  void set_cornerRefinementWinSize(int cornerRefinementWinSize)
-    {
-        
+    public void set_cornerRefinementWinSize(int cornerRefinementWinSize) {
         set_cornerRefinementWinSize_0(nativeObj, cornerRefinementWinSize);
-        
-        return;
     }
 
 
@@ -372,13 +307,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::cornerRefinementMaxIterations
     //
 
-    //javadoc: DetectorParameters::get_cornerRefinementMaxIterations()
-    public  int get_cornerRefinementMaxIterations()
-    {
-        
-        int retVal = get_cornerRefinementMaxIterations_0(nativeObj);
-        
-        return retVal;
+    public int get_cornerRefinementMaxIterations() {
+        return get_cornerRefinementMaxIterations_0(nativeObj);
     }
 
 
@@ -386,13 +316,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::cornerRefinementMaxIterations
     //
 
-    //javadoc: DetectorParameters::set_cornerRefinementMaxIterations(cornerRefinementMaxIterations)
-    public  void set_cornerRefinementMaxIterations(int cornerRefinementMaxIterations)
-    {
-        
+    public void set_cornerRefinementMaxIterations(int cornerRefinementMaxIterations) {
         set_cornerRefinementMaxIterations_0(nativeObj, cornerRefinementMaxIterations);
-        
-        return;
     }
 
 
@@ -400,13 +325,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::cornerRefinementMinAccuracy
     //
 
-    //javadoc: DetectorParameters::get_cornerRefinementMinAccuracy()
-    public  double get_cornerRefinementMinAccuracy()
-    {
-        
-        double retVal = get_cornerRefinementMinAccuracy_0(nativeObj);
-        
-        return retVal;
+    public double get_cornerRefinementMinAccuracy() {
+        return get_cornerRefinementMinAccuracy_0(nativeObj);
     }
 
 
@@ -414,13 +334,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::cornerRefinementMinAccuracy
     //
 
-    //javadoc: DetectorParameters::set_cornerRefinementMinAccuracy(cornerRefinementMinAccuracy)
-    public  void set_cornerRefinementMinAccuracy(double cornerRefinementMinAccuracy)
-    {
-        
+    public void set_cornerRefinementMinAccuracy(double cornerRefinementMinAccuracy) {
         set_cornerRefinementMinAccuracy_0(nativeObj, cornerRefinementMinAccuracy);
-        
-        return;
     }
 
 
@@ -428,13 +343,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::markerBorderBits
     //
 
-    //javadoc: DetectorParameters::get_markerBorderBits()
-    public  int get_markerBorderBits()
-    {
-        
-        int retVal = get_markerBorderBits_0(nativeObj);
-        
-        return retVal;
+    public int get_markerBorderBits() {
+        return get_markerBorderBits_0(nativeObj);
     }
 
 
@@ -442,13 +352,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::markerBorderBits
     //
 
-    //javadoc: DetectorParameters::set_markerBorderBits(markerBorderBits)
-    public  void set_markerBorderBits(int markerBorderBits)
-    {
-        
+    public void set_markerBorderBits(int markerBorderBits) {
         set_markerBorderBits_0(nativeObj, markerBorderBits);
-        
-        return;
     }
 
 
@@ -456,13 +361,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::perspectiveRemovePixelPerCell
     //
 
-    //javadoc: DetectorParameters::get_perspectiveRemovePixelPerCell()
-    public  int get_perspectiveRemovePixelPerCell()
-    {
-        
-        int retVal = get_perspectiveRemovePixelPerCell_0(nativeObj);
-        
-        return retVal;
+    public int get_perspectiveRemovePixelPerCell() {
+        return get_perspectiveRemovePixelPerCell_0(nativeObj);
     }
 
 
@@ -470,13 +370,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::perspectiveRemovePixelPerCell
     //
 
-    //javadoc: DetectorParameters::set_perspectiveRemovePixelPerCell(perspectiveRemovePixelPerCell)
-    public  void set_perspectiveRemovePixelPerCell(int perspectiveRemovePixelPerCell)
-    {
-        
+    public void set_perspectiveRemovePixelPerCell(int perspectiveRemovePixelPerCell) {
         set_perspectiveRemovePixelPerCell_0(nativeObj, perspectiveRemovePixelPerCell);
-        
-        return;
     }
 
 
@@ -484,13 +379,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::perspectiveRemoveIgnoredMarginPerCell
     //
 
-    //javadoc: DetectorParameters::get_perspectiveRemoveIgnoredMarginPerCell()
-    public  double get_perspectiveRemoveIgnoredMarginPerCell()
-    {
-        
-        double retVal = get_perspectiveRemoveIgnoredMarginPerCell_0(nativeObj);
-        
-        return retVal;
+    public double get_perspectiveRemoveIgnoredMarginPerCell() {
+        return get_perspectiveRemoveIgnoredMarginPerCell_0(nativeObj);
     }
 
 
@@ -498,13 +388,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::perspectiveRemoveIgnoredMarginPerCell
     //
 
-    //javadoc: DetectorParameters::set_perspectiveRemoveIgnoredMarginPerCell(perspectiveRemoveIgnoredMarginPerCell)
-    public  void set_perspectiveRemoveIgnoredMarginPerCell(double perspectiveRemoveIgnoredMarginPerCell)
-    {
-        
+    public void set_perspectiveRemoveIgnoredMarginPerCell(double perspectiveRemoveIgnoredMarginPerCell) {
         set_perspectiveRemoveIgnoredMarginPerCell_0(nativeObj, perspectiveRemoveIgnoredMarginPerCell);
-        
-        return;
     }
 
 
@@ -512,13 +397,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::maxErroneousBitsInBorderRate
     //
 
-    //javadoc: DetectorParameters::get_maxErroneousBitsInBorderRate()
-    public  double get_maxErroneousBitsInBorderRate()
-    {
-        
-        double retVal = get_maxErroneousBitsInBorderRate_0(nativeObj);
-        
-        return retVal;
+    public double get_maxErroneousBitsInBorderRate() {
+        return get_maxErroneousBitsInBorderRate_0(nativeObj);
     }
 
 
@@ -526,13 +406,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::maxErroneousBitsInBorderRate
     //
 
-    //javadoc: DetectorParameters::set_maxErroneousBitsInBorderRate(maxErroneousBitsInBorderRate)
-    public  void set_maxErroneousBitsInBorderRate(double maxErroneousBitsInBorderRate)
-    {
-        
+    public void set_maxErroneousBitsInBorderRate(double maxErroneousBitsInBorderRate) {
         set_maxErroneousBitsInBorderRate_0(nativeObj, maxErroneousBitsInBorderRate);
-        
-        return;
     }
 
 
@@ -540,13 +415,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::minOtsuStdDev
     //
 
-    //javadoc: DetectorParameters::get_minOtsuStdDev()
-    public  double get_minOtsuStdDev()
-    {
-        
-        double retVal = get_minOtsuStdDev_0(nativeObj);
-        
-        return retVal;
+    public double get_minOtsuStdDev() {
+        return get_minOtsuStdDev_0(nativeObj);
     }
 
 
@@ -554,13 +424,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::minOtsuStdDev
     //
 
-    //javadoc: DetectorParameters::set_minOtsuStdDev(minOtsuStdDev)
-    public  void set_minOtsuStdDev(double minOtsuStdDev)
-    {
-        
+    public void set_minOtsuStdDev(double minOtsuStdDev) {
         set_minOtsuStdDev_0(nativeObj, minOtsuStdDev);
-        
-        return;
     }
 
 
@@ -568,13 +433,8 @@ public class DetectorParameters {
     // C++: double DetectorParameters::errorCorrectionRate
     //
 
-    //javadoc: DetectorParameters::get_errorCorrectionRate()
-    public  double get_errorCorrectionRate()
-    {
-        
-        double retVal = get_errorCorrectionRate_0(nativeObj);
-        
-        return retVal;
+    public double get_errorCorrectionRate() {
+        return get_errorCorrectionRate_0(nativeObj);
     }
 
 
@@ -582,13 +442,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::errorCorrectionRate
     //
 
-    //javadoc: DetectorParameters::set_errorCorrectionRate(errorCorrectionRate)
-    public  void set_errorCorrectionRate(double errorCorrectionRate)
-    {
-        
+    public void set_errorCorrectionRate(double errorCorrectionRate) {
         set_errorCorrectionRate_0(nativeObj, errorCorrectionRate);
-        
-        return;
     }
 
 
@@ -596,13 +451,8 @@ public class DetectorParameters {
     // C++: float DetectorParameters::aprilTagQuadDecimate
     //
 
-    //javadoc: DetectorParameters::get_aprilTagQuadDecimate()
-    public  float get_aprilTagQuadDecimate()
-    {
-        
-        float retVal = get_aprilTagQuadDecimate_0(nativeObj);
-        
-        return retVal;
+    public float get_aprilTagQuadDecimate() {
+        return get_aprilTagQuadDecimate_0(nativeObj);
     }
 
 
@@ -610,13 +460,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagQuadDecimate
     //
 
-    //javadoc: DetectorParameters::set_aprilTagQuadDecimate(aprilTagQuadDecimate)
-    public  void set_aprilTagQuadDecimate(float aprilTagQuadDecimate)
-    {
-        
+    public void set_aprilTagQuadDecimate(float aprilTagQuadDecimate) {
         set_aprilTagQuadDecimate_0(nativeObj, aprilTagQuadDecimate);
-        
-        return;
     }
 
 
@@ -624,13 +469,8 @@ public class DetectorParameters {
     // C++: float DetectorParameters::aprilTagQuadSigma
     //
 
-    //javadoc: DetectorParameters::get_aprilTagQuadSigma()
-    public  float get_aprilTagQuadSigma()
-    {
-        
-        float retVal = get_aprilTagQuadSigma_0(nativeObj);
-        
-        return retVal;
+    public float get_aprilTagQuadSigma() {
+        return get_aprilTagQuadSigma_0(nativeObj);
     }
 
 
@@ -638,13 +478,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagQuadSigma
     //
 
-    //javadoc: DetectorParameters::set_aprilTagQuadSigma(aprilTagQuadSigma)
-    public  void set_aprilTagQuadSigma(float aprilTagQuadSigma)
-    {
-        
+    public void set_aprilTagQuadSigma(float aprilTagQuadSigma) {
         set_aprilTagQuadSigma_0(nativeObj, aprilTagQuadSigma);
-        
-        return;
     }
 
 
@@ -652,13 +487,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::aprilTagMinClusterPixels
     //
 
-    //javadoc: DetectorParameters::get_aprilTagMinClusterPixels()
-    public  int get_aprilTagMinClusterPixels()
-    {
-        
-        int retVal = get_aprilTagMinClusterPixels_0(nativeObj);
-        
-        return retVal;
+    public int get_aprilTagMinClusterPixels() {
+        return get_aprilTagMinClusterPixels_0(nativeObj);
     }
 
 
@@ -666,13 +496,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagMinClusterPixels
     //
 
-    //javadoc: DetectorParameters::set_aprilTagMinClusterPixels(aprilTagMinClusterPixels)
-    public  void set_aprilTagMinClusterPixels(int aprilTagMinClusterPixels)
-    {
-        
+    public void set_aprilTagMinClusterPixels(int aprilTagMinClusterPixels) {
         set_aprilTagMinClusterPixels_0(nativeObj, aprilTagMinClusterPixels);
-        
-        return;
     }
 
 
@@ -680,13 +505,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::aprilTagMaxNmaxima
     //
 
-    //javadoc: DetectorParameters::get_aprilTagMaxNmaxima()
-    public  int get_aprilTagMaxNmaxima()
-    {
-        
-        int retVal = get_aprilTagMaxNmaxima_0(nativeObj);
-        
-        return retVal;
+    public int get_aprilTagMaxNmaxima() {
+        return get_aprilTagMaxNmaxima_0(nativeObj);
     }
 
 
@@ -694,13 +514,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagMaxNmaxima
     //
 
-    //javadoc: DetectorParameters::set_aprilTagMaxNmaxima(aprilTagMaxNmaxima)
-    public  void set_aprilTagMaxNmaxima(int aprilTagMaxNmaxima)
-    {
-        
+    public void set_aprilTagMaxNmaxima(int aprilTagMaxNmaxima) {
         set_aprilTagMaxNmaxima_0(nativeObj, aprilTagMaxNmaxima);
-        
-        return;
     }
 
 
@@ -708,13 +523,8 @@ public class DetectorParameters {
     // C++: float DetectorParameters::aprilTagCriticalRad
     //
 
-    //javadoc: DetectorParameters::get_aprilTagCriticalRad()
-    public  float get_aprilTagCriticalRad()
-    {
-        
-        float retVal = get_aprilTagCriticalRad_0(nativeObj);
-        
-        return retVal;
+    public float get_aprilTagCriticalRad() {
+        return get_aprilTagCriticalRad_0(nativeObj);
     }
 
 
@@ -722,13 +532,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagCriticalRad
     //
 
-    //javadoc: DetectorParameters::set_aprilTagCriticalRad(aprilTagCriticalRad)
-    public  void set_aprilTagCriticalRad(float aprilTagCriticalRad)
-    {
-        
+    public void set_aprilTagCriticalRad(float aprilTagCriticalRad) {
         set_aprilTagCriticalRad_0(nativeObj, aprilTagCriticalRad);
-        
-        return;
     }
 
 
@@ -736,13 +541,8 @@ public class DetectorParameters {
     // C++: float DetectorParameters::aprilTagMaxLineFitMse
     //
 
-    //javadoc: DetectorParameters::get_aprilTagMaxLineFitMse()
-    public  float get_aprilTagMaxLineFitMse()
-    {
-        
-        float retVal = get_aprilTagMaxLineFitMse_0(nativeObj);
-        
-        return retVal;
+    public float get_aprilTagMaxLineFitMse() {
+        return get_aprilTagMaxLineFitMse_0(nativeObj);
     }
 
 
@@ -750,13 +550,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagMaxLineFitMse
     //
 
-    //javadoc: DetectorParameters::set_aprilTagMaxLineFitMse(aprilTagMaxLineFitMse)
-    public  void set_aprilTagMaxLineFitMse(float aprilTagMaxLineFitMse)
-    {
-        
+    public void set_aprilTagMaxLineFitMse(float aprilTagMaxLineFitMse) {
         set_aprilTagMaxLineFitMse_0(nativeObj, aprilTagMaxLineFitMse);
-        
-        return;
     }
 
 
@@ -764,13 +559,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::aprilTagMinWhiteBlackDiff
     //
 
-    //javadoc: DetectorParameters::get_aprilTagMinWhiteBlackDiff()
-    public  int get_aprilTagMinWhiteBlackDiff()
-    {
-        
-        int retVal = get_aprilTagMinWhiteBlackDiff_0(nativeObj);
-        
-        return retVal;
+    public int get_aprilTagMinWhiteBlackDiff() {
+        return get_aprilTagMinWhiteBlackDiff_0(nativeObj);
     }
 
 
@@ -778,13 +568,8 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagMinWhiteBlackDiff
     //
 
-    //javadoc: DetectorParameters::set_aprilTagMinWhiteBlackDiff(aprilTagMinWhiteBlackDiff)
-    public  void set_aprilTagMinWhiteBlackDiff(int aprilTagMinWhiteBlackDiff)
-    {
-        
+    public void set_aprilTagMinWhiteBlackDiff(int aprilTagMinWhiteBlackDiff) {
         set_aprilTagMinWhiteBlackDiff_0(nativeObj, aprilTagMinWhiteBlackDiff);
-        
-        return;
     }
 
 
@@ -792,13 +577,8 @@ public class DetectorParameters {
     // C++: int DetectorParameters::aprilTagDeglitch
     //
 
-    //javadoc: DetectorParameters::get_aprilTagDeglitch()
-    public  int get_aprilTagDeglitch()
-    {
-        
-        int retVal = get_aprilTagDeglitch_0(nativeObj);
-        
-        return retVal;
+    public int get_aprilTagDeglitch() {
+        return get_aprilTagDeglitch_0(nativeObj);
     }
 
 
@@ -806,13 +586,26 @@ public class DetectorParameters {
     // C++: void DetectorParameters::aprilTagDeglitch
     //
 
-    //javadoc: DetectorParameters::set_aprilTagDeglitch(aprilTagDeglitch)
-    public  void set_aprilTagDeglitch(int aprilTagDeglitch)
-    {
-        
+    public void set_aprilTagDeglitch(int aprilTagDeglitch) {
         set_aprilTagDeglitch_0(nativeObj, aprilTagDeglitch);
-        
-        return;
+    }
+
+
+    //
+    // C++: bool DetectorParameters::detectInvertedMarker
+    //
+
+    public boolean get_detectInvertedMarker() {
+        return get_detectInvertedMarker_0(nativeObj);
+    }
+
+
+    //
+    // C++: void DetectorParameters::detectInvertedMarker
+    //
+
+    public void set_detectInvertedMarker(boolean detectInvertedMarker) {
+        set_detectInvertedMarker_0(nativeObj, detectInvertedMarker);
     }
 
 
@@ -993,6 +786,12 @@ public class DetectorParameters {
 
     // C++: void DetectorParameters::aprilTagDeglitch
     private static native void set_aprilTagDeglitch_0(long nativeObj, int aprilTagDeglitch);
+
+    // C++: bool DetectorParameters::detectInvertedMarker
+    private static native boolean get_detectInvertedMarker_0(long nativeObj);
+
+    // C++: void DetectorParameters::detectInvertedMarker
+    private static native void set_detectInvertedMarker_0(long nativeObj, boolean detectInvertedMarker);
 
     // native support for java finalize()
     private static native void delete(long nativeObj);

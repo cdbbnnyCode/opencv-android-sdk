@@ -3,11 +3,17 @@
 //
 package org.opencv.img_hash;
 
+import org.opencv.img_hash.ImgHashBase;
 import org.opencv.img_hash.PHash;
 
 // C++: class PHash
-//javadoc: PHash
-
+/**
+ * pHash
+ *
+ * Slower than average_hash, but tolerant of minor modifications
+ *
+ * This algorithm can combat more variation than averageHash, for more details please refer to CITE: lookslikeit
+ */
 public class PHash extends ImgHashBase {
 
     protected PHash(long addr) { super(addr); }
@@ -19,13 +25,8 @@ public class PHash extends ImgHashBase {
     // C++: static Ptr_PHash cv::img_hash::PHash::create()
     //
 
-    //javadoc: PHash::create()
-    public static PHash create()
-    {
-        
-        PHash retVal = PHash.__fromPtr__(create_0());
-        
-        return retVal;
+    public static PHash create() {
+        return PHash.__fromPtr__(create_0());
     }
 
 

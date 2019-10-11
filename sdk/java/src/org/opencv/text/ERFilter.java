@@ -6,8 +6,11 @@ package org.opencv.text;
 import org.opencv.core.Algorithm;
 
 // C++: class ERFilter
-//javadoc: ERFilter
-
+/**
+ * Base class for 1st and 2nd stages of Neumann and Matas scene text detection algorithm CITE: Neumann12. :
+ *
+ * Extracts the component tree (if needed) and filter the extremal regions (ER's) by using a given classifier.
+ */
 public class ERFilter extends Algorithm {
 
     protected ERFilter(long addr) { super(addr); }

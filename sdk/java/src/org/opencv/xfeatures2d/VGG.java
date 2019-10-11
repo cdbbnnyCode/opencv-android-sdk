@@ -7,8 +7,23 @@ import org.opencv.features2d.Feature2D;
 import org.opencv.xfeatures2d.VGG;
 
 // C++: class VGG
-//javadoc: VGG
-
+/**
+ * Class implementing VGG (Oxford Visual Geometry Group) descriptor trained end to end
+ * using "Descriptor Learning Using Convex Optimisation" (DLCO) aparatus described in CITE: Simonyan14.
+ *
+ * desc type of descriptor to use, VGG::VGG_120 is default (120 dimensions float)
+ * Available types are VGG::VGG_120, VGG::VGG_80, VGG::VGG_64, VGG::VGG_48
+ * isigma gaussian kernel value for image blur (default is 1.4f)
+ * img_normalize use image sample intensity normalization (enabled by default)
+ * use_orientation sample patterns using keypoints orientation, enabled by default
+ * scale_factor adjust the sampling window of detected keypoints to 64.0f (VGG sampling window)
+ * 6.25f is default and fits for KAZE, SURF detected keypoints window ratio
+ * 6.75f should be the scale for SIFT detected keypoints window ratio
+ * 5.00f should be the scale for AKAZE, MSD, AGAST, FAST, BRISK keypoints window ratio
+ * 0.75f should be the scale for ORB keypoints ratio
+ *
+ * dsc_normalize clamp descriptors to 255 and convert to uchar CV_8UC1 (disabled by default)
+ */
 public class VGG extends Feature2D {
 
     protected VGG(long addr) { super(addr); }
@@ -20,67 +35,32 @@ public class VGG extends Feature2D {
     // C++: static Ptr_VGG cv::xfeatures2d::VGG::create(int desc = VGG::VGG_120, float isigma = 1.4f, bool img_normalize = true, bool use_scale_orientation = true, float scale_factor = 6.25f, bool dsc_normalize = false)
     //
 
-    //javadoc: VGG::create(desc, isigma, img_normalize, use_scale_orientation, scale_factor, dsc_normalize)
-    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation, float scale_factor, boolean dsc_normalize)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_0(desc, isigma, img_normalize, use_scale_orientation, scale_factor, dsc_normalize));
-        
-        return retVal;
+    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation, float scale_factor, boolean dsc_normalize) {
+        return VGG.__fromPtr__(create_0(desc, isigma, img_normalize, use_scale_orientation, scale_factor, dsc_normalize));
     }
 
-    //javadoc: VGG::create(desc, isigma, img_normalize, use_scale_orientation, scale_factor)
-    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation, float scale_factor)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_1(desc, isigma, img_normalize, use_scale_orientation, scale_factor));
-        
-        return retVal;
+    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation, float scale_factor) {
+        return VGG.__fromPtr__(create_1(desc, isigma, img_normalize, use_scale_orientation, scale_factor));
     }
 
-    //javadoc: VGG::create(desc, isigma, img_normalize, use_scale_orientation)
-    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_2(desc, isigma, img_normalize, use_scale_orientation));
-        
-        return retVal;
+    public static VGG create(int desc, float isigma, boolean img_normalize, boolean use_scale_orientation) {
+        return VGG.__fromPtr__(create_2(desc, isigma, img_normalize, use_scale_orientation));
     }
 
-    //javadoc: VGG::create(desc, isigma, img_normalize)
-    public static VGG create(int desc, float isigma, boolean img_normalize)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_3(desc, isigma, img_normalize));
-        
-        return retVal;
+    public static VGG create(int desc, float isigma, boolean img_normalize) {
+        return VGG.__fromPtr__(create_3(desc, isigma, img_normalize));
     }
 
-    //javadoc: VGG::create(desc, isigma)
-    public static VGG create(int desc, float isigma)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_4(desc, isigma));
-        
-        return retVal;
+    public static VGG create(int desc, float isigma) {
+        return VGG.__fromPtr__(create_4(desc, isigma));
     }
 
-    //javadoc: VGG::create(desc)
-    public static VGG create(int desc)
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_5(desc));
-        
-        return retVal;
+    public static VGG create(int desc) {
+        return VGG.__fromPtr__(create_5(desc));
     }
 
-    //javadoc: VGG::create()
-    public static VGG create()
-    {
-        
-        VGG retVal = VGG.__fromPtr__(create_6());
-        
-        return retVal;
+    public static VGG create() {
+        return VGG.__fromPtr__(create_6());
     }
 
 
@@ -88,13 +68,8 @@ public class VGG extends Feature2D {
     // C++:  bool cv::xfeatures2d::VGG::getUseNormalizeDescriptor()
     //
 
-    //javadoc: VGG::getUseNormalizeDescriptor()
-    public  boolean getUseNormalizeDescriptor()
-    {
-        
-        boolean retVal = getUseNormalizeDescriptor_0(nativeObj);
-        
-        return retVal;
+    public boolean getUseNormalizeDescriptor() {
+        return getUseNormalizeDescriptor_0(nativeObj);
     }
 
 
@@ -102,13 +77,8 @@ public class VGG extends Feature2D {
     // C++:  bool cv::xfeatures2d::VGG::getUseNormalizeImage()
     //
 
-    //javadoc: VGG::getUseNormalizeImage()
-    public  boolean getUseNormalizeImage()
-    {
-        
-        boolean retVal = getUseNormalizeImage_0(nativeObj);
-        
-        return retVal;
+    public boolean getUseNormalizeImage() {
+        return getUseNormalizeImage_0(nativeObj);
     }
 
 
@@ -116,13 +86,8 @@ public class VGG extends Feature2D {
     // C++:  bool cv::xfeatures2d::VGG::getUseScaleOrientation()
     //
 
-    //javadoc: VGG::getUseScaleOrientation()
-    public  boolean getUseScaleOrientation()
-    {
-        
-        boolean retVal = getUseScaleOrientation_0(nativeObj);
-        
-        return retVal;
+    public boolean getUseScaleOrientation() {
+        return getUseScaleOrientation_0(nativeObj);
     }
 
 
@@ -130,13 +95,8 @@ public class VGG extends Feature2D {
     // C++:  float cv::xfeatures2d::VGG::getScaleFactor()
     //
 
-    //javadoc: VGG::getScaleFactor()
-    public  float getScaleFactor()
-    {
-        
-        float retVal = getScaleFactor_0(nativeObj);
-        
-        return retVal;
+    public float getScaleFactor() {
+        return getScaleFactor_0(nativeObj);
     }
 
 
@@ -144,13 +104,8 @@ public class VGG extends Feature2D {
     // C++:  float cv::xfeatures2d::VGG::getSigma()
     //
 
-    //javadoc: VGG::getSigma()
-    public  float getSigma()
-    {
-        
-        float retVal = getSigma_0(nativeObj);
-        
-        return retVal;
+    public float getSigma() {
+        return getSigma_0(nativeObj);
     }
 
 
@@ -158,13 +113,8 @@ public class VGG extends Feature2D {
     // C++:  void cv::xfeatures2d::VGG::setScaleFactor(float scale_factor)
     //
 
-    //javadoc: VGG::setScaleFactor(scale_factor)
-    public  void setScaleFactor(float scale_factor)
-    {
-        
+    public void setScaleFactor(float scale_factor) {
         setScaleFactor_0(nativeObj, scale_factor);
-        
-        return;
     }
 
 
@@ -172,13 +122,8 @@ public class VGG extends Feature2D {
     // C++:  void cv::xfeatures2d::VGG::setSigma(float isigma)
     //
 
-    //javadoc: VGG::setSigma(isigma)
-    public  void setSigma(float isigma)
-    {
-        
+    public void setSigma(float isigma) {
         setSigma_0(nativeObj, isigma);
-        
-        return;
     }
 
 
@@ -186,13 +131,8 @@ public class VGG extends Feature2D {
     // C++:  void cv::xfeatures2d::VGG::setUseNormalizeDescriptor(bool dsc_normalize)
     //
 
-    //javadoc: VGG::setUseNormalizeDescriptor(dsc_normalize)
-    public  void setUseNormalizeDescriptor(boolean dsc_normalize)
-    {
-        
+    public void setUseNormalizeDescriptor(boolean dsc_normalize) {
         setUseNormalizeDescriptor_0(nativeObj, dsc_normalize);
-        
-        return;
     }
 
 
@@ -200,13 +140,8 @@ public class VGG extends Feature2D {
     // C++:  void cv::xfeatures2d::VGG::setUseNormalizeImage(bool img_normalize)
     //
 
-    //javadoc: VGG::setUseNormalizeImage(img_normalize)
-    public  void setUseNormalizeImage(boolean img_normalize)
-    {
-        
+    public void setUseNormalizeImage(boolean img_normalize) {
         setUseNormalizeImage_0(nativeObj, img_normalize);
-        
-        return;
     }
 
 
@@ -214,13 +149,8 @@ public class VGG extends Feature2D {
     // C++:  void cv::xfeatures2d::VGG::setUseScaleOrientation(bool use_scale_orientation)
     //
 
-    //javadoc: VGG::setUseScaleOrientation(use_scale_orientation)
-    public  void setUseScaleOrientation(boolean use_scale_orientation)
-    {
-        
+    public void setUseScaleOrientation(boolean use_scale_orientation) {
         setUseScaleOrientation_0(nativeObj, use_scale_orientation);
-        
-        return;
     }
 
 

@@ -7,8 +7,11 @@ import org.opencv.face.PredictCollector;
 import org.opencv.face.StandardCollector;
 
 // C++: class StandardCollector
-//javadoc: StandardCollector
-
+/**
+ * Default predict collector
+ *
+ * Trace minimal distance with treshhold checking (that is default behavior for most predict logic)
+ */
 public class StandardCollector extends PredictCollector {
 
     protected StandardCollector(long addr) { super(addr); }
@@ -20,22 +23,21 @@ public class StandardCollector extends PredictCollector {
     // C++: static Ptr_StandardCollector cv::face::StandardCollector::create(double threshold = DBL_MAX)
     //
 
-    //javadoc: StandardCollector::create(threshold)
-    public static StandardCollector create(double threshold)
-    {
-        
-        StandardCollector retVal = StandardCollector.__fromPtr__(create_0(threshold));
-        
-        return retVal;
+    /**
+     * Static constructor
+     *     @param threshold set threshold
+     * @return automatically generated
+     */
+    public static StandardCollector create(double threshold) {
+        return StandardCollector.__fromPtr__(create_0(threshold));
     }
 
-    //javadoc: StandardCollector::create()
-    public static StandardCollector create()
-    {
-        
-        StandardCollector retVal = StandardCollector.__fromPtr__(create_1());
-        
-        return retVal;
+    /**
+     * Static constructor
+     * @return automatically generated
+     */
+    public static StandardCollector create() {
+        return StandardCollector.__fromPtr__(create_1());
     }
 
 
@@ -43,13 +45,12 @@ public class StandardCollector extends PredictCollector {
     // C++:  double cv::face::StandardCollector::getMinDist()
     //
 
-    //javadoc: StandardCollector::getMinDist()
-    public  double getMinDist()
-    {
-        
-        double retVal = getMinDist_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns minimal distance value
+     * @return automatically generated
+     */
+    public double getMinDist() {
+        return getMinDist_0(nativeObj);
     }
 
 
@@ -57,13 +58,12 @@ public class StandardCollector extends PredictCollector {
     // C++:  int cv::face::StandardCollector::getMinLabel()
     //
 
-    //javadoc: StandardCollector::getMinLabel()
-    public  int getMinLabel()
-    {
-        
-        int retVal = getMinLabel_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Returns label with minimal distance
+     * @return automatically generated
+     */
+    public int getMinLabel() {
+        return getMinLabel_0(nativeObj);
     }
 
 

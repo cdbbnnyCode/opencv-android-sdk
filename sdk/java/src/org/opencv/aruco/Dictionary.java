@@ -7,8 +7,16 @@ import org.opencv.aruco.Dictionary;
 import org.opencv.core.Mat;
 
 // C++: class Dictionary
-//javadoc: Dictionary
-
+/**
+ * Dictionary/Set of markers. It contains the inner codification
+ *
+ * bytesList contains the marker codewords where
+ * - bytesList.rows is the dictionary size
+ * - each marker is encoded using {@code nbytes = ceil(markerSize*markerSize/8.)}
+ * - each row contains all 4 rotations of the marker, so its length is {@code 4*nbytes}
+ *
+ * {@code bytesList.ptr(i)[k*nbytes + j]} is then the j-th byte of i-th marker, in its k-th rotation.
+ */
 public class Dictionary {
 
     protected final long nativeObj;
@@ -23,13 +31,14 @@ public class Dictionary {
     // C++: static Mat cv::aruco::Dictionary::getBitsFromByteList(Mat byteList, int markerSize)
     //
 
-    //javadoc: Dictionary::getBitsFromByteList(byteList, markerSize)
-    public static Mat getBitsFromByteList(Mat byteList, int markerSize)
-    {
-        
-        Mat retVal = new Mat(getBitsFromByteList_0(byteList.nativeObj, markerSize));
-        
-        return retVal;
+    /**
+     * Transform list of bytes to matrix of bits
+     * @param byteList automatically generated
+     * @param markerSize automatically generated
+     * @return automatically generated
+     */
+    public static Mat getBitsFromByteList(Mat byteList, int markerSize) {
+        return new Mat(getBitsFromByteList_0(byteList.nativeObj, markerSize));
     }
 
 
@@ -37,13 +46,13 @@ public class Dictionary {
     // C++: static Mat cv::aruco::Dictionary::getByteListFromBits(Mat bits)
     //
 
-    //javadoc: Dictionary::getByteListFromBits(bits)
-    public static Mat getByteListFromBits(Mat bits)
-    {
-        
-        Mat retVal = new Mat(getByteListFromBits_0(bits.nativeObj));
-        
-        return retVal;
+    /**
+     * Transform matrix of bits to list of bytes in the 4 rotations
+     * @param bits automatically generated
+     * @return automatically generated
+     */
+    public static Mat getByteListFromBits(Mat bits) {
+        return new Mat(getByteListFromBits_0(bits.nativeObj));
     }
 
 
@@ -51,22 +60,27 @@ public class Dictionary {
     // C++: static Ptr_Dictionary cv::aruco::Dictionary::create(int nMarkers, int markerSize, Ptr_Dictionary baseDictionary, int randomSeed = 0)
     //
 
-    //javadoc: Dictionary::create_from(nMarkers, markerSize, baseDictionary, randomSeed)
-    public static Dictionary create_from(int nMarkers, int markerSize, Dictionary baseDictionary, int randomSeed)
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(create_from_0(nMarkers, markerSize, baseDictionary.getNativeObjAddr(), randomSeed));
-        
-        return retVal;
+    /**
+     * SEE: generateCustomDictionary
+     * @param nMarkers automatically generated
+     * @param markerSize automatically generated
+     * @param baseDictionary automatically generated
+     * @param randomSeed automatically generated
+     * @return automatically generated
+     */
+    public static Dictionary create_from(int nMarkers, int markerSize, Dictionary baseDictionary, int randomSeed) {
+        return Dictionary.__fromPtr__(create_from_0(nMarkers, markerSize, baseDictionary.getNativeObjAddr(), randomSeed));
     }
 
-    //javadoc: Dictionary::create_from(nMarkers, markerSize, baseDictionary)
-    public static Dictionary create_from(int nMarkers, int markerSize, Dictionary baseDictionary)
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(create_from_1(nMarkers, markerSize, baseDictionary.getNativeObjAddr()));
-        
-        return retVal;
+    /**
+     * SEE: generateCustomDictionary
+     * @param nMarkers automatically generated
+     * @param markerSize automatically generated
+     * @param baseDictionary automatically generated
+     * @return automatically generated
+     */
+    public static Dictionary create_from(int nMarkers, int markerSize, Dictionary baseDictionary) {
+        return Dictionary.__fromPtr__(create_from_1(nMarkers, markerSize, baseDictionary.getNativeObjAddr()));
     }
 
 
@@ -74,22 +88,25 @@ public class Dictionary {
     // C++: static Ptr_Dictionary cv::aruco::Dictionary::create(int nMarkers, int markerSize, int randomSeed = 0)
     //
 
-    //javadoc: Dictionary::create(nMarkers, markerSize, randomSeed)
-    public static Dictionary create(int nMarkers, int markerSize, int randomSeed)
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(create_0(nMarkers, markerSize, randomSeed));
-        
-        return retVal;
+    /**
+     * SEE: generateCustomDictionary
+     * @param nMarkers automatically generated
+     * @param markerSize automatically generated
+     * @param randomSeed automatically generated
+     * @return automatically generated
+     */
+    public static Dictionary create(int nMarkers, int markerSize, int randomSeed) {
+        return Dictionary.__fromPtr__(create_0(nMarkers, markerSize, randomSeed));
     }
 
-    //javadoc: Dictionary::create(nMarkers, markerSize)
-    public static Dictionary create(int nMarkers, int markerSize)
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(create_1(nMarkers, markerSize));
-        
-        return retVal;
+    /**
+     * SEE: generateCustomDictionary
+     * @param nMarkers automatically generated
+     * @param markerSize automatically generated
+     * @return automatically generated
+     */
+    public static Dictionary create(int nMarkers, int markerSize) {
+        return Dictionary.__fromPtr__(create_1(nMarkers, markerSize));
     }
 
 
@@ -97,13 +114,13 @@ public class Dictionary {
     // C++: static Ptr_Dictionary cv::aruco::Dictionary::get(int dict)
     //
 
-    //javadoc: Dictionary::get(dict)
-    public static Dictionary get(int dict)
-    {
-        
-        Dictionary retVal = Dictionary.__fromPtr__(get_0(dict));
-        
-        return retVal;
+    /**
+     * SEE: getPredefinedDictionary
+     * @param dict automatically generated
+     * @return automatically generated
+     */
+    public static Dictionary get(int dict) {
+        return Dictionary.__fromPtr__(get_0(dict));
     }
 
 
@@ -111,22 +128,25 @@ public class Dictionary {
     // C++:  void cv::aruco::Dictionary::drawMarker(int id, int sidePixels, Mat& _img, int borderBits = 1)
     //
 
-    //javadoc: Dictionary::drawMarker(id, sidePixels, _img, borderBits)
-    public  void drawMarker(int id, int sidePixels, Mat _img, int borderBits)
-    {
-        
+    /**
+     * Draw a canonical marker image
+     * @param id automatically generated
+     * @param sidePixels automatically generated
+     * @param _img automatically generated
+     * @param borderBits automatically generated
+     */
+    public void drawMarker(int id, int sidePixels, Mat _img, int borderBits) {
         drawMarker_0(nativeObj, id, sidePixels, _img.nativeObj, borderBits);
-        
-        return;
     }
 
-    //javadoc: Dictionary::drawMarker(id, sidePixels, _img)
-    public  void drawMarker(int id, int sidePixels, Mat _img)
-    {
-        
+    /**
+     * Draw a canonical marker image
+     * @param id automatically generated
+     * @param sidePixels automatically generated
+     * @param _img automatically generated
+     */
+    public void drawMarker(int id, int sidePixels, Mat _img) {
         drawMarker_1(nativeObj, id, sidePixels, _img.nativeObj);
-        
-        return;
     }
 
 
@@ -134,13 +154,8 @@ public class Dictionary {
     // C++: Mat Dictionary::bytesList
     //
 
-    //javadoc: Dictionary::get_bytesList()
-    public  Mat get_bytesList()
-    {
-        
-        Mat retVal = new Mat(get_bytesList_0(nativeObj));
-        
-        return retVal;
+    public Mat get_bytesList() {
+        return new Mat(get_bytesList_0(nativeObj));
     }
 
 
@@ -148,13 +163,8 @@ public class Dictionary {
     // C++: void Dictionary::bytesList
     //
 
-    //javadoc: Dictionary::set_bytesList(bytesList)
-    public  void set_bytesList(Mat bytesList)
-    {
-        
+    public void set_bytesList(Mat bytesList) {
         set_bytesList_0(nativeObj, bytesList.nativeObj);
-        
-        return;
     }
 
 
@@ -162,13 +172,8 @@ public class Dictionary {
     // C++: int Dictionary::markerSize
     //
 
-    //javadoc: Dictionary::get_markerSize()
-    public  int get_markerSize()
-    {
-        
-        int retVal = get_markerSize_0(nativeObj);
-        
-        return retVal;
+    public int get_markerSize() {
+        return get_markerSize_0(nativeObj);
     }
 
 
@@ -176,13 +181,8 @@ public class Dictionary {
     // C++: void Dictionary::markerSize
     //
 
-    //javadoc: Dictionary::set_markerSize(markerSize)
-    public  void set_markerSize(int markerSize)
-    {
-        
+    public void set_markerSize(int markerSize) {
         set_markerSize_0(nativeObj, markerSize);
-        
-        return;
     }
 
 
@@ -190,13 +190,8 @@ public class Dictionary {
     // C++: int Dictionary::maxCorrectionBits
     //
 
-    //javadoc: Dictionary::get_maxCorrectionBits()
-    public  int get_maxCorrectionBits()
-    {
-        
-        int retVal = get_maxCorrectionBits_0(nativeObj);
-        
-        return retVal;
+    public int get_maxCorrectionBits() {
+        return get_maxCorrectionBits_0(nativeObj);
     }
 
 
@@ -204,13 +199,8 @@ public class Dictionary {
     // C++: void Dictionary::maxCorrectionBits
     //
 
-    //javadoc: Dictionary::set_maxCorrectionBits(maxCorrectionBits)
-    public  void set_maxCorrectionBits(int maxCorrectionBits)
-    {
-        
+    public void set_maxCorrectionBits(int maxCorrectionBits) {
         set_maxCorrectionBits_0(nativeObj, maxCorrectionBits);
-        
-        return;
     }
 
 

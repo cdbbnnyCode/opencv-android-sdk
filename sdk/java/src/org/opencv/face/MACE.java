@@ -3,7 +3,6 @@
 //
 package org.opencv.face;
 
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import org.opencv.core.Algorithm;
@@ -12,8 +11,57 @@ import org.opencv.face.MACE;
 import org.opencv.utils.Converters;
 
 // C++: class MACE
-//javadoc: MACE
-
+/**
+ * Minimum Average Correlation Energy Filter
+ *     useful for authentication with (cancellable) biometrical features.
+ *     (does not need many positives to train (10-50), and no negatives at all, also robust to noise/salting)
+ *
+ *     see also: CITE: Savvides04
+ *
+ *     this implementation is largely based on: https://code.google.com/archive/p/pam-face-authentication (GSOC 2009)
+ *
+ *     use it like:
+ *     <code>
+ *
+ *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+ *
+ *     vector&lt;Mat&gt; pos_images = ...
+ *     mace-&gt;train(pos_images);
+ *
+ *     Mat query = ...
+ *     bool same = mace-&gt;same(query);
+ *
+ *     </code>
+ *
+ *     you can also use two-factor authentication, with an additional passphrase:
+ *
+ *     <code>
+ *     String owners_passphrase = "ilikehotdogs";
+ *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+ *     mace-&gt;salt(owners_passphrase);
+ *     vector&lt;Mat&gt; pos_images = ...
+ *     mace-&gt;train(pos_images);
+ *
+ *     // now, users have to give a valid passphrase, along with the image:
+ *     Mat query = ...
+ *     cout &lt;&lt; "enter passphrase: ";
+ *     string pass;
+ *     getline(cin, pass);
+ *     mace-&gt;salt(pass);
+ *     bool same = mace-&gt;same(query);
+ *     </code>
+ *
+ *     save/load your model:
+ *     <code>
+ *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+ *     mace-&gt;train(pos_images);
+ *     mace-&gt;save("my_mace.xml");
+ *
+ *     // later:
+ *     Ptr&lt;MACE&gt; reloaded = MACE::load("my_mace.xml");
+ *     reloaded-&gt;same(some_image);
+ *     </code>
+ */
 public class MACE extends Algorithm {
 
     protected MACE(long addr) { super(addr); }
@@ -25,22 +73,21 @@ public class MACE extends Algorithm {
     // C++: static Ptr_MACE cv::face::MACE::create(int IMGSIZE = 64)
     //
 
-    //javadoc: MACE::create(IMGSIZE)
-    public static MACE create(int IMGSIZE)
-    {
-        
-        MACE retVal = MACE.__fromPtr__(create_0(IMGSIZE));
-        
-        return retVal;
+    /**
+     * constructor
+     *     @param IMGSIZE  images will get resized to this (should be an even number)
+     * @return automatically generated
+     */
+    public static MACE create(int IMGSIZE) {
+        return MACE.__fromPtr__(create_0(IMGSIZE));
     }
 
-    //javadoc: MACE::create()
-    public static MACE create()
-    {
-        
-        MACE retVal = MACE.__fromPtr__(create_1());
-        
-        return retVal;
+    /**
+     * constructor
+     * @return automatically generated
+     */
+    public static MACE create() {
+        return MACE.__fromPtr__(create_1());
     }
 
 
@@ -48,22 +95,23 @@ public class MACE extends Algorithm {
     // C++: static Ptr_MACE cv::face::MACE::load(String filename, String objname = String())
     //
 
-    //javadoc: MACE::load(filename, objname)
-    public static MACE load(String filename, String objname)
-    {
-        
-        MACE retVal = MACE.__fromPtr__(load_0(filename, objname));
-        
-        return retVal;
+    /**
+     * constructor
+     *     @param filename  build a new MACE instance from a pre-serialized FileStorage
+     *     @param objname (optional) top-level node in the FileStorage
+     * @return automatically generated
+     */
+    public static MACE load(String filename, String objname) {
+        return MACE.__fromPtr__(load_0(filename, objname));
     }
 
-    //javadoc: MACE::load(filename)
-    public static MACE load(String filename)
-    {
-        
-        MACE retVal = MACE.__fromPtr__(load_1(filename));
-        
-        return retVal;
+    /**
+     * constructor
+     *     @param filename  build a new MACE instance from a pre-serialized FileStorage
+     * @return automatically generated
+     */
+    public static MACE load(String filename) {
+        return MACE.__fromPtr__(load_1(filename));
     }
 
 
@@ -71,13 +119,13 @@ public class MACE extends Algorithm {
     // C++:  bool cv::face::MACE::same(Mat query)
     //
 
-    //javadoc: MACE::same(query)
-    public  boolean same(Mat query)
-    {
-        
-        boolean retVal = same_0(nativeObj, query.nativeObj);
-        
-        return retVal;
+    /**
+     * correlate query img and threshold to min class value
+     *     @param query  a Mat with query image
+     * @return automatically generated
+     */
+    public boolean same(Mat query) {
+        return same_0(nativeObj, query.nativeObj);
     }
 
 
@@ -85,13 +133,12 @@ public class MACE extends Algorithm {
     // C++:  void cv::face::MACE::salt(String passphrase)
     //
 
-    //javadoc: MACE::salt(passphrase)
-    public  void salt(String passphrase)
-    {
-        
+    /**
+     * optionally encrypt images with random convolution
+     *     @param passphrase a crc64 random seed will get generated from this
+     */
+    public void salt(String passphrase) {
         salt_0(nativeObj, passphrase);
-        
-        return;
     }
 
 
@@ -99,13 +146,15 @@ public class MACE extends Algorithm {
     // C++:  void cv::face::MACE::train(vector_Mat images)
     //
 
-    //javadoc: MACE::train(images)
-    public  void train(List<Mat> images)
-    {
+    /**
+     * train it on positive features
+     *        compute the mace filter: {@code h = D(-1) * X * (X(+) * D(-1) * X)(-1) * C}
+     *        also calculate a minimal threshold for this class, the smallest self-similarity from the train images
+     *     @param images  a vector&lt;Mat&gt; with the train images
+     */
+    public void train(List<Mat> images) {
         Mat images_mat = Converters.vector_Mat_to_Mat(images);
         train_0(nativeObj, images_mat.nativeObj);
-        
-        return;
     }
 
 

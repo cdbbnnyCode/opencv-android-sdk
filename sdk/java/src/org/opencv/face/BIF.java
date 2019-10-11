@@ -8,8 +8,11 @@ import org.opencv.core.Mat;
 import org.opencv.face.BIF;
 
 // C++: class BIF
-//javadoc: BIF
-
+/**
+ * Implementation of bio-inspired features (BIF) from the paper:
+ * Guo, Guodong, et al. "Human age estimation using bio-inspired features."
+ * Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+ */
 public class BIF extends Algorithm {
 
     protected BIF(long addr) { super(addr); }
@@ -21,31 +24,28 @@ public class BIF extends Algorithm {
     // C++: static Ptr_BIF cv::face::BIF::create(int num_bands = 8, int num_rotations = 12)
     //
 
-    //javadoc: BIF::create(num_bands, num_rotations)
-    public static BIF create(int num_bands, int num_rotations)
-    {
-        
-        BIF retVal = BIF.__fromPtr__(create_0(num_bands, num_rotations));
-        
-        return retVal;
+    /**
+     * @param num_bands The number of filter bands (&lt;=8) used for computing BIF.
+     * @param num_rotations The number of image rotations for computing BIF.
+     * @return Object for computing BIF.
+     */
+    public static BIF create(int num_bands, int num_rotations) {
+        return BIF.__fromPtr__(create_0(num_bands, num_rotations));
     }
 
-    //javadoc: BIF::create(num_bands)
-    public static BIF create(int num_bands)
-    {
-        
-        BIF retVal = BIF.__fromPtr__(create_1(num_bands));
-        
-        return retVal;
+    /**
+     * @param num_bands The number of filter bands (&lt;=8) used for computing BIF.
+     * @return Object for computing BIF.
+     */
+    public static BIF create(int num_bands) {
+        return BIF.__fromPtr__(create_1(num_bands));
     }
 
-    //javadoc: BIF::create()
-    public static BIF create()
-    {
-        
-        BIF retVal = BIF.__fromPtr__(create_2());
-        
-        return retVal;
+    /**
+     * @return Object for computing BIF.
+     */
+    public static BIF create() {
+        return BIF.__fromPtr__(create_2());
     }
 
 
@@ -53,13 +53,11 @@ public class BIF extends Algorithm {
     // C++:  int cv::face::BIF::getNumBands()
     //
 
-    //javadoc: BIF::getNumBands()
-    public  int getNumBands()
-    {
-        
-        int retVal = getNumBands_0(nativeObj);
-        
-        return retVal;
+    /**
+     * @return The number of filter bands used for computing BIF.
+     */
+    public int getNumBands() {
+        return getNumBands_0(nativeObj);
     }
 
 
@@ -67,13 +65,11 @@ public class BIF extends Algorithm {
     // C++:  int cv::face::BIF::getNumRotations()
     //
 
-    //javadoc: BIF::getNumRotations()
-    public  int getNumRotations()
-    {
-        
-        int retVal = getNumRotations_0(nativeObj);
-        
-        return retVal;
+    /**
+     * @return The number of image rotations.
+     */
+    public int getNumRotations() {
+        return getNumRotations_0(nativeObj);
     }
 
 
@@ -81,13 +77,13 @@ public class BIF extends Algorithm {
     // C++:  void cv::face::BIF::compute(Mat image, Mat& features)
     //
 
-    //javadoc: BIF::compute(image, features)
-    public  void compute(Mat image, Mat features)
-    {
-        
+    /**
+     * Computes features sby input image.
+     * @param image Input image (CV_32FC1).
+     * @param features Feature vector (CV_32FC1).
+     */
+    public void compute(Mat image, Mat features) {
         compute_0(nativeObj, image.nativeObj, features.nativeObj);
-        
-        return;
     }
 
 

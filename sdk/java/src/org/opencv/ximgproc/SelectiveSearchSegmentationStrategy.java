@@ -7,8 +7,10 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 
 // C++: class SelectiveSearchSegmentationStrategy
-//javadoc: SelectiveSearchSegmentationStrategy
-
+/**
+ * Strategie for the selective search segmentation algorithm
+ *                         The class implements a generic stragery for the algorithm described in CITE: uijlings2013selective.
+ */
 public class SelectiveSearchSegmentationStrategy extends Algorithm {
 
     protected SelectiveSearchSegmentationStrategy(long addr) { super(addr); }
@@ -20,13 +22,14 @@ public class SelectiveSearchSegmentationStrategy extends Algorithm {
     // C++:  float cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::get(int r1, int r2)
     //
 
-    //javadoc: SelectiveSearchSegmentationStrategy::get(r1, r2)
-    public  float get(int r1, int r2)
-    {
-        
-        float retVal = get_0(nativeObj, r1, r2);
-        
-        return retVal;
+    /**
+     * Return the score between two regions (between 0 and 1)
+     *                                 @param r1 The first region
+     *                                 @param r2 The second region
+     * @return automatically generated
+     */
+    public float get(int r1, int r2) {
+        return get_0(nativeObj, r1, r2);
     }
 
 
@@ -34,13 +37,13 @@ public class SelectiveSearchSegmentationStrategy extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::merge(int r1, int r2)
     //
 
-    //javadoc: SelectiveSearchSegmentationStrategy::merge(r1, r2)
-    public  void merge(int r1, int r2)
-    {
-        
+    /**
+     * Inform the strategy that two regions will be merged
+     *                                 @param r1 The first region
+     *                                 @param r2 The second region
+     */
+    public void merge(int r1, int r2) {
         merge_0(nativeObj, r1, r2);
-        
-        return;
     }
 
 
@@ -48,22 +51,25 @@ public class SelectiveSearchSegmentationStrategy extends Algorithm {
     // C++:  void cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::setImage(Mat img, Mat regions, Mat sizes, int image_id = -1)
     //
 
-    //javadoc: SelectiveSearchSegmentationStrategy::setImage(img, regions, sizes, image_id)
-    public  void setImage(Mat img, Mat regions, Mat sizes, int image_id)
-    {
-        
+    /**
+     * Set a initial image, with a segementation.
+     *                                 @param img The input image. Any number of channel can be provided
+     *                                 @param regions A segementation of the image. The parameter must be the same size of img.
+     *                                 @param sizes The sizes of different regions
+     *                                 @param image_id If not set to -1, try to cache pre-computations. If the same set og (img, regions, size) is used, the image_id need to be the same.
+     */
+    public void setImage(Mat img, Mat regions, Mat sizes, int image_id) {
         setImage_0(nativeObj, img.nativeObj, regions.nativeObj, sizes.nativeObj, image_id);
-        
-        return;
     }
 
-    //javadoc: SelectiveSearchSegmentationStrategy::setImage(img, regions, sizes)
-    public  void setImage(Mat img, Mat regions, Mat sizes)
-    {
-        
+    /**
+     * Set a initial image, with a segementation.
+     *                                 @param img The input image. Any number of channel can be provided
+     *                                 @param regions A segementation of the image. The parameter must be the same size of img.
+     *                                 @param sizes The sizes of different regions
+     */
+    public void setImage(Mat img, Mat regions, Mat sizes) {
         setImage_1(nativeObj, img.nativeObj, regions.nativeObj, sizes.nativeObj);
-        
-        return;
     }
 
 

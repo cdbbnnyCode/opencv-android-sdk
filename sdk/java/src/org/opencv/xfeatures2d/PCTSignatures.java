@@ -14,8 +14,20 @@ import org.opencv.utils.Converters;
 import org.opencv.xfeatures2d.PCTSignatures;
 
 // C++: class PCTSignatures
-//javadoc: PCTSignatures
-
+/**
+ * Class implementing PCT (position-color-texture) signature extraction
+ * as described in CITE: KrulisLS16.
+ * The algorithm is divided to a feature sampler and a clusterizer.
+ * Feature sampler produces samples at given set of coordinates.
+ * Clusterizer then produces clusters of these samples using k-means algorithm.
+ * Resulting set of clusters is the signature of the input image.
+ *
+ * A signature is an array of SIGNATURE_DIMENSION-dimensional points.
+ * Used dimensions are:
+ * weight, x, y position; lab color, contrast, entropy.
+ * CITE: KrulisLS16
+ * CITE: BeecksUS10
+ */
 public class PCTSignatures extends Algorithm {
 
     protected PCTSignatures(long addr) { super(addr); }
@@ -52,40 +64,54 @@ public class PCTSignatures extends Algorithm {
     // C++: static Ptr_PCTSignatures cv::xfeatures2d::PCTSignatures::create(int initSampleCount = 2000, int initSeedCount = 400, int pointDistribution = 0)
     //
 
-    //javadoc: PCTSignatures::create(initSampleCount, initSeedCount, pointDistribution)
-    public static PCTSignatures create(int initSampleCount, int initSeedCount, int pointDistribution)
-    {
-        
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_0(initSampleCount, initSeedCount, pointDistribution));
-        
-        return retVal;
+    /**
+     * Creates PCTSignatures algorithm using sample and seed count.
+     * It generates its own sets of sampling points and clusterization seed indexes.
+     * @param initSampleCount Number of points used for image sampling.
+     * @param initSeedCount Number of initial clusterization seeds.
+     * Must be lower or equal to initSampleCount
+     * @param pointDistribution Distribution of generated points. Default: UNIFORM.
+     * Available: UNIFORM, REGULAR, NORMAL.
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create(int initSampleCount, int initSeedCount, int pointDistribution) {
+        return PCTSignatures.__fromPtr__(create_0(initSampleCount, initSeedCount, pointDistribution));
     }
 
-    //javadoc: PCTSignatures::create(initSampleCount, initSeedCount)
-    public static PCTSignatures create(int initSampleCount, int initSeedCount)
-    {
-        
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_1(initSampleCount, initSeedCount));
-        
-        return retVal;
+    /**
+     * Creates PCTSignatures algorithm using sample and seed count.
+     * It generates its own sets of sampling points and clusterization seed indexes.
+     * @param initSampleCount Number of points used for image sampling.
+     * @param initSeedCount Number of initial clusterization seeds.
+     * Must be lower or equal to initSampleCount
+     * Available: UNIFORM, REGULAR, NORMAL.
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create(int initSampleCount, int initSeedCount) {
+        return PCTSignatures.__fromPtr__(create_1(initSampleCount, initSeedCount));
     }
 
-    //javadoc: PCTSignatures::create(initSampleCount)
-    public static PCTSignatures create(int initSampleCount)
-    {
-        
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_2(initSampleCount));
-        
-        return retVal;
+    /**
+     * Creates PCTSignatures algorithm using sample and seed count.
+     * It generates its own sets of sampling points and clusterization seed indexes.
+     * @param initSampleCount Number of points used for image sampling.
+     * Must be lower or equal to initSampleCount
+     * Available: UNIFORM, REGULAR, NORMAL.
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create(int initSampleCount) {
+        return PCTSignatures.__fromPtr__(create_2(initSampleCount));
     }
 
-    //javadoc: PCTSignatures::create()
-    public static PCTSignatures create()
-    {
-        
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_3());
-        
-        return retVal;
+    /**
+     * Creates PCTSignatures algorithm using sample and seed count.
+     * It generates its own sets of sampling points and clusterization seed indexes.
+     * Must be lower or equal to initSampleCount
+     * Available: UNIFORM, REGULAR, NORMAL.
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create() {
+        return PCTSignatures.__fromPtr__(create_3());
     }
 
 
@@ -93,13 +119,18 @@ public class PCTSignatures extends Algorithm {
     // C++: static Ptr_PCTSignatures cv::xfeatures2d::PCTSignatures::create(vector_Point2f initSamplingPoints, int initSeedCount)
     //
 
-    //javadoc: PCTSignatures::create(initSamplingPoints, initSeedCount)
-    public static PCTSignatures create(MatOfPoint2f initSamplingPoints, int initSeedCount)
-    {
+    /**
+     * Creates PCTSignatures algorithm using pre-generated sampling points
+     * and number of clusterization seeds. It uses the provided
+     * sampling points and generates its own clusterization seed indexes.
+     * @param initSamplingPoints Sampling points used in image sampling.
+     * @param initSeedCount Number of initial clusterization seeds.
+     * Must be lower or equal to initSamplingPoints.size().
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create(MatOfPoint2f initSamplingPoints, int initSeedCount) {
         Mat initSamplingPoints_mat = initSamplingPoints;
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_4(initSamplingPoints_mat.nativeObj, initSeedCount));
-        
-        return retVal;
+        return PCTSignatures.__fromPtr__(create_4(initSamplingPoints_mat.nativeObj, initSeedCount));
     }
 
 
@@ -107,14 +138,18 @@ public class PCTSignatures extends Algorithm {
     // C++: static Ptr_PCTSignatures cv::xfeatures2d::PCTSignatures::create(vector_Point2f initSamplingPoints, vector_int initClusterSeedIndexes)
     //
 
-    //javadoc: PCTSignatures::create(initSamplingPoints, initClusterSeedIndexes)
-    public static PCTSignatures create(MatOfPoint2f initSamplingPoints, MatOfInt initClusterSeedIndexes)
-    {
+    /**
+     * Creates PCTSignatures algorithm using pre-generated sampling points
+     * and clusterization seeds indexes.
+     * @param initSamplingPoints Sampling points used in image sampling.
+     * @param initClusterSeedIndexes Indexes of initial clusterization seeds.
+     * Its size must be lower or equal to initSamplingPoints.size().
+     * @return Created algorithm.
+     */
+    public static PCTSignatures create(MatOfPoint2f initSamplingPoints, MatOfInt initClusterSeedIndexes) {
         Mat initSamplingPoints_mat = initSamplingPoints;
         Mat initClusterSeedIndexes_mat = initClusterSeedIndexes;
-        PCTSignatures retVal = PCTSignatures.__fromPtr__(create_5(initSamplingPoints_mat.nativeObj, initClusterSeedIndexes_mat.nativeObj));
-        
-        return retVal;
+        return PCTSignatures.__fromPtr__(create_5(initSamplingPoints_mat.nativeObj, initClusterSeedIndexes_mat.nativeObj));
     }
 
 
@@ -122,13 +157,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getDropThreshold()
     //
 
-    //javadoc: PCTSignatures::getDropThreshold()
-    public  float getDropThreshold()
-    {
-        
-        float retVal = getDropThreshold_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Remove centroids in k-means whose weight is lesser or equal to given threshold.
+     * @return automatically generated
+     */
+    public float getDropThreshold() {
+        return getDropThreshold_0(nativeObj);
     }
 
 
@@ -136,13 +170,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getJoiningDistance()
     //
 
-    //javadoc: PCTSignatures::getJoiningDistance()
-    public  float getJoiningDistance()
-    {
-        
-        float retVal = getJoiningDistance_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Threshold euclidean distance between two centroids.
+     * If two cluster centers are closer than this distance,
+     * one of the centroid is dismissed and points are reassigned.
+     * @return automatically generated
+     */
+    public float getJoiningDistance() {
+        return getJoiningDistance_0(nativeObj);
     }
 
 
@@ -150,13 +185,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightA()
     //
 
-    //javadoc: PCTSignatures::getWeightA()
-    public  float getWeightA()
-    {
-        
-        float retVal = getWeightA_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightA() {
+        return getWeightA_0(nativeObj);
     }
 
 
@@ -164,13 +199,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightB()
     //
 
-    //javadoc: PCTSignatures::getWeightB()
-    public  float getWeightB()
-    {
-        
-        float retVal = getWeightB_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightB() {
+        return getWeightB_0(nativeObj);
     }
 
 
@@ -178,13 +213,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightContrast()
     //
 
-    //javadoc: PCTSignatures::getWeightContrast()
-    public  float getWeightContrast()
-    {
-        
-        float retVal = getWeightContrast_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightContrast() {
+        return getWeightContrast_0(nativeObj);
     }
 
 
@@ -192,13 +227,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightEntropy()
     //
 
-    //javadoc: PCTSignatures::getWeightEntropy()
-    public  float getWeightEntropy()
-    {
-        
-        float retVal = getWeightEntropy_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightEntropy() {
+        return getWeightEntropy_0(nativeObj);
     }
 
 
@@ -206,13 +241,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightL()
     //
 
-    //javadoc: PCTSignatures::getWeightL()
-    public  float getWeightL()
-    {
-        
-        float retVal = getWeightL_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightL() {
+        return getWeightL_0(nativeObj);
     }
 
 
@@ -220,13 +255,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightX()
     //
 
-    //javadoc: PCTSignatures::getWeightX()
-    public  float getWeightX()
-    {
-        
-        float retVal = getWeightX_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightX() {
+        return getWeightX_0(nativeObj);
     }
 
 
@@ -234,13 +269,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  float cv::xfeatures2d::PCTSignatures::getWeightY()
     //
 
-    //javadoc: PCTSignatures::getWeightY()
-    public  float getWeightY()
-    {
-        
-        float retVal = getWeightY_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @return automatically generated
+     */
+    public float getWeightY() {
+        return getWeightY_0(nativeObj);
     }
 
 
@@ -248,13 +283,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getClusterMinSize()
     //
 
-    //javadoc: PCTSignatures::getClusterMinSize()
-    public  int getClusterMinSize()
-    {
-        
-        int retVal = getClusterMinSize_0(nativeObj);
-        
-        return retVal;
+    /**
+     * This parameter multiplied by the index of iteration gives lower limit for cluster size.
+     * Clusters containing fewer points than specified by the limit have their centroid dismissed
+     * and points are reassigned.
+     * @return automatically generated
+     */
+    public int getClusterMinSize() {
+        return getClusterMinSize_0(nativeObj);
     }
 
 
@@ -262,13 +298,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getDistanceFunction()
     //
 
-    //javadoc: PCTSignatures::getDistanceFunction()
-    public  int getDistanceFunction()
-    {
-        
-        int retVal = getDistanceFunction_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Distance function selector used for measuring distance between two points in k-means.
+     * @return automatically generated
+     */
+    public int getDistanceFunction() {
+        return getDistanceFunction_0(nativeObj);
     }
 
 
@@ -276,13 +311,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getGrayscaleBits()
     //
 
-    //javadoc: PCTSignatures::getGrayscaleBits()
-    public  int getGrayscaleBits()
-    {
-        
-        int retVal = getGrayscaleBits_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Color resolution of the greyscale bitmap represented in allocated bits
+     * (i.e., value 4 means that 16 shades of grey are used).
+     * The greyscale bitmap is used for computing contrast and entropy values.
+     * @return automatically generated
+     */
+    public int getGrayscaleBits() {
+        return getGrayscaleBits_0(nativeObj);
     }
 
 
@@ -290,13 +326,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getInitSeedCount()
     //
 
-    //javadoc: PCTSignatures::getInitSeedCount()
-    public  int getInitSeedCount()
-    {
-        
-        int retVal = getInitSeedCount_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Number of initial seeds (initial number of clusters) for the k-means algorithm.
+     * @return automatically generated
+     */
+    public int getInitSeedCount() {
+        return getInitSeedCount_0(nativeObj);
     }
 
 
@@ -304,13 +339,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getIterationCount()
     //
 
-    //javadoc: PCTSignatures::getIterationCount()
-    public  int getIterationCount()
-    {
-        
-        int retVal = getIterationCount_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Number of iterations of the k-means clustering.
+     * We use fixed number of iterations, since the modified clustering is pruning clusters
+     * (not iteratively refining k clusters).
+     * @return automatically generated
+     */
+    public int getIterationCount() {
+        return getIterationCount_0(nativeObj);
     }
 
 
@@ -318,13 +354,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getMaxClustersCount()
     //
 
-    //javadoc: PCTSignatures::getMaxClustersCount()
-    public  int getMaxClustersCount()
-    {
-        
-        int retVal = getMaxClustersCount_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Maximal number of generated clusters. If the number is exceeded,
+     * the clusters are sorted by their weights and the smallest clusters are cropped.
+     * @return automatically generated
+     */
+    public int getMaxClustersCount() {
+        return getMaxClustersCount_0(nativeObj);
     }
 
 
@@ -332,13 +368,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getSampleCount()
     //
 
-    //javadoc: PCTSignatures::getSampleCount()
-    public  int getSampleCount()
-    {
-        
-        int retVal = getSampleCount_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Number of initial samples taken from the image.
+     * @return automatically generated
+     */
+    public int getSampleCount() {
+        return getSampleCount_0(nativeObj);
     }
 
 
@@ -346,13 +381,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  int cv::xfeatures2d::PCTSignatures::getWindowRadius()
     //
 
-    //javadoc: PCTSignatures::getWindowRadius()
-    public  int getWindowRadius()
-    {
-        
-        int retVal = getWindowRadius_0(nativeObj);
-        
-        return retVal;
+    /**
+     * Size of the texture sampling window used to compute contrast and entropy
+     * (center of the window is always in the pixel selected by x,y coordinates
+     * of the corresponding feature sample).
+     * @return automatically generated
+     */
+    public int getWindowRadius() {
+        return getWindowRadius_0(nativeObj);
     }
 
 
@@ -360,13 +396,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  vector_Point2f cv::xfeatures2d::PCTSignatures::getSamplingPoints()
     //
 
-    //javadoc: PCTSignatures::getSamplingPoints()
-    public  MatOfPoint2f getSamplingPoints()
-    {
-        
-        MatOfPoint2f retVal = MatOfPoint2f.fromNativeAddr(getSamplingPoints_0(nativeObj));
-        
-        return retVal;
+    /**
+     * Initial samples taken from the image.
+     * These sampled features become the input for clustering.
+     * @return automatically generated
+     */
+    public MatOfPoint2f getSamplingPoints() {
+        return MatOfPoint2f.fromNativeAddr(getSamplingPoints_0(nativeObj));
     }
 
 
@@ -374,13 +410,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  vector_int cv::xfeatures2d::PCTSignatures::getInitSeedIndexes()
     //
 
-    //javadoc: PCTSignatures::getInitSeedIndexes()
-    public  MatOfInt getInitSeedIndexes()
-    {
-        
-        MatOfInt retVal = MatOfInt.fromNativeAddr(getInitSeedIndexes_0(nativeObj));
-        
-        return retVal;
+    /**
+     * Initial seeds (initial number of clusters) for the k-means algorithm.
+     * @return automatically generated
+     */
+    public MatOfInt getInitSeedIndexes() {
+        return MatOfInt.fromNativeAddr(getInitSeedIndexes_0(nativeObj));
     }
 
 
@@ -388,13 +423,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::computeSignature(Mat image, Mat& signature)
     //
 
-    //javadoc: PCTSignatures::computeSignature(image, signature)
-    public  void computeSignature(Mat image, Mat signature)
-    {
-        
+    /**
+     * Computes signature of given image.
+     * @param image Input image of CV_8U type.
+     * @param signature Output computed signature.
+     */
+    public void computeSignature(Mat image, Mat signature) {
         computeSignature_0(nativeObj, image.nativeObj, signature.nativeObj);
-        
-        return;
     }
 
 
@@ -402,14 +437,15 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::computeSignatures(vector_Mat images, vector_Mat signatures)
     //
 
-    //javadoc: PCTSignatures::computeSignatures(images, signatures)
-    public  void computeSignatures(List<Mat> images, List<Mat> signatures)
-    {
+    /**
+     * Computes signatures for multiple images in parallel.
+     * @param images Vector of input images of CV_8U type.
+     * @param signatures Vector of computed signatures.
+     */
+    public void computeSignatures(List<Mat> images, List<Mat> signatures) {
         Mat images_mat = Converters.vector_Mat_to_Mat(images);
         Mat signatures_mat = Converters.vector_Mat_to_Mat(signatures);
         computeSignatures_0(nativeObj, images_mat.nativeObj, signatures_mat.nativeObj);
-        
-        return;
     }
 
 
@@ -417,31 +453,49 @@ public class PCTSignatures extends Algorithm {
     // C++: static void cv::xfeatures2d::PCTSignatures::drawSignature(Mat source, Mat signature, Mat& result, float radiusToShorterSideRatio = 1.0 / 8, int borderThickness = 1)
     //
 
-    //javadoc: PCTSignatures::drawSignature(source, signature, result, radiusToShorterSideRatio, borderThickness)
-    public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio, int borderThickness)
-    {
-        
+    /**
+     * Draws signature in the source image and outputs the result.
+     * Signatures are visualized as a circle
+     * with radius based on signature weight
+     * and color based on signature color.
+     * Contrast and entropy are not visualized.
+     * @param source Source image.
+     * @param signature Image signature.
+     * @param result Output result.
+     * @param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+     * @param borderThickness Border thickness of the visualized signature.
+     */
+    public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio, int borderThickness) {
         drawSignature_0(source.nativeObj, signature.nativeObj, result.nativeObj, radiusToShorterSideRatio, borderThickness);
-        
-        return;
     }
 
-    //javadoc: PCTSignatures::drawSignature(source, signature, result, radiusToShorterSideRatio)
-    public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio)
-    {
-        
+    /**
+     * Draws signature in the source image and outputs the result.
+     * Signatures are visualized as a circle
+     * with radius based on signature weight
+     * and color based on signature color.
+     * Contrast and entropy are not visualized.
+     * @param source Source image.
+     * @param signature Image signature.
+     * @param result Output result.
+     * @param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+     */
+    public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio) {
         drawSignature_1(source.nativeObj, signature.nativeObj, result.nativeObj, radiusToShorterSideRatio);
-        
-        return;
     }
 
-    //javadoc: PCTSignatures::drawSignature(source, signature, result)
-    public static void drawSignature(Mat source, Mat signature, Mat result)
-    {
-        
+    /**
+     * Draws signature in the source image and outputs the result.
+     * Signatures are visualized as a circle
+     * with radius based on signature weight
+     * and color based on signature color.
+     * Contrast and entropy are not visualized.
+     * @param source Source image.
+     * @param signature Image signature.
+     * @param result Output result.
+     */
+    public static void drawSignature(Mat source, Mat signature, Mat result) {
         drawSignature_2(source.nativeObj, signature.nativeObj, result.nativeObj);
-        
-        return;
     }
 
 
@@ -449,13 +503,17 @@ public class PCTSignatures extends Algorithm {
     // C++: static void cv::xfeatures2d::PCTSignatures::generateInitPoints(vector_Point2f initPoints, int count, int pointDistribution)
     //
 
-    //javadoc: PCTSignatures::generateInitPoints(initPoints, count, pointDistribution)
-    public static void generateInitPoints(MatOfPoint2f initPoints, int count, int pointDistribution)
-    {
+    /**
+     * Generates initial sampling points according to selected point distribution.
+     * @param initPoints Output vector where the generated points will be saved.
+     * @param count Number of points to generate.
+     * @param pointDistribution Point distribution selector.
+     * Available: UNIFORM, REGULAR, NORMAL.
+     * <b>Note:</b> Generated coordinates are in range [0..1)
+     */
+    public static void generateInitPoints(MatOfPoint2f initPoints, int count, int pointDistribution) {
         Mat initPoints_mat = initPoints;
         generateInitPoints_0(initPoints_mat.nativeObj, count, pointDistribution);
-        
-        return;
     }
 
 
@@ -463,13 +521,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setClusterMinSize(int clusterMinSize)
     //
 
-    //javadoc: PCTSignatures::setClusterMinSize(clusterMinSize)
-    public  void setClusterMinSize(int clusterMinSize)
-    {
-        
+    /**
+     * This parameter multiplied by the index of iteration gives lower limit for cluster size.
+     * Clusters containing fewer points than specified by the limit have their centroid dismissed
+     * and points are reassigned.
+     * @param clusterMinSize automatically generated
+     */
+    public void setClusterMinSize(int clusterMinSize) {
         setClusterMinSize_0(nativeObj, clusterMinSize);
-        
-        return;
     }
 
 
@@ -477,13 +536,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setDistanceFunction(int distanceFunction)
     //
 
-    //javadoc: PCTSignatures::setDistanceFunction(distanceFunction)
-    public  void setDistanceFunction(int distanceFunction)
-    {
-        
+    /**
+     * Distance function selector used for measuring distance between two points in k-means.
+     * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY.
+     * @param distanceFunction automatically generated
+     */
+    public void setDistanceFunction(int distanceFunction) {
         setDistanceFunction_0(nativeObj, distanceFunction);
-        
-        return;
     }
 
 
@@ -491,13 +550,12 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setDropThreshold(float dropThreshold)
     //
 
-    //javadoc: PCTSignatures::setDropThreshold(dropThreshold)
-    public  void setDropThreshold(float dropThreshold)
-    {
-        
+    /**
+     * Remove centroids in k-means whose weight is lesser or equal to given threshold.
+     * @param dropThreshold automatically generated
+     */
+    public void setDropThreshold(float dropThreshold) {
         setDropThreshold_0(nativeObj, dropThreshold);
-        
-        return;
     }
 
 
@@ -505,13 +563,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setGrayscaleBits(int grayscaleBits)
     //
 
-    //javadoc: PCTSignatures::setGrayscaleBits(grayscaleBits)
-    public  void setGrayscaleBits(int grayscaleBits)
-    {
-        
+    /**
+     * Color resolution of the greyscale bitmap represented in allocated bits
+     * (i.e., value 4 means that 16 shades of grey are used).
+     * The greyscale bitmap is used for computing contrast and entropy values.
+     * @param grayscaleBits automatically generated
+     */
+    public void setGrayscaleBits(int grayscaleBits) {
         setGrayscaleBits_0(nativeObj, grayscaleBits);
-        
-        return;
     }
 
 
@@ -519,13 +578,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setInitSeedIndexes(vector_int initSeedIndexes)
     //
 
-    //javadoc: PCTSignatures::setInitSeedIndexes(initSeedIndexes)
-    public  void setInitSeedIndexes(MatOfInt initSeedIndexes)
-    {
+    /**
+     * Initial seed indexes for the k-means algorithm.
+     * @param initSeedIndexes automatically generated
+     */
+    public void setInitSeedIndexes(MatOfInt initSeedIndexes) {
         Mat initSeedIndexes_mat = initSeedIndexes;
         setInitSeedIndexes_0(nativeObj, initSeedIndexes_mat.nativeObj);
-        
-        return;
     }
 
 
@@ -533,13 +592,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setIterationCount(int iterationCount)
     //
 
-    //javadoc: PCTSignatures::setIterationCount(iterationCount)
-    public  void setIterationCount(int iterationCount)
-    {
-        
+    /**
+     * Number of iterations of the k-means clustering.
+     * We use fixed number of iterations, since the modified clustering is pruning clusters
+     * (not iteratively refining k clusters).
+     * @param iterationCount automatically generated
+     */
+    public void setIterationCount(int iterationCount) {
         setIterationCount_0(nativeObj, iterationCount);
-        
-        return;
     }
 
 
@@ -547,13 +607,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setJoiningDistance(float joiningDistance)
     //
 
-    //javadoc: PCTSignatures::setJoiningDistance(joiningDistance)
-    public  void setJoiningDistance(float joiningDistance)
-    {
-        
+    /**
+     * Threshold euclidean distance between two centroids.
+     * If two cluster centers are closer than this distance,
+     * one of the centroid is dismissed and points are reassigned.
+     * @param joiningDistance automatically generated
+     */
+    public void setJoiningDistance(float joiningDistance) {
         setJoiningDistance_0(nativeObj, joiningDistance);
-        
-        return;
     }
 
 
@@ -561,13 +622,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setMaxClustersCount(int maxClustersCount)
     //
 
-    //javadoc: PCTSignatures::setMaxClustersCount(maxClustersCount)
-    public  void setMaxClustersCount(int maxClustersCount)
-    {
-        
+    /**
+     * Maximal number of generated clusters. If the number is exceeded,
+     * the clusters are sorted by their weights and the smallest clusters are cropped.
+     * @param maxClustersCount automatically generated
+     */
+    public void setMaxClustersCount(int maxClustersCount) {
         setMaxClustersCount_0(nativeObj, maxClustersCount);
-        
-        return;
     }
 
 
@@ -575,13 +636,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setSamplingPoints(vector_Point2f samplingPoints)
     //
 
-    //javadoc: PCTSignatures::setSamplingPoints(samplingPoints)
-    public  void setSamplingPoints(MatOfPoint2f samplingPoints)
-    {
+    /**
+     * Sets sampling points used to sample the input image.
+     * @param samplingPoints Vector of sampling points in range [0..1)
+     * <b>Note:</b> Number of sampling points must be greater or equal to clusterization seed count.
+     */
+    public void setSamplingPoints(MatOfPoint2f samplingPoints) {
         Mat samplingPoints_mat = samplingPoints;
         setSamplingPoints_0(nativeObj, samplingPoints_mat.nativeObj);
-        
-        return;
     }
 
 
@@ -589,13 +651,22 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setTranslation(int idx, float value)
     //
 
-    //javadoc: PCTSignatures::setTranslation(idx, value)
-    public  void setTranslation(int idx, float value)
-    {
-        
+    /**
+     * Translations of the individual axes of the feature space.
+     * @param idx ID of the translation
+     * @param value Value of the translation
+     * <b>Note:</b>
+     * WEIGHT_IDX = 0;
+     * X_IDX = 1;
+     * Y_IDX = 2;
+     * L_IDX = 3;
+     * A_IDX = 4;
+     * B_IDX = 5;
+     * CONTRAST_IDX = 6;
+     * ENTROPY_IDX = 7;
+     */
+    public void setTranslation(int idx, float value) {
         setTranslation_0(nativeObj, idx, value);
-        
-        return;
     }
 
 
@@ -603,13 +674,22 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setTranslations(vector_float translations)
     //
 
-    //javadoc: PCTSignatures::setTranslations(translations)
-    public  void setTranslations(MatOfFloat translations)
-    {
+    /**
+     * Translations of the individual axes of the feature space.
+     * @param translations Values of all translations.
+     * <b>Note:</b>
+     * WEIGHT_IDX = 0;
+     * X_IDX = 1;
+     * Y_IDX = 2;
+     * L_IDX = 3;
+     * A_IDX = 4;
+     * B_IDX = 5;
+     * CONTRAST_IDX = 6;
+     * ENTROPY_IDX = 7;
+     */
+    public void setTranslations(MatOfFloat translations) {
         Mat translations_mat = translations;
         setTranslations_0(nativeObj, translations_mat.nativeObj);
-        
-        return;
     }
 
 
@@ -617,13 +697,22 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeight(int idx, float value)
     //
 
-    //javadoc: PCTSignatures::setWeight(idx, value)
-    public  void setWeight(int idx, float value)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
+     * @param idx ID of the weight
+     * @param value Value of the weight
+     * <b>Note:</b>
+     * WEIGHT_IDX = 0;
+     * X_IDX = 1;
+     * Y_IDX = 2;
+     * L_IDX = 3;
+     * A_IDX = 4;
+     * B_IDX = 5;
+     * CONTRAST_IDX = 6;
+     * ENTROPY_IDX = 7;
+     */
+    public void setWeight(int idx, float value) {
         setWeight_0(nativeObj, idx, value);
-        
-        return;
     }
 
 
@@ -631,13 +720,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightA(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightA(weight)
-    public  void setWeightA(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightA(float weight) {
         setWeightA_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -645,13 +734,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightB(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightB(weight)
-    public  void setWeightB(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightB(float weight) {
         setWeightB_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -659,13 +748,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightContrast(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightContrast(weight)
-    public  void setWeightContrast(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightContrast(float weight) {
         setWeightContrast_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -673,13 +762,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightEntropy(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightEntropy(weight)
-    public  void setWeightEntropy(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightEntropy(float weight) {
         setWeightEntropy_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -687,13 +776,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightL(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightL(weight)
-    public  void setWeightL(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightL(float weight) {
         setWeightL_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -701,13 +790,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightX(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightX(weight)
-    public  void setWeightX(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightX(float weight) {
         setWeightX_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -715,13 +804,13 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeightY(float weight)
     //
 
-    //javadoc: PCTSignatures::setWeightY(weight)
-    public  void setWeightY(float weight)
-    {
-        
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+     * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
+     * @param weight automatically generated
+     */
+    public void setWeightY(float weight) {
         setWeightY_0(nativeObj, weight);
-        
-        return;
     }
 
 
@@ -729,13 +818,22 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWeights(vector_float weights)
     //
 
-    //javadoc: PCTSignatures::setWeights(weights)
-    public  void setWeights(MatOfFloat weights)
-    {
+    /**
+     * Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
+     * @param weights Values of all weights.
+     * <b>Note:</b>
+     * WEIGHT_IDX = 0;
+     * X_IDX = 1;
+     * Y_IDX = 2;
+     * L_IDX = 3;
+     * A_IDX = 4;
+     * B_IDX = 5;
+     * CONTRAST_IDX = 6;
+     * ENTROPY_IDX = 7;
+     */
+    public void setWeights(MatOfFloat weights) {
         Mat weights_mat = weights;
         setWeights_0(nativeObj, weights_mat.nativeObj);
-        
-        return;
     }
 
 
@@ -743,13 +841,14 @@ public class PCTSignatures extends Algorithm {
     // C++:  void cv::xfeatures2d::PCTSignatures::setWindowRadius(int radius)
     //
 
-    //javadoc: PCTSignatures::setWindowRadius(radius)
-    public  void setWindowRadius(int radius)
-    {
-        
+    /**
+     * Size of the texture sampling window used to compute contrast and entropy
+     * (center of the window is always in the pixel selected by x,y coordinates
+     * of the corresponding feature sample).
+     * @param radius automatically generated
+     */
+    public void setWindowRadius(int radius) {
         setWindowRadius_0(nativeObj, radius);
-        
-        return;
     }
 
 

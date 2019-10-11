@@ -12,7 +12,6 @@ import org.opencv.bgsegm.SyntheticSequenceGenerator;
 import org.opencv.core.Mat;
 
 // C++: class Bgsegm
-//javadoc: Bgsegm
 
 public class Bgsegm {
 
@@ -26,49 +25,59 @@ public class Bgsegm {
     // C++:  Ptr_BackgroundSubtractorCNT cv::bgsegm::createBackgroundSubtractorCNT(int minPixelStability = 15, bool useHistory = true, int maxPixelStability = 15*60, bool isParallel = true)
     //
 
-    //javadoc: createBackgroundSubtractorCNT(minPixelStability, useHistory, maxPixelStability, isParallel)
-    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory, int maxPixelStability, boolean isParallel)
-    {
-        
-        BackgroundSubtractorCNT retVal = BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_0(minPixelStability, useHistory, maxPixelStability, isParallel));
-        
-        return retVal;
+    /**
+     * Creates a CNT Background Subtractor
+     *
+     * @param minPixelStability number of frames with same pixel color to consider stable
+     * @param useHistory determines if we're giving a pixel credit for being stable for a long time
+     * @param maxPixelStability maximum allowed credit for a pixel in history
+     * @param isParallel determines if we're parallelizing the algorithm
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory, int maxPixelStability, boolean isParallel) {
+        return BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_0(minPixelStability, useHistory, maxPixelStability, isParallel));
     }
 
-    //javadoc: createBackgroundSubtractorCNT(minPixelStability, useHistory, maxPixelStability)
-    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory, int maxPixelStability)
-    {
-        
-        BackgroundSubtractorCNT retVal = BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_1(minPixelStability, useHistory, maxPixelStability));
-        
-        return retVal;
+    /**
+     * Creates a CNT Background Subtractor
+     *
+     * @param minPixelStability number of frames with same pixel color to consider stable
+     * @param useHistory determines if we're giving a pixel credit for being stable for a long time
+     * @param maxPixelStability maximum allowed credit for a pixel in history
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory, int maxPixelStability) {
+        return BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_1(minPixelStability, useHistory, maxPixelStability));
     }
 
-    //javadoc: createBackgroundSubtractorCNT(minPixelStability, useHistory)
-    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory)
-    {
-        
-        BackgroundSubtractorCNT retVal = BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_2(minPixelStability, useHistory));
-        
-        return retVal;
+    /**
+     * Creates a CNT Background Subtractor
+     *
+     * @param minPixelStability number of frames with same pixel color to consider stable
+     * @param useHistory determines if we're giving a pixel credit for being stable for a long time
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, boolean useHistory) {
+        return BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_2(minPixelStability, useHistory));
     }
 
-    //javadoc: createBackgroundSubtractorCNT(minPixelStability)
-    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability)
-    {
-        
-        BackgroundSubtractorCNT retVal = BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_3(minPixelStability));
-        
-        return retVal;
+    /**
+     * Creates a CNT Background Subtractor
+     *
+     * @param minPixelStability number of frames with same pixel color to consider stable
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability) {
+        return BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_3(minPixelStability));
     }
 
-    //javadoc: createBackgroundSubtractorCNT()
-    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT()
-    {
-        
-        BackgroundSubtractorCNT retVal = BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_4());
-        
-        return retVal;
+    /**
+     * Creates a CNT Background Subtractor
+     *
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorCNT createBackgroundSubtractorCNT() {
+        return BackgroundSubtractorCNT.__fromPtr__(createBackgroundSubtractorCNT_4());
     }
 
 
@@ -76,31 +85,34 @@ public class Bgsegm {
     // C++:  Ptr_BackgroundSubtractorGMG cv::bgsegm::createBackgroundSubtractorGMG(int initializationFrames = 120, double decisionThreshold = 0.8)
     //
 
-    //javadoc: createBackgroundSubtractorGMG(initializationFrames, decisionThreshold)
-    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames, double decisionThreshold)
-    {
-        
-        BackgroundSubtractorGMG retVal = BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_0(initializationFrames, decisionThreshold));
-        
-        return retVal;
+    /**
+     * Creates a GMG Background Subtractor
+     *
+     * @param initializationFrames number of frames used to initialize the background models.
+     * @param decisionThreshold Threshold value, above which it is marked foreground, else background.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames, double decisionThreshold) {
+        return BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_0(initializationFrames, decisionThreshold));
     }
 
-    //javadoc: createBackgroundSubtractorGMG(initializationFrames)
-    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames)
-    {
-        
-        BackgroundSubtractorGMG retVal = BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_1(initializationFrames));
-        
-        return retVal;
+    /**
+     * Creates a GMG Background Subtractor
+     *
+     * @param initializationFrames number of frames used to initialize the background models.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames) {
+        return BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_1(initializationFrames));
     }
 
-    //javadoc: createBackgroundSubtractorGMG()
-    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG()
-    {
-        
-        BackgroundSubtractorGMG retVal = BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_2());
-        
-        return retVal;
+    /**
+     * Creates a GMG Background Subtractor
+     *
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGMG createBackgroundSubtractorGMG() {
+        return BackgroundSubtractorGMG.__fromPtr__(createBackgroundSubtractorGMG_2());
     }
 
 
@@ -108,112 +120,202 @@ public class Bgsegm {
     // C++:  Ptr_BackgroundSubtractorGSOC cv::bgsegm::createBackgroundSubtractorGSOC(int mc = LSBP_CAMERA_MOTION_COMPENSATION_NONE, int nSamples = 20, float replaceRate = 0.003f, float propagationRate = 0.01f, int hitsThreshold = 32, float alpha = 0.01f, float beta = 0.0022f, float blinkingSupressionDecay = 0.1f, float blinkingSupressionMultiplier = 0.1f, float noiseRemovalThresholdFacBG = 0.0004f, float noiseRemovalThresholdFacFG = 0.0008f)
     //
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_0(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @param beta Bias coefficient for threshold.
+     * @param blinkingSupressionDecay Blinking supression decay factor.
+     * @param blinkingSupressionMultiplier Blinking supression multiplier.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_0(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_1(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @param beta Bias coefficient for threshold.
+     * @param blinkingSupressionDecay Blinking supression decay factor.
+     * @param blinkingSupressionMultiplier Blinking supression multiplier.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_1(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier, noiseRemovalThresholdFacBG));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_2(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @param beta Bias coefficient for threshold.
+     * @param blinkingSupressionDecay Blinking supression decay factor.
+     * @param blinkingSupressionMultiplier Blinking supression multiplier.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_2(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay, blinkingSupressionMultiplier));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_3(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @param beta Bias coefficient for threshold.
+     * @param blinkingSupressionDecay Blinking supression decay factor.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_3(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta, blinkingSupressionDecay));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_4(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @param beta Bias coefficient for threshold.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_4(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha, beta));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_5(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @param alpha Scale coefficient for threshold.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_5(mc, nSamples, replaceRate, propagationRate, hitsThreshold, alpha));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate, hitsThreshold)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_6(mc, nSamples, replaceRate, propagationRate, hitsThreshold));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_6(mc, nSamples, replaceRate, propagationRate, hitsThreshold));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate, propagationRate)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_7(mc, nSamples, replaceRate, propagationRate));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @param propagationRate Probability of propagating to neighbors.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_7(mc, nSamples, replaceRate, propagationRate));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples, replaceRate)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_8(mc, nSamples, replaceRate));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_8(mc, nSamples, replaceRate));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc, nSamples)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_9(mc, nSamples));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_9(mc, nSamples));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC(mc)
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc)
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_10(mc));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc) {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_10(mc));
     }
 
-    //javadoc: createBackgroundSubtractorGSOC()
-    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC()
-    {
-        
-        BackgroundSubtractorGSOC retVal = BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_11());
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorGSOC algorithm.
+     *
+     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     *
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC() {
+        return BackgroundSubtractorGSOC.__fromPtr__(createBackgroundSubtractorGSOC_11());
     }
 
 
@@ -221,130 +323,249 @@ public class Bgsegm {
     // C++:  Ptr_BackgroundSubtractorLSBP cv::bgsegm::createBackgroundSubtractorLSBP(int mc = LSBP_CAMERA_MOTION_COMPENSATION_NONE, int nSamples = 20, int LSBPRadius = 16, float Tlower = 2.0f, float Tupper = 32.0f, float Tinc = 1.0f, float Tdec = 0.05f, float Rscale = 10.0f, float Rincdec = 0.005f, float noiseRemovalThresholdFacBG = 0.0004f, float noiseRemovalThresholdFacFG = 0.0008f, int LSBPthreshold = 8, int minCount = 2)
     //
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold, minCount)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold, int minCount)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_0(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold, minCount));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @param Rincdec Increase/Decrease step for threshold values.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+     * @param LSBPthreshold Threshold for LSBP binary string.
+     * @param minCount Minimal number of matches for sample to be considered as foreground.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold, int minCount) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_0(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold, minCount));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_1(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @param Rincdec Increase/Decrease step for threshold values.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+     * @param LSBPthreshold Threshold for LSBP binary string.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_1(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG, LSBPthreshold));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_2(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @param Rincdec Increase/Decrease step for threshold values.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_2(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG, noiseRemovalThresholdFacFG));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_3(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @param Rincdec Increase/Decrease step for threshold values.
+     * @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_3(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec, noiseRemovalThresholdFacBG));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_4(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @param Rincdec Increase/Decrease step for threshold values.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_4(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale, Rincdec));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_5(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @param Rscale Scale coefficient for threshold values.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_5(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec, Rscale));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_6(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_6(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc, Tdec));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_7(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_7(mc, nSamples, LSBPRadius, Tlower, Tupper, Tinc));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower, Tupper)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_8(mc, nSamples, LSBPRadius, Tlower, Tupper));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_8(mc, nSamples, LSBPRadius, Tlower, Tupper));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius, Tlower)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_9(mc, nSamples, LSBPRadius, Tlower));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_9(mc, nSamples, LSBPRadius, Tlower));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples, LSBPRadius)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_10(mc, nSamples, LSBPRadius));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @param LSBPRadius LSBP descriptor radius.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_10(mc, nSamples, LSBPRadius));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc, nSamples)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_11(mc, nSamples));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @param nSamples Number of samples to maintain at each point of the frame.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_11(mc, nSamples));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP(mc)
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc)
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_12(mc));
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @param mc Whether to use camera motion compensation.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc) {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_12(mc));
     }
 
-    //javadoc: createBackgroundSubtractorLSBP()
-    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP()
-    {
-        
-        BackgroundSubtractorLSBP retVal = BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_13());
-        
-        return retVal;
+    /**
+     * Creates an instance of BackgroundSubtractorLSBP algorithm.
+     *
+     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     *
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP() {
+        return BackgroundSubtractorLSBP.__fromPtr__(createBackgroundSubtractorLSBP_13());
     }
 
 
@@ -352,49 +573,64 @@ public class Bgsegm {
     // C++:  Ptr_BackgroundSubtractorMOG cv::bgsegm::createBackgroundSubtractorMOG(int history = 200, int nmixtures = 5, double backgroundRatio = 0.7, double noiseSigma = 0)
     //
 
-    //javadoc: createBackgroundSubtractorMOG(history, nmixtures, backgroundRatio, noiseSigma)
-    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio, double noiseSigma)
-    {
-        
-        BackgroundSubtractorMOG retVal = BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_0(history, nmixtures, backgroundRatio, noiseSigma));
-        
-        return retVal;
+    /**
+     * Creates mixture-of-gaussian background subtractor
+     *
+     * @param history Length of the history.
+     * @param nmixtures Number of Gaussian mixtures.
+     * @param backgroundRatio Background ratio.
+     * @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+     * means some automatic value.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio, double noiseSigma) {
+        return BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_0(history, nmixtures, backgroundRatio, noiseSigma));
     }
 
-    //javadoc: createBackgroundSubtractorMOG(history, nmixtures, backgroundRatio)
-    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio)
-    {
-        
-        BackgroundSubtractorMOG retVal = BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_1(history, nmixtures, backgroundRatio));
-        
-        return retVal;
+    /**
+     * Creates mixture-of-gaussian background subtractor
+     *
+     * @param history Length of the history.
+     * @param nmixtures Number of Gaussian mixtures.
+     * @param backgroundRatio Background ratio.
+     * means some automatic value.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio) {
+        return BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_1(history, nmixtures, backgroundRatio));
     }
 
-    //javadoc: createBackgroundSubtractorMOG(history, nmixtures)
-    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures)
-    {
-        
-        BackgroundSubtractorMOG retVal = BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_2(history, nmixtures));
-        
-        return retVal;
+    /**
+     * Creates mixture-of-gaussian background subtractor
+     *
+     * @param history Length of the history.
+     * @param nmixtures Number of Gaussian mixtures.
+     * means some automatic value.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures) {
+        return BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_2(history, nmixtures));
     }
 
-    //javadoc: createBackgroundSubtractorMOG(history)
-    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history)
-    {
-        
-        BackgroundSubtractorMOG retVal = BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_3(history));
-        
-        return retVal;
+    /**
+     * Creates mixture-of-gaussian background subtractor
+     *
+     * @param history Length of the history.
+     * means some automatic value.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history) {
+        return BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_3(history));
     }
 
-    //javadoc: createBackgroundSubtractorMOG()
-    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG()
-    {
-        
-        BackgroundSubtractorMOG retVal = BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_4());
-        
-        return retVal;
+    /**
+     * Creates mixture-of-gaussian background subtractor
+     *
+     * means some automatic value.
+     * @return automatically generated
+     */
+    public static BackgroundSubtractorMOG createBackgroundSubtractorMOG() {
+        return BackgroundSubtractorMOG.__fromPtr__(createBackgroundSubtractorMOG_4());
     }
 
 
@@ -402,49 +638,69 @@ public class Bgsegm {
     // C++:  Ptr_SyntheticSequenceGenerator cv::bgsegm::createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude = 2.0, double wavelength = 20.0, double wavespeed = 0.2, double objspeed = 6.0)
     //
 
-    //javadoc: createSyntheticSequenceGenerator(background, object, amplitude, wavelength, wavespeed, objspeed)
-    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength, double wavespeed, double objspeed)
-    {
-        
-        SyntheticSequenceGenerator retVal = SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_0(background.nativeObj, object.nativeObj, amplitude, wavelength, wavespeed, objspeed));
-        
-        return retVal;
+    /**
+     * Creates an instance of SyntheticSequenceGenerator.
+     *
+     * @param background Background image for object.
+     * @param object Object image which will move slowly over the background.
+     * @param amplitude Amplitude of wave distortion applied to background.
+     * @param wavelength Length of waves in distortion applied to background.
+     * @param wavespeed How fast waves will move.
+     * @param objspeed How fast object will fly over background.
+     * @return automatically generated
+     */
+    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength, double wavespeed, double objspeed) {
+        return SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_0(background.nativeObj, object.nativeObj, amplitude, wavelength, wavespeed, objspeed));
     }
 
-    //javadoc: createSyntheticSequenceGenerator(background, object, amplitude, wavelength, wavespeed)
-    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength, double wavespeed)
-    {
-        
-        SyntheticSequenceGenerator retVal = SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_1(background.nativeObj, object.nativeObj, amplitude, wavelength, wavespeed));
-        
-        return retVal;
+    /**
+     * Creates an instance of SyntheticSequenceGenerator.
+     *
+     * @param background Background image for object.
+     * @param object Object image which will move slowly over the background.
+     * @param amplitude Amplitude of wave distortion applied to background.
+     * @param wavelength Length of waves in distortion applied to background.
+     * @param wavespeed How fast waves will move.
+     * @return automatically generated
+     */
+    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength, double wavespeed) {
+        return SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_1(background.nativeObj, object.nativeObj, amplitude, wavelength, wavespeed));
     }
 
-    //javadoc: createSyntheticSequenceGenerator(background, object, amplitude, wavelength)
-    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength)
-    {
-        
-        SyntheticSequenceGenerator retVal = SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_2(background.nativeObj, object.nativeObj, amplitude, wavelength));
-        
-        return retVal;
+    /**
+     * Creates an instance of SyntheticSequenceGenerator.
+     *
+     * @param background Background image for object.
+     * @param object Object image which will move slowly over the background.
+     * @param amplitude Amplitude of wave distortion applied to background.
+     * @param wavelength Length of waves in distortion applied to background.
+     * @return automatically generated
+     */
+    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude, double wavelength) {
+        return SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_2(background.nativeObj, object.nativeObj, amplitude, wavelength));
     }
 
-    //javadoc: createSyntheticSequenceGenerator(background, object, amplitude)
-    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude)
-    {
-        
-        SyntheticSequenceGenerator retVal = SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_3(background.nativeObj, object.nativeObj, amplitude));
-        
-        return retVal;
+    /**
+     * Creates an instance of SyntheticSequenceGenerator.
+     *
+     * @param background Background image for object.
+     * @param object Object image which will move slowly over the background.
+     * @param amplitude Amplitude of wave distortion applied to background.
+     * @return automatically generated
+     */
+    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object, double amplitude) {
+        return SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_3(background.nativeObj, object.nativeObj, amplitude));
     }
 
-    //javadoc: createSyntheticSequenceGenerator(background, object)
-    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object)
-    {
-        
-        SyntheticSequenceGenerator retVal = SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_4(background.nativeObj, object.nativeObj));
-        
-        return retVal;
+    /**
+     * Creates an instance of SyntheticSequenceGenerator.
+     *
+     * @param background Background image for object.
+     * @param object Object image which will move slowly over the background.
+     * @return automatically generated
+     */
+    public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat object) {
+        return SyntheticSequenceGenerator.__fromPtr__(createSyntheticSequenceGenerator_4(background.nativeObj, object.nativeObj));
     }
 
 

@@ -6,7 +6,6 @@ package org.opencv.face;
 import org.opencv.face.FacemarkTrain;
 
 // C++: class FacemarkAAM
-//javadoc: FacemarkAAM
 
 public class FacemarkAAM extends FacemarkTrain {
 

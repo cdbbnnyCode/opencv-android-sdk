@@ -11,8 +11,9 @@ import org.opencv.core.MatOfRect;
 import org.opencv.utils.Converters;
 
 // C++: class TextDetector
-//javadoc: TextDetector
-
+/**
+ * An abstract class providing interface for text detection algorithms
+ */
 public class TextDetector {
 
     protected final long nativeObj;
@@ -27,14 +28,17 @@ public class TextDetector {
     // C++:  void cv::text::TextDetector::detect(Mat inputImage, vector_Rect& Bbox, vector_float& confidence)
     //
 
-    //javadoc: TextDetector::detect(inputImage, Bbox, confidence)
-    public  void detect(Mat inputImage, MatOfRect Bbox, MatOfFloat confidence)
-    {
+    /**
+     * Method that provides a quick and simple interface to detect text inside an image
+     *
+     *     @param inputImage an image to process
+     *     @param Bbox a vector of Rect that will store the detected word bounding box
+     *     @param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
+     */
+    public void detect(Mat inputImage, MatOfRect Bbox, MatOfFloat confidence) {
         Mat Bbox_mat = Bbox;
         Mat confidence_mat = confidence;
         detect_0(nativeObj, inputImage.nativeObj, Bbox_mat.nativeObj, confidence_mat.nativeObj);
-        
-        return;
     }
 
 

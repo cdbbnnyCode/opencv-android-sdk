@@ -6,8 +6,11 @@ package org.opencv.bgsegm;
 import org.opencv.video.BackgroundSubtractor;
 
 // C++: class BackgroundSubtractorMOG
-//javadoc: BackgroundSubtractorMOG
-
+/**
+ * Gaussian Mixture-based Background/Foreground Segmentation Algorithm.
+ *
+ * The class implements the algorithm described in CITE: KB2001 .
+ */
 public class BackgroundSubtractorMOG extends BackgroundSubtractor {
 
     protected BackgroundSubtractorMOG(long addr) { super(addr); }
@@ -19,13 +22,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorMOG::getBackgroundRatio()
     //
 
-    //javadoc: BackgroundSubtractorMOG::getBackgroundRatio()
-    public  double getBackgroundRatio()
-    {
-        
-        double retVal = getBackgroundRatio_0(nativeObj);
-        
-        return retVal;
+    public double getBackgroundRatio() {
+        return getBackgroundRatio_0(nativeObj);
     }
 
 
@@ -33,13 +31,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  double cv::bgsegm::BackgroundSubtractorMOG::getNoiseSigma()
     //
 
-    //javadoc: BackgroundSubtractorMOG::getNoiseSigma()
-    public  double getNoiseSigma()
-    {
-        
-        double retVal = getNoiseSigma_0(nativeObj);
-        
-        return retVal;
+    public double getNoiseSigma() {
+        return getNoiseSigma_0(nativeObj);
     }
 
 
@@ -47,13 +40,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorMOG::getHistory()
     //
 
-    //javadoc: BackgroundSubtractorMOG::getHistory()
-    public  int getHistory()
-    {
-        
-        int retVal = getHistory_0(nativeObj);
-        
-        return retVal;
+    public int getHistory() {
+        return getHistory_0(nativeObj);
     }
 
 
@@ -61,13 +49,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  int cv::bgsegm::BackgroundSubtractorMOG::getNMixtures()
     //
 
-    //javadoc: BackgroundSubtractorMOG::getNMixtures()
-    public  int getNMixtures()
-    {
-        
-        int retVal = getNMixtures_0(nativeObj);
-        
-        return retVal;
+    public int getNMixtures() {
+        return getNMixtures_0(nativeObj);
     }
 
 
@@ -75,13 +58,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorMOG::setBackgroundRatio(double backgroundRatio)
     //
 
-    //javadoc: BackgroundSubtractorMOG::setBackgroundRatio(backgroundRatio)
-    public  void setBackgroundRatio(double backgroundRatio)
-    {
-        
+    public void setBackgroundRatio(double backgroundRatio) {
         setBackgroundRatio_0(nativeObj, backgroundRatio);
-        
-        return;
     }
 
 
@@ -89,13 +67,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorMOG::setHistory(int nframes)
     //
 
-    //javadoc: BackgroundSubtractorMOG::setHistory(nframes)
-    public  void setHistory(int nframes)
-    {
-        
+    public void setHistory(int nframes) {
         setHistory_0(nativeObj, nframes);
-        
-        return;
     }
 
 
@@ -103,13 +76,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorMOG::setNMixtures(int nmix)
     //
 
-    //javadoc: BackgroundSubtractorMOG::setNMixtures(nmix)
-    public  void setNMixtures(int nmix)
-    {
-        
+    public void setNMixtures(int nmix) {
         setNMixtures_0(nativeObj, nmix);
-        
-        return;
     }
 
 
@@ -117,13 +85,8 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
     // C++:  void cv::bgsegm::BackgroundSubtractorMOG::setNoiseSigma(double noiseSigma)
     //
 
-    //javadoc: BackgroundSubtractorMOG::setNoiseSigma(noiseSigma)
-    public  void setNoiseSigma(double noiseSigma)
-    {
-        
+    public void setNoiseSigma(double noiseSigma) {
         setNoiseSigma_0(nativeObj, noiseSigma);
-        
-        return;
     }
 
 

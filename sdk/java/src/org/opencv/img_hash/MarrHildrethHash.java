@@ -3,11 +3,15 @@
 //
 package org.opencv.img_hash;
 
+import org.opencv.img_hash.ImgHashBase;
 import org.opencv.img_hash.MarrHildrethHash;
 
 // C++: class MarrHildrethHash
-//javadoc: MarrHildrethHash
-
+/**
+ * Marr-Hildreth Operator Based Hash, slowest but more discriminative.
+ *
+ * See CITE: zauner2010implementation for details.
+ */
 public class MarrHildrethHash extends ImgHashBase {
 
     protected MarrHildrethHash(long addr) { super(addr); }
@@ -19,31 +23,28 @@ public class MarrHildrethHash extends ImgHashBase {
     // C++: static Ptr_MarrHildrethHash cv::img_hash::MarrHildrethHash::create(float alpha = 2.0f, float scale = 1.0f)
     //
 
-    //javadoc: MarrHildrethHash::create(alpha, scale)
-    public static MarrHildrethHash create(float alpha, float scale)
-    {
-        
-        MarrHildrethHash retVal = MarrHildrethHash.__fromPtr__(create_0(alpha, scale));
-        
-        return retVal;
+    /**
+     * @param alpha int scale factor for marr wavelet (default=2).
+     *         @param scale int level of scale factor (default = 1)
+     * @return automatically generated
+     */
+    public static MarrHildrethHash create(float alpha, float scale) {
+        return MarrHildrethHash.__fromPtr__(create_0(alpha, scale));
     }
 
-    //javadoc: MarrHildrethHash::create(alpha)
-    public static MarrHildrethHash create(float alpha)
-    {
-        
-        MarrHildrethHash retVal = MarrHildrethHash.__fromPtr__(create_1(alpha));
-        
-        return retVal;
+    /**
+     * @param alpha int scale factor for marr wavelet (default=2).
+     * @return automatically generated
+     */
+    public static MarrHildrethHash create(float alpha) {
+        return MarrHildrethHash.__fromPtr__(create_1(alpha));
     }
 
-    //javadoc: MarrHildrethHash::create()
-    public static MarrHildrethHash create()
-    {
-        
-        MarrHildrethHash retVal = MarrHildrethHash.__fromPtr__(create_2());
-        
-        return retVal;
+    /**
+     * @return automatically generated
+     */
+    public static MarrHildrethHash create() {
+        return MarrHildrethHash.__fromPtr__(create_2());
     }
 
 
@@ -51,13 +52,12 @@ public class MarrHildrethHash extends ImgHashBase {
     // C++:  float cv::img_hash::MarrHildrethHash::getAlpha()
     //
 
-    //javadoc: MarrHildrethHash::getAlpha()
-    public  float getAlpha()
-    {
-        
-        float retVal = getAlpha_0(nativeObj);
-        
-        return retVal;
+    /**
+     * self explain
+     * @return automatically generated
+     */
+    public float getAlpha() {
+        return getAlpha_0(nativeObj);
     }
 
 
@@ -65,13 +65,12 @@ public class MarrHildrethHash extends ImgHashBase {
     // C++:  float cv::img_hash::MarrHildrethHash::getScale()
     //
 
-    //javadoc: MarrHildrethHash::getScale()
-    public  float getScale()
-    {
-        
-        float retVal = getScale_0(nativeObj);
-        
-        return retVal;
+    /**
+     * self explain
+     * @return automatically generated
+     */
+    public float getScale() {
+        return getScale_0(nativeObj);
     }
 
 
@@ -79,13 +78,13 @@ public class MarrHildrethHash extends ImgHashBase {
     // C++:  void cv::img_hash::MarrHildrethHash::setKernelParam(float alpha, float scale)
     //
 
-    //javadoc: MarrHildrethHash::setKernelParam(alpha, scale)
-    public  void setKernelParam(float alpha, float scale)
-    {
-        
+    /**
+     * Set Mh kernel parameters
+     *         @param alpha int scale factor for marr wavelet (default=2).
+     *         @param scale int level of scale factor (default = 1)
+     */
+    public void setKernelParam(float alpha, float scale) {
         setKernelParam_0(nativeObj, alpha, scale);
-        
-        return;
     }
 
 

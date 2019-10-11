@@ -7,8 +7,66 @@ import org.opencv.features2d.Feature2D;
 import org.opencv.xfeatures2d.SURF;
 
 // C++: class SURF
-//javadoc: SURF
-
+/**
+ * Class for extracting Speeded Up Robust Features from an image CITE: Bay06 .
+ *
+ * The algorithm parameters:
+ * <ul>
+ *   <li>
+ *    member int extended
+ *   <ul>
+ *     <li>
+ *        0 means that the basic descriptors (64 elements each) shall be computed
+ *     </li>
+ *     <li>
+ *        1 means that the extended descriptors (128 elements each) shall be computed
+ *     </li>
+ *   </ul>
+ *   <li>
+ *    member int upright
+ *   <ul>
+ *     <li>
+ *        0 means that detector computes orientation of each feature.
+ *     </li>
+ *     <li>
+ *        1 means that the orientation is not computed (which is much, much faster). For example,
+ * if you match images from a stereo pair, or do image stitching, the matched features
+ * likely have very similar angles, and you can speed up feature extraction by setting
+ * upright=1.
+ *     </li>
+ *   </ul>
+ *   <li>
+ *    member double hessianThreshold
+ * Threshold for the keypoint detector. Only features, whose hessian is larger than
+ * hessianThreshold are retained by the detector. Therefore, the larger the value, the less
+ * keypoints you will get. A good default value could be from 300 to 500, depending from the
+ * image contrast.
+ *   </li>
+ *   <li>
+ *    member int nOctaves
+ * The number of a gaussian pyramid octaves that the detector uses. It is set to 4 by default.
+ * If you want to get very large features, use the larger value. If you want just small
+ * features, decrease it.
+ *   </li>
+ *   <li>
+ *    member int nOctaveLayers
+ * The number of images within each octave of a gaussian pyramid. It is set to 2 by default.
+ *   </li>
+ * </ul>
+ * <b>Note:</b>
+ * <ul>
+ *   <li>
+ *       An example using the SURF feature detector can be found at
+ *         opencv_source_code/samples/cpp/generic_descriptor_match.cpp
+ *   <ul>
+ *     <li>
+ *        Another example using the SURF feature detector, extractor and matcher can be found at
+ *         opencv_source_code/samples/cpp/matcher_simple.cpp
+ *     </li>
+ *   </ul>
+ *   </li>
+ * </ul>
+ */
 public class SURF extends Feature2D {
 
     protected SURF(long addr) { super(addr); }
@@ -20,58 +78,73 @@ public class SURF extends Feature2D {
     // C++: static Ptr_SURF cv::xfeatures2d::SURF::create(double hessianThreshold = 100, int nOctaves = 4, int nOctaveLayers = 3, bool extended = false, bool upright = false)
     //
 
-    //javadoc: SURF::create(hessianThreshold, nOctaves, nOctaveLayers, extended, upright)
-    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, boolean extended, boolean upright)
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_0(hessianThreshold, nOctaves, nOctaveLayers, extended, upright));
-        
-        return retVal;
+    /**
+     * @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+     *     @param nOctaves Number of pyramid octaves the keypoint detector will use.
+     *     @param nOctaveLayers Number of octave layers within each octave.
+     *     @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+     *     64-element descriptors).
+     *     @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, boolean extended, boolean upright) {
+        return SURF.__fromPtr__(create_0(hessianThreshold, nOctaves, nOctaveLayers, extended, upright));
     }
 
-    //javadoc: SURF::create(hessianThreshold, nOctaves, nOctaveLayers, extended)
-    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, boolean extended)
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_1(hessianThreshold, nOctaves, nOctaveLayers, extended));
-        
-        return retVal;
+    /**
+     * @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+     *     @param nOctaves Number of pyramid octaves the keypoint detector will use.
+     *     @param nOctaveLayers Number of octave layers within each octave.
+     *     @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+     *     64-element descriptors).
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, boolean extended) {
+        return SURF.__fromPtr__(create_1(hessianThreshold, nOctaves, nOctaveLayers, extended));
     }
 
-    //javadoc: SURF::create(hessianThreshold, nOctaves, nOctaveLayers)
-    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers)
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_2(hessianThreshold, nOctaves, nOctaveLayers));
-        
-        return retVal;
+    /**
+     * @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+     *     @param nOctaves Number of pyramid octaves the keypoint detector will use.
+     *     @param nOctaveLayers Number of octave layers within each octave.
+     *     64-element descriptors).
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers) {
+        return SURF.__fromPtr__(create_2(hessianThreshold, nOctaves, nOctaveLayers));
     }
 
-    //javadoc: SURF::create(hessianThreshold, nOctaves)
-    public static SURF create(double hessianThreshold, int nOctaves)
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_3(hessianThreshold, nOctaves));
-        
-        return retVal;
+    /**
+     * @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+     *     @param nOctaves Number of pyramid octaves the keypoint detector will use.
+     *     64-element descriptors).
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create(double hessianThreshold, int nOctaves) {
+        return SURF.__fromPtr__(create_3(hessianThreshold, nOctaves));
     }
 
-    //javadoc: SURF::create(hessianThreshold)
-    public static SURF create(double hessianThreshold)
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_4(hessianThreshold));
-        
-        return retVal;
+    /**
+     * @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+     *     64-element descriptors).
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create(double hessianThreshold) {
+        return SURF.__fromPtr__(create_4(hessianThreshold));
     }
 
-    //javadoc: SURF::create()
-    public static SURF create()
-    {
-        
-        SURF retVal = SURF.__fromPtr__(create_5());
-        
-        return retVal;
+    /**
+     *     64-element descriptors).
+     *     false - compute orientation).
+     * @return automatically generated
+     */
+    public static SURF create() {
+        return SURF.__fromPtr__(create_5());
     }
 
 
@@ -79,13 +152,8 @@ public class SURF extends Feature2D {
     // C++:  bool cv::xfeatures2d::SURF::getExtended()
     //
 
-    //javadoc: SURF::getExtended()
-    public  boolean getExtended()
-    {
-        
-        boolean retVal = getExtended_0(nativeObj);
-        
-        return retVal;
+    public boolean getExtended() {
+        return getExtended_0(nativeObj);
     }
 
 
@@ -93,13 +161,8 @@ public class SURF extends Feature2D {
     // C++:  bool cv::xfeatures2d::SURF::getUpright()
     //
 
-    //javadoc: SURF::getUpright()
-    public  boolean getUpright()
-    {
-        
-        boolean retVal = getUpright_0(nativeObj);
-        
-        return retVal;
+    public boolean getUpright() {
+        return getUpright_0(nativeObj);
     }
 
 
@@ -107,13 +170,8 @@ public class SURF extends Feature2D {
     // C++:  double cv::xfeatures2d::SURF::getHessianThreshold()
     //
 
-    //javadoc: SURF::getHessianThreshold()
-    public  double getHessianThreshold()
-    {
-        
-        double retVal = getHessianThreshold_0(nativeObj);
-        
-        return retVal;
+    public double getHessianThreshold() {
+        return getHessianThreshold_0(nativeObj);
     }
 
 
@@ -121,13 +179,8 @@ public class SURF extends Feature2D {
     // C++:  int cv::xfeatures2d::SURF::getNOctaveLayers()
     //
 
-    //javadoc: SURF::getNOctaveLayers()
-    public  int getNOctaveLayers()
-    {
-        
-        int retVal = getNOctaveLayers_0(nativeObj);
-        
-        return retVal;
+    public int getNOctaveLayers() {
+        return getNOctaveLayers_0(nativeObj);
     }
 
 
@@ -135,13 +188,8 @@ public class SURF extends Feature2D {
     // C++:  int cv::xfeatures2d::SURF::getNOctaves()
     //
 
-    //javadoc: SURF::getNOctaves()
-    public  int getNOctaves()
-    {
-        
-        int retVal = getNOctaves_0(nativeObj);
-        
-        return retVal;
+    public int getNOctaves() {
+        return getNOctaves_0(nativeObj);
     }
 
 
@@ -149,13 +197,8 @@ public class SURF extends Feature2D {
     // C++:  void cv::xfeatures2d::SURF::setExtended(bool extended)
     //
 
-    //javadoc: SURF::setExtended(extended)
-    public  void setExtended(boolean extended)
-    {
-        
+    public void setExtended(boolean extended) {
         setExtended_0(nativeObj, extended);
-        
-        return;
     }
 
 
@@ -163,13 +206,8 @@ public class SURF extends Feature2D {
     // C++:  void cv::xfeatures2d::SURF::setHessianThreshold(double hessianThreshold)
     //
 
-    //javadoc: SURF::setHessianThreshold(hessianThreshold)
-    public  void setHessianThreshold(double hessianThreshold)
-    {
-        
+    public void setHessianThreshold(double hessianThreshold) {
         setHessianThreshold_0(nativeObj, hessianThreshold);
-        
-        return;
     }
 
 
@@ -177,13 +215,8 @@ public class SURF extends Feature2D {
     // C++:  void cv::xfeatures2d::SURF::setNOctaveLayers(int nOctaveLayers)
     //
 
-    //javadoc: SURF::setNOctaveLayers(nOctaveLayers)
-    public  void setNOctaveLayers(int nOctaveLayers)
-    {
-        
+    public void setNOctaveLayers(int nOctaveLayers) {
         setNOctaveLayers_0(nativeObj, nOctaveLayers);
-        
-        return;
     }
 
 
@@ -191,13 +224,8 @@ public class SURF extends Feature2D {
     // C++:  void cv::xfeatures2d::SURF::setNOctaves(int nOctaves)
     //
 
-    //javadoc: SURF::setNOctaves(nOctaves)
-    public  void setNOctaves(int nOctaves)
-    {
-        
+    public void setNOctaves(int nOctaves) {
         setNOctaves_0(nativeObj, nOctaves);
-        
-        return;
     }
 
 
@@ -205,13 +233,8 @@ public class SURF extends Feature2D {
     // C++:  void cv::xfeatures2d::SURF::setUpright(bool upright)
     //
 
-    //javadoc: SURF::setUpright(upright)
-    public  void setUpright(boolean upright)
-    {
-        
+    public void setUpright(boolean upright) {
         setUpright_0(nativeObj, upright);
-        
-        return;
     }
 
 

@@ -3,15 +3,34 @@
 //
 package org.opencv.bioinspired;
 
-import java.lang.String;
 import org.opencv.bioinspired.TransientAreasSegmentationModule;
 import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
 // C++: class TransientAreasSegmentationModule
-//javadoc: TransientAreasSegmentationModule
-
+/**
+ * class which provides a transient/moving areas segmentation module
+ *
+ * perform a locally adapted segmentation by using the retina magno input data Based on Alexandre
+ * BENOIT thesis: "Le système visuel humain au secours de la vision par ordinateur"
+ *
+ * 3 spatio temporal filters are used:
+ * <ul>
+ *   <li>
+ *  a first one which filters the noise and local variations of the input motion energy
+ *   </li>
+ *   <li>
+ *  a second (more powerfull low pass spatial filter) which gives the neighborhood motion energy the
+ * segmentation consists in the comparison of these both outputs, if the local motion energy is higher
+ * to the neighborhood otion energy, then the area is considered as moving and is segmented
+ *   </li>
+ *   <li>
+ *  a stronger third low pass filter helps decision by providing a smooth information about the
+ * "motion context" in a wider area
+ *   </li>
+ * </ul>
+ */
 public class TransientAreasSegmentationModule extends Algorithm {
 
     protected TransientAreasSegmentationModule(long addr) { super(addr); }
@@ -23,13 +42,13 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++: static Ptr_TransientAreasSegmentationModule cv::bioinspired::TransientAreasSegmentationModule::create(Size inputSize)
     //
 
-    //javadoc: TransientAreasSegmentationModule::create(inputSize)
-    public static TransientAreasSegmentationModule create(Size inputSize)
-    {
-        
-        TransientAreasSegmentationModule retVal = TransientAreasSegmentationModule.__fromPtr__(create_0(inputSize.width, inputSize.height));
-        
-        return retVal;
+    /**
+     * allocator
+     *     @param inputSize : size of the images input to segment (output will be the same size)
+     * @return automatically generated
+     */
+    public static TransientAreasSegmentationModule create(Size inputSize) {
+        return TransientAreasSegmentationModule.__fromPtr__(create_0(inputSize.width, inputSize.height));
     }
 
 
@@ -37,13 +56,12 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  Size cv::bioinspired::TransientAreasSegmentationModule::getSize()
     //
 
-    //javadoc: TransientAreasSegmentationModule::getSize()
-    public  Size getSize()
-    {
-        
-        Size retVal = new Size(getSize_0(nativeObj));
-        
-        return retVal;
+    /**
+     * return the sze of the manage input and output images
+     * @return automatically generated
+     */
+    public Size getSize() {
+        return new Size(getSize_0(nativeObj));
     }
 
 
@@ -51,13 +69,12 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  String cv::bioinspired::TransientAreasSegmentationModule::printSetup()
     //
 
-    //javadoc: TransientAreasSegmentationModule::printSetup()
-    public  String printSetup()
-    {
-        
-        String retVal = printSetup_0(nativeObj);
-        
-        return retVal;
+    /**
+     * parameters setup display method
+     *     @return a string which contains formatted parameters information
+     */
+    public String printSetup() {
+        return printSetup_0(nativeObj);
     }
 
 
@@ -65,13 +82,11 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  void cv::bioinspired::TransientAreasSegmentationModule::clearAllBuffers()
     //
 
-    //javadoc: TransientAreasSegmentationModule::clearAllBuffers()
-    public  void clearAllBuffers()
-    {
-        
+    /**
+     * cleans all the buffers of the instance
+     */
+    public void clearAllBuffers() {
         clearAllBuffers_0(nativeObj);
-        
-        return;
     }
 
 
@@ -79,13 +94,13 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  void cv::bioinspired::TransientAreasSegmentationModule::getSegmentationPicture(Mat& transientAreas)
     //
 
-    //javadoc: TransientAreasSegmentationModule::getSegmentationPicture(transientAreas)
-    public  void getSegmentationPicture(Mat transientAreas)
-    {
-        
+    /**
+     * access function
+     *     return the last segmentation result: a boolean picture which is resampled between 0 and 255 for a display purpose
+     * @param transientAreas automatically generated
+     */
+    public void getSegmentationPicture(Mat transientAreas) {
         getSegmentationPicture_0(nativeObj, transientAreas.nativeObj);
-        
-        return;
     }
 
 
@@ -93,22 +108,21 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  void cv::bioinspired::TransientAreasSegmentationModule::run(Mat inputToSegment, int channelIndex = 0)
     //
 
-    //javadoc: TransientAreasSegmentationModule::run(inputToSegment, channelIndex)
-    public  void run(Mat inputToSegment, int channelIndex)
-    {
-        
+    /**
+     * main processing method, get result using methods getSegmentationPicture()
+     *     @param inputToSegment : the image to process, it must match the instance buffer size !
+     *     @param channelIndex : the channel to process in case of multichannel images
+     */
+    public void run(Mat inputToSegment, int channelIndex) {
         run_0(nativeObj, inputToSegment.nativeObj, channelIndex);
-        
-        return;
     }
 
-    //javadoc: TransientAreasSegmentationModule::run(inputToSegment)
-    public  void run(Mat inputToSegment)
-    {
-        
+    /**
+     * main processing method, get result using methods getSegmentationPicture()
+     *     @param inputToSegment : the image to process, it must match the instance buffer size !
+     */
+    public void run(Mat inputToSegment) {
         run_1(nativeObj, inputToSegment.nativeObj);
-        
-        return;
     }
 
 
@@ -116,31 +130,55 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  void cv::bioinspired::TransientAreasSegmentationModule::setup(String segmentationParameterFile = "", bool applyDefaultSetupOnFailure = true)
     //
 
-    //javadoc: TransientAreasSegmentationModule::setup(segmentationParameterFile, applyDefaultSetupOnFailure)
-    public  void setup(String segmentationParameterFile, boolean applyDefaultSetupOnFailure)
-    {
-        
+    /**
+     * try to open an XML segmentation parameters file to adjust current segmentation instance setup
+     *
+     * <ul>
+     *   <li>
+     *      if the xml file does not exist, then default setup is applied
+     *   </li>
+     *   <li>
+     *      warning, Exceptions are thrown if read XML file is not valid
+     *     @param segmentationParameterFile : the parameters filename
+     *     @param applyDefaultSetupOnFailure : set to true if an error must be thrown on error
+     *   </li>
+     * </ul>
+     */
+    public void setup(String segmentationParameterFile, boolean applyDefaultSetupOnFailure) {
         setup_0(nativeObj, segmentationParameterFile, applyDefaultSetupOnFailure);
-        
-        return;
     }
 
-    //javadoc: TransientAreasSegmentationModule::setup(segmentationParameterFile)
-    public  void setup(String segmentationParameterFile)
-    {
-        
+    /**
+     * try to open an XML segmentation parameters file to adjust current segmentation instance setup
+     *
+     * <ul>
+     *   <li>
+     *      if the xml file does not exist, then default setup is applied
+     *   </li>
+     *   <li>
+     *      warning, Exceptions are thrown if read XML file is not valid
+     *     @param segmentationParameterFile : the parameters filename
+     *   </li>
+     * </ul>
+     */
+    public void setup(String segmentationParameterFile) {
         setup_1(nativeObj, segmentationParameterFile);
-        
-        return;
     }
 
-    //javadoc: TransientAreasSegmentationModule::setup()
-    public  void setup()
-    {
-        
+    /**
+     * try to open an XML segmentation parameters file to adjust current segmentation instance setup
+     *
+     * <ul>
+     *   <li>
+     *      if the xml file does not exist, then default setup is applied
+     *   </li>
+     *   <li>
+     *      warning, Exceptions are thrown if read XML file is not valid
+     *   </li>
+     * </ul>
+     */
+    public void setup() {
         setup_2(nativeObj);
-        
-        return;
     }
 
 
@@ -148,13 +186,12 @@ public class TransientAreasSegmentationModule extends Algorithm {
     // C++:  void cv::bioinspired::TransientAreasSegmentationModule::write(String fs)
     //
 
-    //javadoc: TransientAreasSegmentationModule::write(fs)
-    public  void write(String fs)
-    {
-        
+    /**
+     * write xml/yml formated parameters information
+     *     @param fs : the filename of the xml file that will be open and writen with formatted parameters information
+     */
+    public void write(String fs) {
         write_0(nativeObj, fs);
-        
-        return;
     }
 
 

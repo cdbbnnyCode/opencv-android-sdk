@@ -7,8 +7,12 @@ import org.opencv.features2d.Feature2D;
 import org.opencv.xfeatures2d.BriefDescriptorExtractor;
 
 // C++: class BriefDescriptorExtractor
-//javadoc: BriefDescriptorExtractor
-
+/**
+ * Class for computing BRIEF descriptors described in CITE: calon2010 .
+ *
+ * bytes legth of the descriptor in bytes, valid values are: 16, 32 (default) or 64 .
+ * use_orientation sample patterns using keypoints orientation, disabled by default.
+ */
 public class BriefDescriptorExtractor extends Feature2D {
 
     protected BriefDescriptorExtractor(long addr) { super(addr); }
@@ -20,31 +24,16 @@ public class BriefDescriptorExtractor extends Feature2D {
     // C++: static Ptr_BriefDescriptorExtractor cv::xfeatures2d::BriefDescriptorExtractor::create(int bytes = 32, bool use_orientation = false)
     //
 
-    //javadoc: BriefDescriptorExtractor::create(bytes, use_orientation)
-    public static BriefDescriptorExtractor create(int bytes, boolean use_orientation)
-    {
-        
-        BriefDescriptorExtractor retVal = BriefDescriptorExtractor.__fromPtr__(create_0(bytes, use_orientation));
-        
-        return retVal;
+    public static BriefDescriptorExtractor create(int bytes, boolean use_orientation) {
+        return BriefDescriptorExtractor.__fromPtr__(create_0(bytes, use_orientation));
     }
 
-    //javadoc: BriefDescriptorExtractor::create(bytes)
-    public static BriefDescriptorExtractor create(int bytes)
-    {
-        
-        BriefDescriptorExtractor retVal = BriefDescriptorExtractor.__fromPtr__(create_1(bytes));
-        
-        return retVal;
+    public static BriefDescriptorExtractor create(int bytes) {
+        return BriefDescriptorExtractor.__fromPtr__(create_1(bytes));
     }
 
-    //javadoc: BriefDescriptorExtractor::create()
-    public static BriefDescriptorExtractor create()
-    {
-        
-        BriefDescriptorExtractor retVal = BriefDescriptorExtractor.__fromPtr__(create_2());
-        
-        return retVal;
+    public static BriefDescriptorExtractor create() {
+        return BriefDescriptorExtractor.__fromPtr__(create_2());
     }
 
 

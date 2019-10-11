@@ -8,11 +8,15 @@ import java.util.List;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDouble;
 import org.opencv.img_hash.BlockMeanHash;
+import org.opencv.img_hash.ImgHashBase;
 import org.opencv.utils.Converters;
 
 // C++: class BlockMeanHash
-//javadoc: BlockMeanHash
-
+/**
+ * Image hash based on block mean.
+ *
+ * See CITE: zauner2010implementation for details.
+ */
 public class BlockMeanHash extends ImgHashBase {
 
     protected BlockMeanHash(long addr) { super(addr); }
@@ -24,22 +28,12 @@ public class BlockMeanHash extends ImgHashBase {
     // C++: static Ptr_BlockMeanHash cv::img_hash::BlockMeanHash::create(int mode = BLOCK_MEAN_HASH_MODE_0)
     //
 
-    //javadoc: BlockMeanHash::create(mode)
-    public static BlockMeanHash create(int mode)
-    {
-        
-        BlockMeanHash retVal = BlockMeanHash.__fromPtr__(create_0(mode));
-        
-        return retVal;
+    public static BlockMeanHash create(int mode) {
+        return BlockMeanHash.__fromPtr__(create_0(mode));
     }
 
-    //javadoc: BlockMeanHash::create()
-    public static BlockMeanHash create()
-    {
-        
-        BlockMeanHash retVal = BlockMeanHash.__fromPtr__(create_1());
-        
-        return retVal;
+    public static BlockMeanHash create() {
+        return BlockMeanHash.__fromPtr__(create_1());
     }
 
 
@@ -47,13 +41,8 @@ public class BlockMeanHash extends ImgHashBase {
     // C++:  vector_double cv::img_hash::BlockMeanHash::getMean()
     //
 
-    //javadoc: BlockMeanHash::getMean()
-    public  MatOfDouble getMean()
-    {
-        
-        MatOfDouble retVal = MatOfDouble.fromNativeAddr(getMean_0(nativeObj));
-        
-        return retVal;
+    public MatOfDouble getMean() {
+        return MatOfDouble.fromNativeAddr(getMean_0(nativeObj));
     }
 
 
@@ -61,13 +50,12 @@ public class BlockMeanHash extends ImgHashBase {
     // C++:  void cv::img_hash::BlockMeanHash::setMode(int mode)
     //
 
-    //javadoc: BlockMeanHash::setMode(mode)
-    public  void setMode(int mode)
-    {
-        
+    /**
+     * Create BlockMeanHash object
+     *         @param mode the mode
+     */
+    public void setMode(int mode) {
         setMode_0(nativeObj, mode);
-        
-        return;
     }
 
 

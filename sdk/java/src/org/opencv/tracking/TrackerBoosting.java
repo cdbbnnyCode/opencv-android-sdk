@@ -7,8 +7,13 @@ import org.opencv.tracking.Tracker;
 import org.opencv.tracking.TrackerBoosting;
 
 // C++: class TrackerBoosting
-//javadoc: TrackerBoosting
-
+/**
+ * the Boosting tracker
+ *
+ * This is a real-time object tracking based on a novel on-line version of the AdaBoost algorithm.
+ * The classifier uses the surrounding background as negative examples in update step to avoid the
+ * drifting problem. The implementation is based on CITE: OLB .
+ */
 public class TrackerBoosting extends Tracker {
 
     protected TrackerBoosting(long addr) { super(addr); }
@@ -20,13 +25,12 @@ public class TrackerBoosting extends Tracker {
     // C++: static Ptr_TrackerBoosting cv::TrackerBoosting::create()
     //
 
-    //javadoc: TrackerBoosting::create()
-    public static TrackerBoosting create()
-    {
-        
-        TrackerBoosting retVal = TrackerBoosting.__fromPtr__(create_0());
-        
-        return retVal;
+    /**
+     * Constructor
+     * @return automatically generated
+     */
+    public static TrackerBoosting create() {
+        return TrackerBoosting.__fromPtr__(create_0());
     }
 
 

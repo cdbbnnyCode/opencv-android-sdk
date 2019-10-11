@@ -6,7 +6,6 @@ package org.opencv.text;
 
 
 // C++: class BaseOCR
-//javadoc: BaseOCR
 
 public class BaseOCR {
 
