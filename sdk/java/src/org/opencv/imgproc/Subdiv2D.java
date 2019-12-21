@@ -435,11 +435,11 @@ public class Subdiv2D {
     //
 
     /**
-     * Returns a list of all Voroni facets.
+     * Returns a list of all Voronoi facets.
      *
      *     @param idx Vector of vertices IDs to consider. For all vertices you can pass empty vector.
-     *     @param facetList Output vector of the Voroni facets.
-     *     @param facetCenters Output vector of the Voroni facets center points.
+     *     @param facetList Output vector of the Voronoi facets.
+     *     @param facetCenters Output vector of the Voronoi facets center points.
      */
     public void getVoronoiFacetList(MatOfInt idx, List<MatOfPoint2f> facetList, MatOfPoint2f facetCenters) {
         Mat idx_mat = idx;

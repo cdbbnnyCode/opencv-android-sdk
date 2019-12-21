@@ -62,7 +62,8 @@ public class Videoio {
             CAP_PROP_BACKEND = 42,
             CAP_PROP_CHANNEL = 43,
             CAP_PROP_AUTO_WB = 44,
-            CAP_PROP_WB_TEMPERATURE = 45;
+            CAP_PROP_WB_TEMPERATURE = 45,
+            CAP_PROP_CODEC_PIXEL_FORMAT = 46;
 
 
     // C++: enum <unnamed>

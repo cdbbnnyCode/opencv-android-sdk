@@ -16,7 +16,7 @@ import org.opencv.core.Mat;
  * extremely easy to use a lone parameter specifies the number of superpixels and the efficiency of
  * the algorithm makes it very practical.
  * Several optimizations are available for SLIC class:
- * SLICO stands for "Zero parameter SLIC" and it is an optimization of baseline SLIC descibed in CITE: Achanta2012.
+ * SLICO stands for "Zero parameter SLIC" and it is an optimization of baseline SLIC described in CITE: Achanta2012.
  * MSLIC stands for "Manifold SLIC" and it is an optimization of baseline SLIC described in CITE: Liu_2017_IEEE.
  */
 public class SuperpixelSLIC extends Algorithm {

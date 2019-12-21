@@ -6,6 +6,7 @@ package org.opencv.dnn;
 import java.util.ArrayList;
 import java.util.List;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfDouble;
 import org.opencv.core.MatOfInt;
 import org.opencv.core.Scalar;
@@ -107,7 +108,7 @@ public class Net {
     //
 
     /**
-     * Create a network from Intel's Model Optimizer intermediate representation.
+     * Create a network from Intel's Model Optimizer intermediate representation (IR).
      * @param xml XML configuration file with network's topology.
      * @param bin Binary file with trained weights.
      * Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine
@@ -116,6 +117,23 @@ public class Net {
      */
     public static Net readFromModelOptimizer(String xml, String bin) {
         return new Net(readFromModelOptimizer_0(xml, bin));
+    }
+
+
+    //
+    // C++: static Net cv::dnn::Net::readFromModelOptimizer(vector_uchar bufferModelConfig, vector_uchar bufferWeights)
+    //
+
+    /**
+     * Create a network from Intel's Model Optimizer in-memory buffers with intermediate representation (IR).
+     * @param bufferModelConfig buffer with model's configuration.
+     * @param bufferWeights buffer with model's trained weights.
+     * @return Net object.
+     */
+    public static Net readFromModelOptimizer(MatOfByte bufferModelConfig, MatOfByte bufferWeights) {
+        Mat bufferModelConfig_mat = bufferModelConfig;
+        Mat bufferWeights_mat = bufferWeights;
+        return new Net(readFromModelOptimizer_1(bufferModelConfig_mat.nativeObj, bufferWeights_mat.nativeObj));
     }
 
 
@@ -599,13 +617,15 @@ public class Net {
      * SEE: Target
      *
      * List of supported combinations backend / target:
-     * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |
-     * |------------------------|--------------------|------------------------------|--------------------|
-     * | DNN_TARGET_CPU         |                  + |                            + |                  + |
-     * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |
-     * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |
-     * | DNN_TARGET_MYRIAD      |                    |                            + |                    |
-     * | DNN_TARGET_FPGA        |                    |                            + |                    |
+     * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |  DNN_BACKEND_CUDA |
+     * |------------------------|--------------------|------------------------------|--------------------|-------------------|
+     * | DNN_TARGET_CPU         |                  + |                            + |                  + |                   |
+     * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |                   |
+     * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |                   |
+     * | DNN_TARGET_MYRIAD      |                    |                            + |                    |                   |
+     * | DNN_TARGET_FPGA        |                    |                            + |                    |                   |
+     * | DNN_TARGET_CUDA        |                    |                              |                    |                 + |
+     * | DNN_TARGET_CUDA_FP16   |                    |                              |                    |                 + |
      */
     public void setPreferableTarget(int targetId) {
         setPreferableTarget_0(nativeObj, targetId);
@@ -632,6 +652,9 @@ public class Net {
 
     // C++: static Net cv::dnn::Net::readFromModelOptimizer(String xml, String bin)
     private static native long readFromModelOptimizer_0(String xml, String bin);
+
+    // C++: static Net cv::dnn::Net::readFromModelOptimizer(vector_uchar bufferModelConfig, vector_uchar bufferWeights)
+    private static native long readFromModelOptimizer_1(long bufferModelConfig_mat_nativeObj, long bufferWeights_mat_nativeObj);
 
     // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
     private static native long getLayer_0(long nativeObj, long layerId_nativeObj);

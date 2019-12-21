@@ -104,6 +104,50 @@ public class Imgproc {
             FLOODFILL_MASK_ONLY = 1 << 17;
 
 
+    // C++: enum <unnamed>
+    public static final int
+            CV_GAUSSIAN_5x5 = 7,
+            CV_SCHARR = -1,
+            CV_MAX_SOBEL_KSIZE = 7,
+            CV_RGBA2mRGBA = 125,
+            CV_mRGBA2RGBA = 126,
+            CV_WARP_FILL_OUTLIERS = 8,
+            CV_WARP_INVERSE_MAP = 16,
+            CV_CHAIN_CODE = 0,
+            CV_LINK_RUNS = 5,
+            CV_POLY_APPROX_DP = 0,
+            CV_CONTOURS_MATCH_I1 = 1,
+            CV_CONTOURS_MATCH_I2 = 2,
+            CV_CONTOURS_MATCH_I3 = 3,
+            CV_CLOCKWISE = 1,
+            CV_COUNTER_CLOCKWISE = 2,
+            CV_COMP_CORREL = 0,
+            CV_COMP_CHISQR = 1,
+            CV_COMP_INTERSECT = 2,
+            CV_COMP_BHATTACHARYYA = 3,
+            CV_COMP_HELLINGER = CV_COMP_BHATTACHARYYA,
+            CV_COMP_CHISQR_ALT = 4,
+            CV_COMP_KL_DIV = 5,
+            CV_DIST_MASK_3 = 3,
+            CV_DIST_MASK_5 = 5,
+            CV_DIST_MASK_PRECISE = 0,
+            CV_DIST_LABEL_CCOMP = 0,
+            CV_DIST_LABEL_PIXEL = 1,
+            CV_DIST_USER = -1,
+            CV_DIST_L1 = 1,
+            CV_DIST_L2 = 2,
+            CV_DIST_C = 3,
+            CV_DIST_L12 = 4,
+            CV_DIST_FAIR = 5,
+            CV_DIST_WELSCH = 6,
+            CV_DIST_HUBER = 7,
+            CV_CANNY_L2_GRADIENT = (1 << 31),
+            CV_HOUGH_STANDARD = 0,
+            CV_HOUGH_PROBABILISTIC = 1,
+            CV_HOUGH_MULTI_SCALE = 2,
+            CV_HOUGH_GRADIENT = 3;
+
+
     // C++: enum HoughModes
     public static final int
             HOUGH_STANDARD = 0,
@@ -161,48 +205,15 @@ public class Imgproc {
             COLORMAP_TURBO = 20;
 
 
-    // C++: enum <unnamed>
+    // C++: enum HistCompMethods
     public static final int
-            CV_GAUSSIAN_5x5 = 7,
-            CV_SCHARR = -1,
-            CV_MAX_SOBEL_KSIZE = 7,
-            CV_RGBA2mRGBA = 125,
-            CV_mRGBA2RGBA = 126,
-            CV_WARP_FILL_OUTLIERS = 8,
-            CV_WARP_INVERSE_MAP = 16,
-            CV_CHAIN_CODE = 0,
-            CV_LINK_RUNS = 5,
-            CV_POLY_APPROX_DP = 0,
-            CV_CONTOURS_MATCH_I1 = 1,
-            CV_CONTOURS_MATCH_I2 = 2,
-            CV_CONTOURS_MATCH_I3 = 3,
-            CV_CLOCKWISE = 1,
-            CV_COUNTER_CLOCKWISE = 2,
-            CV_COMP_CORREL = 0,
-            CV_COMP_CHISQR = 1,
-            CV_COMP_INTERSECT = 2,
-            CV_COMP_BHATTACHARYYA = 3,
-            CV_COMP_HELLINGER = CV_COMP_BHATTACHARYYA,
-            CV_COMP_CHISQR_ALT = 4,
-            CV_COMP_KL_DIV = 5,
-            CV_DIST_MASK_3 = 3,
-            CV_DIST_MASK_5 = 5,
-            CV_DIST_MASK_PRECISE = 0,
-            CV_DIST_LABEL_CCOMP = 0,
-            CV_DIST_LABEL_PIXEL = 1,
-            CV_DIST_USER = -1,
-            CV_DIST_L1 = 1,
-            CV_DIST_L2 = 2,
-            CV_DIST_C = 3,
-            CV_DIST_L12 = 4,
-            CV_DIST_FAIR = 5,
-            CV_DIST_WELSCH = 6,
-            CV_DIST_HUBER = 7,
-            CV_CANNY_L2_GRADIENT = (1 << 31),
-            CV_HOUGH_STANDARD = 0,
-            CV_HOUGH_PROBABILISTIC = 1,
-            CV_HOUGH_MULTI_SCALE = 2,
-            CV_HOUGH_GRADIENT = 3;
+            HISTCMP_CORREL = 0,
+            HISTCMP_CHISQR = 1,
+            HISTCMP_INTERSECT = 2,
+            HISTCMP_BHATTACHARYYA = 3,
+            HISTCMP_HELLINGER = HISTCMP_BHATTACHARYYA,
+            HISTCMP_CHISQR_ALT = 4,
+            HISTCMP_KL_DIV = 5;
 
 
     // C++: enum LineTypes
@@ -486,17 +497,6 @@ public class Imgproc {
             THRESH_MASK = 7,
             THRESH_OTSU = 8,
             THRESH_TRIANGLE = 16;
-
-
-    // C++: enum HistCompMethods
-    public static final int
-            HISTCMP_CORREL = 0,
-            HISTCMP_CHISQR = 1,
-            HISTCMP_INTERSECT = 2,
-            HISTCMP_BHATTACHARYYA = 3,
-            HISTCMP_HELLINGER = HISTCMP_BHATTACHARYYA,
-            HISTCMP_CHISQR_ALT = 4,
-            HISTCMP_KL_DIV = 5;
 
 
     // C++: enum AdaptiveThresholdTypes
@@ -1756,10 +1756,37 @@ public class Imgproc {
     // C++:  float cv::intersectConvexConvex(Mat _p1, Mat _p2, Mat& _p12, bool handleNested = true)
     //
 
+    /**
+     * Finds intersection of two convex polygons
+     *
+     * @param _p1 First polygon
+     * @param _p2 Second polygon
+     * @param _p12 Output polygon describing the intersecting area
+     * @param handleNested When true, an intersection is found if one of the polygons is fully enclosed in the other.
+     * When false, no intersection is found. If the polygons share a side or the vertex of one polygon lies on an edge
+     * of the other, they are not considered nested and an intersection will be found regardless of the value of handleNested.
+     *
+     * @return Absolute value of area of intersecting polygon
+     *
+     * <b>Note:</b> intersectConvexConvex doesn't confirm that both polygons are convex and will return invalid results if they aren't.
+     */
     public static float intersectConvexConvex(Mat _p1, Mat _p2, Mat _p12, boolean handleNested) {
         return intersectConvexConvex_0(_p1.nativeObj, _p2.nativeObj, _p12.nativeObj, handleNested);
     }
 
+    /**
+     * Finds intersection of two convex polygons
+     *
+     * @param _p1 First polygon
+     * @param _p2 Second polygon
+     * @param _p12 Output polygon describing the intersecting area
+     * When false, no intersection is found. If the polygons share a side or the vertex of one polygon lies on an edge
+     * of the other, they are not considered nested and an intersection will be found regardless of the value of handleNested.
+     *
+     * @return Absolute value of area of intersecting polygon
+     *
+     * <b>Note:</b> intersectConvexConvex doesn't confirm that both polygons are convex and will return invalid results if they aren't.
+     */
     public static float intersectConvexConvex(Mat _p1, Mat _p2, Mat _p12) {
         return intersectConvexConvex_1(_p1.nativeObj, _p2.nativeObj, _p12.nativeObj);
     }

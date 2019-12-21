@@ -26,7 +26,7 @@ import org.opencv.face.Facemark;
  * <ul>
  *   <li>
  *  (Non-mandatory) Set a user defined face detection using FacemarkTrain::setFaceDetector.
- *   The facemark algorithms are desgined to fit the facial points into a face.
+ *   The facemark algorithms are designed to fit the facial points into a face.
  *   Therefore, the face information should be provided to the facemark algorithm.
  *   Some algorithms might provides a default face recognition function.
  *   However, the users might prefer to use their own face detector to obtains the best possible detection result.

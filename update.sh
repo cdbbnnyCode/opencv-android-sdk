@@ -67,7 +67,11 @@ fi
 
 if [ -z "$no_build" ]; then
   echo "Compiling OpenCV for Android..."
-  python build_sdk.py --build_doc --extra_modules_path ~/Documents/opencv_contrib/modules/ build/
+  python build_sdk.py --build_doc --extra_modules_path ~/Documents/opencv_contrib/modules/ --sdk_path ~/Android/Sdk --ndk_path ~/Android/Sdk/ndk-bundle build/
+  if [[ $? -gt 0 ]]; then
+    echo "Build failed."
+    exit 1
+  fi
 fi
 
 cp build/OpenCV-android-sdk/* $here

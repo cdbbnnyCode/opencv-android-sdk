@@ -19,6 +19,34 @@ import org.opencv.utils.Converters;
 
 public class Calib3d {
 
+    // C++: enum HandEyeCalibrationMethod
+    public static final int
+            CALIB_HAND_EYE_TSAI = 0,
+            CALIB_HAND_EYE_PARK = 1,
+            CALIB_HAND_EYE_HORAUD = 2,
+            CALIB_HAND_EYE_ANDREFF = 3,
+            CALIB_HAND_EYE_DANIILIDIS = 4;
+
+
+    // C++: enum UndistortTypes
+    public static final int
+            PROJ_SPHERICAL_ORTHO = 0,
+            PROJ_SPHERICAL_EQRECT = 1;
+
+
+    // C++: enum SolvePnPMethod
+    public static final int
+            SOLVEPNP_ITERATIVE = 0,
+            SOLVEPNP_EPNP = 1,
+            SOLVEPNP_P3P = 2,
+            SOLVEPNP_DLS = 3,
+            SOLVEPNP_UPNP = 4,
+            SOLVEPNP_AP3P = 5,
+            SOLVEPNP_IPPE = 6,
+            SOLVEPNP_IPPE_SQUARE = 7,
+            SOLVEPNP_MAX_COUNT = 7+1;
+
+
     // C++: enum <unnamed>
     public static final int
             CV_ITERATIVE = 0,
@@ -79,34 +107,6 @@ public class Calib3d {
             fisheye_CALIB_FIX_K4 = 1 << 7,
             fisheye_CALIB_FIX_INTRINSIC = 1 << 8,
             fisheye_CALIB_FIX_PRINCIPAL_POINT = 1 << 9;
-
-
-    // C++: enum UndistortTypes
-    public static final int
-            PROJ_SPHERICAL_ORTHO = 0,
-            PROJ_SPHERICAL_EQRECT = 1;
-
-
-    // C++: enum SolvePnPMethod
-    public static final int
-            SOLVEPNP_ITERATIVE = 0,
-            SOLVEPNP_EPNP = 1,
-            SOLVEPNP_P3P = 2,
-            SOLVEPNP_DLS = 3,
-            SOLVEPNP_UPNP = 4,
-            SOLVEPNP_AP3P = 5,
-            SOLVEPNP_IPPE = 6,
-            SOLVEPNP_IPPE_SQUARE = 7,
-            SOLVEPNP_MAX_COUNT = 7+1;
-
-
-    // C++: enum HandEyeCalibrationMethod
-    public static final int
-            CALIB_HAND_EYE_TSAI = 0,
-            CALIB_HAND_EYE_PARK = 1,
-            CALIB_HAND_EYE_HORAUD = 2,
-            CALIB_HAND_EYE_ANDREFF = 3,
-            CALIB_HAND_EYE_DANIILIDIS = 4;
 
 
     // C++: enum GridType
@@ -2915,10 +2915,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -3004,7 +3004,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3052,7 +3052,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3185,10 +3185,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -3273,7 +3273,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3321,7 +3321,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3454,10 +3454,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -3541,7 +3541,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3589,7 +3589,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -3697,9 +3697,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -3761,9 +3761,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -3824,9 +3824,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -3886,9 +3886,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -3947,9 +3947,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -4007,9 +4007,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -4066,9 +4066,9 @@ public class Calib3d {
      * Finds an object pose from 3D-2D point correspondences using the RANSAC scheme.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
      * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
@@ -6321,7 +6321,7 @@ public class Calib3d {
      * 1x3/3x1 3-channel. vector&lt;Point3f&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, 3x2 1-channel or 1x3/3x1 2-channel.
      *  vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -6399,10 +6399,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -6495,7 +6495,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -6543,7 +6543,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -6681,10 +6681,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -6776,7 +6776,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -6824,7 +6824,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -6962,10 +6962,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -7056,7 +7056,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7104,7 +7104,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7242,10 +7242,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -7335,7 +7335,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7383,7 +7383,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7521,10 +7521,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -7613,7 +7613,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7661,7 +7661,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7799,10 +7799,10 @@ public class Calib3d {
      * </ul>
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or
-     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3f&gt; can be also passed here.
+     * 1xN/Nx1 3-channel, where N is the number of points. vector&lt;Point3d&gt; can be also passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can be also passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can be also passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -7890,7 +7890,7 @@ public class Calib3d {
      *   v \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{M}_w
+     *   \bf{A} \hspace{0.1em} \Pi \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -7938,7 +7938,7 @@ public class Calib3d {
      *   Z_c \\
      *   1
      *   \end{bmatrix} &amp;=
-     *   \hspace{0.2em} ^{c}\bf{M}_w
+     *   \hspace{0.2em} ^{c}\bf{T}_w
      *   \begin{bmatrix}
      *   X_{w} \\
      *   Y_{w} \\
@@ -8054,7 +8054,7 @@ public class Calib3d {
      * @param jacobian Optional output Jacobian matrix, 3x9 or 9x3, which is a matrix of partial
      * derivatives of the output array components with respect to the input array components.
      *
-     * \(\begin{array}{l} \theta \leftarrow norm(r) \\ r  \leftarrow r/ \theta \\ R =  \cos{\theta} I + (1- \cos{\theta} ) r r^T +  \sin{\theta} \vecthreethree{0}{-r_z}{r_y}{r_z}{0}{-r_x}{-r_y}{r_x}{0} \end{array}\)
+     * \(\begin{array}{l} \theta \leftarrow norm(r) \\ r  \leftarrow r/ \theta \\ R =  \cos(\theta) I + (1- \cos{\theta} ) r r^T +  \sin(\theta) \vecthreethree{0}{-r_z}{r_y}{r_z}{0}{-r_x}{-r_y}{r_x}{0} \end{array}\)
      *
      * Inverse transformation can be also done easily, since
      *
@@ -8062,7 +8062,28 @@ public class Calib3d {
      *
      * A rotation vector is a convenient and most compact representation of a rotation matrix (since any
      * rotation matrix has just 3 degrees of freedom). The representation is used in the global 3D geometry
-     * optimization procedures like calibrateCamera, stereoCalibrate, or solvePnP .
+     * optimization procedures like REF: calibrateCamera, REF: stereoCalibrate, or REF: solvePnP .
+     *
+     * <b>Note:</b> More information about the computation of the derivative of a 3D rotation matrix with respect to its exponential coordinate
+     * can be found in:
+     * <ul>
+     *   <li>
+     *      A Compact Formula for the Derivative of a 3-D Rotation in Exponential Coordinates, Guillermo Gallego, Anthony J. Yezzi CITE: Gallego2014ACF
+     *   </li>
+     * </ul>
+     *
+     * <b>Note:</b> Useful information on SE(3) and Lie Groups can be found in:
+     * <ul>
+     *   <li>
+     *      A tutorial on SE(3) transformation parameterizations and on-manifold optimization, Jose-Luis Blanco CITE: blanco2010tutorial
+     *   </li>
+     *   <li>
+     *      Lie Groups for 2D and 3D Transformation, Ethan Eade CITE: Eade17
+     *   </li>
+     *   <li>
+     *      A micro Lie theory for state estimation in robotics, Joan Solà, Jérémie Deray, Dinesh Atchuthan CITE: Sol2018AML
+     *   </li>
+     * </ul>
      */
     public static void Rodrigues(Mat src, Mat dst, Mat jacobian) {
         Rodrigues_0(src.nativeObj, dst.nativeObj, jacobian.nativeObj);
@@ -8075,7 +8096,7 @@ public class Calib3d {
      * @param dst Output rotation matrix (3x3) or rotation vector (3x1 or 1x3), respectively.
      * derivatives of the output array components with respect to the input array components.
      *
-     * \(\begin{array}{l} \theta \leftarrow norm(r) \\ r  \leftarrow r/ \theta \\ R =  \cos{\theta} I + (1- \cos{\theta} ) r r^T +  \sin{\theta} \vecthreethree{0}{-r_z}{r_y}{r_z}{0}{-r_x}{-r_y}{r_x}{0} \end{array}\)
+     * \(\begin{array}{l} \theta \leftarrow norm(r) \\ r  \leftarrow r/ \theta \\ R =  \cos(\theta) I + (1- \cos{\theta} ) r r^T +  \sin(\theta) \vecthreethree{0}{-r_z}{r_y}{r_z}{0}{-r_x}{-r_y}{r_x}{0} \end{array}\)
      *
      * Inverse transformation can be also done easily, since
      *
@@ -8083,7 +8104,28 @@ public class Calib3d {
      *
      * A rotation vector is a convenient and most compact representation of a rotation matrix (since any
      * rotation matrix has just 3 degrees of freedom). The representation is used in the global 3D geometry
-     * optimization procedures like calibrateCamera, stereoCalibrate, or solvePnP .
+     * optimization procedures like REF: calibrateCamera, REF: stereoCalibrate, or REF: solvePnP .
+     *
+     * <b>Note:</b> More information about the computation of the derivative of a 3D rotation matrix with respect to its exponential coordinate
+     * can be found in:
+     * <ul>
+     *   <li>
+     *      A Compact Formula for the Derivative of a 3-D Rotation in Exponential Coordinates, Guillermo Gallego, Anthony J. Yezzi CITE: Gallego2014ACF
+     *   </li>
+     * </ul>
+     *
+     * <b>Note:</b> Useful information on SE(3) and Lie Groups can be found in:
+     * <ul>
+     *   <li>
+     *      A tutorial on SE(3) transformation parameterizations and on-manifold optimization, Jose-Luis Blanco CITE: blanco2010tutorial
+     *   </li>
+     *   <li>
+     *      Lie Groups for 2D and 3D Transformation, Ethan Eade CITE: Eade17
+     *   </li>
+     *   <li>
+     *      A micro Lie theory for state estimation in robotics, Joan Solà, Jérémie Deray, Dinesh Atchuthan CITE: Sol2018AML
+     *   </li>
+     * </ul>
      */
     public static void Rodrigues(Mat src, Mat dst) {
         Rodrigues_1(src.nativeObj, dst.nativeObj);
@@ -9361,8 +9403,11 @@ public class Calib3d {
      * Reprojects a disparity image to 3D space.
      *
      * @param disparity Input single-channel 8-bit unsigned, 16-bit signed, 32-bit signed or 32-bit
-     * floating-point disparity image. If 16-bit signed format is used, the values are assumed to have no
-     * fractional bits.
+     * floating-point disparity image.
+     * The values of 8-bit / 16-bit signed formats are assumed to have no fractional bits.
+     * If the disparity is 16-bit signed format as computed by
+     * StereoBM/StereoSGBM/StereoBinaryBM/StereoBinarySGBM and may be other algorithms,
+     * it should be divided by 16 (and scaled to float) before being used here.
      * @param _3dImage Output 3-channel floating-point image of the same size as disparity . Each
      * element of _3dImage(x,y) contains 3D coordinates of the point (x,y) computed from the disparity
      * map.
@@ -9392,8 +9437,11 @@ public class Calib3d {
      * Reprojects a disparity image to 3D space.
      *
      * @param disparity Input single-channel 8-bit unsigned, 16-bit signed, 32-bit signed or 32-bit
-     * floating-point disparity image. If 16-bit signed format is used, the values are assumed to have no
-     * fractional bits.
+     * floating-point disparity image.
+     * The values of 8-bit / 16-bit signed formats are assumed to have no fractional bits.
+     * If the disparity is 16-bit signed format as computed by
+     * StereoBM/StereoSGBM/StereoBinaryBM/StereoBinarySGBM and may be other algorithms,
+     * it should be divided by 16 (and scaled to float) before being used here.
      * @param _3dImage Output 3-channel floating-point image of the same size as disparity . Each
      * element of _3dImage(x,y) contains 3D coordinates of the point (x,y) computed from the disparity
      * map.
@@ -9422,8 +9470,11 @@ public class Calib3d {
      * Reprojects a disparity image to 3D space.
      *
      * @param disparity Input single-channel 8-bit unsigned, 16-bit signed, 32-bit signed or 32-bit
-     * floating-point disparity image. If 16-bit signed format is used, the values are assumed to have no
-     * fractional bits.
+     * floating-point disparity image.
+     * The values of 8-bit / 16-bit signed formats are assumed to have no fractional bits.
+     * If the disparity is 16-bit signed format as computed by
+     * StereoBM/StereoSGBM/StereoBinaryBM/StereoBinarySGBM and may be other algorithms,
+     * it should be divided by 16 (and scaled to float) before being used here.
      * @param _3dImage Output 3-channel floating-point image of the same size as disparity . Each
      * element of _3dImage(x,y) contains 3D coordinates of the point (x,y) computed from the disparity
      * map.
@@ -9457,10 +9508,10 @@ public class Calib3d {
      * to the camera coordinate frame) from a 3D-2D point correspondences and starting from an initial solution.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or 1xN/Nx1 3-channel,
-     * where N is the number of points. vector&lt;Point3f&gt; can also be passed here.
+     * where N is the number of points. vector&lt;Point3d&gt; can also be passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can also be passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can also be passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -9485,10 +9536,10 @@ public class Calib3d {
      * to the camera coordinate frame) from a 3D-2D point correspondences and starting from an initial solution.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or 1xN/Nx1 3-channel,
-     * where N is the number of points. vector&lt;Point3f&gt; can also be passed here.
+     * where N is the number of points. vector&lt;Point3d&gt; can also be passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can also be passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can also be passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -9517,10 +9568,10 @@ public class Calib3d {
      * to the camera coordinate frame) from a 3D-2D point correspondences and starting from an initial solution.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or 1xN/Nx1 3-channel,
-     * where N is the number of points. vector&lt;Point3f&gt; can also be passed here.
+     * where N is the number of points. vector&lt;Point3d&gt; can also be passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can also be passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can also be passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -9547,10 +9598,10 @@ public class Calib3d {
      * to the camera coordinate frame) from a 3D-2D point correspondences and starting from an initial solution.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or 1xN/Nx1 3-channel,
-     * where N is the number of points. vector&lt;Point3f&gt; can also be passed here.
+     * where N is the number of points. vector&lt;Point3d&gt; can also be passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can also be passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can also be passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -9576,10 +9627,10 @@ public class Calib3d {
      * to the camera coordinate frame) from a 3D-2D point correspondences and starting from an initial solution.
      *
      * @param objectPoints Array of object points in the object coordinate space, Nx3 1-channel or 1xN/Nx1 3-channel,
-     * where N is the number of points. vector&lt;Point3f&gt; can also be passed here.
+     * where N is the number of points. vector&lt;Point3d&gt; can also be passed here.
      * @param imagePoints Array of corresponding image points, Nx2 1-channel or 1xN/Nx1 2-channel,
-     * where N is the number of points. vector&lt;Point2f&gt; can also be passed here.
-     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{fx}{0}{cx}{0}{fy}{cy}{0}{0}{1}\) .
+     * where N is the number of points. vector&lt;Point2d&gt; can also be passed here.
+     * @param cameraMatrix Input camera matrix \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\) .
      * @param distCoeffs Input vector of distortion coefficients
      * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6 [, s_1, s_2, s_3, s_4[, \tau_x, \tau_y]]]])\) of
      * 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are
@@ -9612,8 +9663,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first
@@ -9708,8 +9759,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first
@@ -9801,8 +9852,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first
@@ -9891,8 +9942,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first
@@ -9980,8 +10031,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first
@@ -10068,8 +10119,8 @@ public class Calib3d {
      * @param cameraMatrix2 Second camera matrix.
      * @param distCoeffs2 Second camera distortion parameters.
      * @param imageSize Size of the image used for stereo calibration.
-     * @param R Rotation matrix between the coordinate systems of the first and the second cameras.
-     * @param T Translation vector between coordinate systems of the cameras.
+     * @param R Rotation matrix from the coordinate system of the first camera to the second.
+     * @param T Translation vector from the coordinate system of the first camera to the second.
      * @param R1 Output 3x3 rectification transform (rotation matrix) for the first camera.
      * @param R2 Output 3x3 rectification transform (rotation matrix) for the second camera.
      * @param P1 Output 3x4 projection matrix in the new (rectified) coordinate systems for the first

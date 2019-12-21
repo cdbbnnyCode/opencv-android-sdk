@@ -1,0 +1,70 @@
+diff --git a/.gitignore b/.gitignore
+index 5597bf4..9d576ee 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -47,7 +47,8 @@ captures/
+ #*.jks
+ 
+ # External native build folder generated in Android Studio 2.2 and later
+-.externalNativeBuild
++.externalNativeBuild/
++.cxx/
+ 
+ # Google Services (e.g. APIs or Firebase)
+ google-services.json
+diff --git a/sdk/native/jni/OpenCV-armeabi-v7a.mk b/sdk/native/jni/OpenCV-armeabi-v7a.mk
+index a7ee1b5..eef4b85 100644
+--- a/sdk/native/jni/OpenCV-armeabi-v7a.mk
++++ b/sdk/native/jni/OpenCV-armeabi-v7a.mk
+@@ -1,2 +1,2 @@
+ OPENCV_3RDPARTY_COMPONENTS:=tbb cpufeatures ittnotify libprotobuf libjpeg-turbo libwebp libpng libtiff libjasper IlmImf quirc tegra_hal
+-OPENCV_EXTRA_COMPONENTS:=/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a dl m log
++OPENCV_EXTRA_COMPONENTS:=${HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a dl m log
+diff --git a/sdk/native/jni/abi-armeabi-v7a/OpenCVModules.cmake b/sdk/native/jni/abi-armeabi-v7a/OpenCVModules.cmake
+index c295aed..0eb5ff8 100644
+--- a/sdk/native/jni/abi-armeabi-v7a/OpenCVModules.cmake
++++ b/sdk/native/jni/abi-armeabi-v7a/OpenCVModules.cmake
+@@ -61,7 +61,7 @@ add_library(libjpeg-turbo STATIC IMPORTED)
+ add_library(libtiff STATIC IMPORTED)
+ 
+ set_target_properties(libtiff PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
++  INTERFACE_LINK_LIBRARIES "$ENV{HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
+ )
+ 
+ # Create imported target libwebp
+@@ -78,14 +78,14 @@ add_library(libjasper STATIC IMPORTED)
+ add_library(libpng STATIC IMPORTED)
+ 
+ set_target_properties(libpng PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
++  INTERFACE_LINK_LIBRARIES "$ENV{HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
+ )
+ 
+ # Create imported target IlmImf
+ add_library(IlmImf STATIC IMPORTED)
+ 
+ set_target_properties(IlmImf PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
++  INTERFACE_LINK_LIBRARIES "$ENV{HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a"
+ )
+ 
+ # Create imported target tbb
+@@ -126,7 +126,7 @@ set_target_properties(ocv.3rdparty.android_mediandk PROPERTIES
+ add_library(opencv_core STATIC IMPORTED)
+ 
+ set_target_properties(opencv_core PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:dl>;\$<LINK_ONLY:m>;\$<LINK_ONLY:log>;\$<LINK_ONLY:tegra_hal>;\$<LINK_ONLY:tbb>;/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a;\$<LINK_ONLY:libcpufeatures>;\$<LINK_ONLY:ittnotify>;\$<LINK_ONLY:tegra_hal>"
++  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:dl>;\$<LINK_ONLY:m>;\$<LINK_ONLY:log>;\$<LINK_ONLY:tegra_hal>;\$<LINK_ONLY:tbb>;$ENV{HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a;\$<LINK_ONLY:libcpufeatures>;\$<LINK_ONLY:ittnotify>;\$<LINK_ONLY:tegra_hal>"
+ )
+ 
+ # Create imported target opencv_flann
+@@ -238,7 +238,7 @@ set_target_properties(opencv_img_hash PROPERTIES
+ add_library(opencv_imgcodecs STATIC IMPORTED)
+ 
+ set_target_properties(opencv_imgcodecs PROPERTIES
+-  INTERFACE_LINK_LIBRARIES "opencv_core;opencv_imgproc;\$<LINK_ONLY:dl>;\$<LINK_ONLY:m>;\$<LINK_ONLY:log>;\$<LINK_ONLY:tegra_hal>;/home/aidan/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a;\$<LINK_ONLY:libjpeg-turbo>;\$<LINK_ONLY:libwebp>;\$<LINK_ONLY:libpng>;\$<LINK_ONLY:libtiff>;\$<LINK_ONLY:libjasper>;\$<LINK_ONLY:IlmImf>"
++  INTERFACE_LINK_LIBRARIES "opencv_core;opencv_imgproc;\$<LINK_ONLY:dl>;\$<LINK_ONLY:m>;\$<LINK_ONLY:log>;\$<LINK_ONLY:tegra_hal>;$ENV{HOME}/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libz.a;\$<LINK_ONLY:libjpeg-turbo>;\$<LINK_ONLY:libwebp>;\$<LINK_ONLY:libpng>;\$<LINK_ONLY:libtiff>;\$<LINK_ONLY:libjasper>;\$<LINK_ONLY:IlmImf>"
+ )
+ 
+ # Create imported target opencv_line_descriptor

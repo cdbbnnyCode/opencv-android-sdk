@@ -24,10 +24,11 @@ public class Dnn {
     // C++: enum Backend
     public static final int
             DNN_BACKEND_DEFAULT = 0,
-            DNN_BACKEND_HALIDE = 1,
-            DNN_BACKEND_INFERENCE_ENGINE = 2,
-            DNN_BACKEND_OPENCV = 3,
-            DNN_BACKEND_VKCOM = 4;
+            DNN_BACKEND_HALIDE = 0+1,
+            DNN_BACKEND_INFERENCE_ENGINE = 0+2,
+            DNN_BACKEND_OPENCV = 0+3,
+            DNN_BACKEND_VKCOM = 0+4,
+            DNN_BACKEND_CUDA = 0+5;
 
 
     // C++: enum Target
@@ -37,7 +38,9 @@ public class Dnn {
             DNN_TARGET_OPENCL_FP16 = 2,
             DNN_TARGET_MYRIAD = 3,
             DNN_TARGET_VULKAN = 4,
-            DNN_TARGET_FPGA = 5;
+            DNN_TARGET_FPGA = 5,
+            DNN_TARGET_CUDA = 6,
+            DNN_TARGET_CUDA_FP16 = 7;
 
 
     //
@@ -597,6 +600,25 @@ public class Dnn {
 
 
     //
+    // C++:  Net cv::dnn::readNetFromModelOptimizer(vector_uchar bufferModelConfig, vector_uchar bufferWeights)
+    //
+
+    /**
+     * Load a network from Intel's Model Optimizer intermediate representation.
+     * @param bufferModelConfig Buffer contains XML configuration with network's topology.
+     * @param bufferWeights Buffer contains binary data with trained weights.
+     * @return Net object.
+     * Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine
+     * backend.
+     */
+    public static Net readNetFromModelOptimizer(MatOfByte bufferModelConfig, MatOfByte bufferWeights) {
+        Mat bufferModelConfig_mat = bufferModelConfig;
+        Mat bufferWeights_mat = bufferWeights;
+        return new Net(readNetFromModelOptimizer_1(bufferModelConfig_mat.nativeObj, bufferWeights_mat.nativeObj));
+    }
+
+
+    //
     // C++:  Net cv::dnn::readNetFromONNX(String onnxFile)
     //
 
@@ -775,6 +797,23 @@ public class Dnn {
 
 
     //
+    // C++:  String cv::dnn::getInferenceEngineBackendType()
+    //
+
+    /**
+     * Returns Inference Engine internal backend API.
+     *
+     * See values of {@code CV_DNN_BACKEND_INFERENCE_ENGINE_*} macros.
+     *
+     * Default value is controlled through {@code OPENCV_DNN_BACKEND_INFERENCE_ENGINE_TYPE} runtime parameter (environment variable).
+     * @return automatically generated
+     */
+    public static String getInferenceEngineBackendType() {
+        return getInferenceEngineBackendType_0();
+    }
+
+
+    //
     // C++:  String cv::dnn::getInferenceEngineVPUType()
     //
 
@@ -786,6 +825,23 @@ public class Dnn {
      */
     public static String getInferenceEngineVPUType() {
         return getInferenceEngineVPUType_0();
+    }
+
+
+    //
+    // C++:  String cv::dnn::setInferenceEngineBackendType(String newBackendType)
+    //
+
+    /**
+     * Specify Inference Engine internal backend API.
+     *
+     * See values of {@code CV_DNN_BACKEND_INFERENCE_ENGINE_*} macros.
+     *
+     * @return previous value of internal backend API
+     * @param newBackendType automatically generated
+     */
+    public static String setInferenceEngineBackendType(String newBackendType) {
+        return setInferenceEngineBackendType_0(newBackendType);
     }
 
 
@@ -1044,6 +1100,9 @@ public class Dnn {
     // C++:  Net cv::dnn::readNetFromModelOptimizer(String xml, String bin)
     private static native long readNetFromModelOptimizer_0(String xml, String bin);
 
+    // C++:  Net cv::dnn::readNetFromModelOptimizer(vector_uchar bufferModelConfig, vector_uchar bufferWeights)
+    private static native long readNetFromModelOptimizer_1(long bufferModelConfig_mat_nativeObj, long bufferWeights_mat_nativeObj);
+
     // C++:  Net cv::dnn::readNetFromONNX(String onnxFile)
     private static native long readNetFromONNX_0(String onnxFile);
 
@@ -1063,8 +1122,14 @@ public class Dnn {
     private static native long readNetFromTorch_1(String model, boolean isBinary);
     private static native long readNetFromTorch_2(String model);
 
+    // C++:  String cv::dnn::getInferenceEngineBackendType()
+    private static native String getInferenceEngineBackendType_0();
+
     // C++:  String cv::dnn::getInferenceEngineVPUType()
     private static native String getInferenceEngineVPUType_0();
+
+    // C++:  String cv::dnn::setInferenceEngineBackendType(String newBackendType)
+    private static native String setInferenceEngineBackendType_0(String newBackendType);
 
     // C++:  void cv::dnn::NMSBoxes(vector_Rect bboxes, vector_float scores, float score_threshold, float nms_threshold, vector_int& indices, float eta = 1.f, int top_k = 0)
     private static native void NMSBoxes_0(long bboxes_mat_nativeObj, long scores_mat_nativeObj, float score_threshold, float nms_threshold, long indices_mat_nativeObj, float eta, int top_k);

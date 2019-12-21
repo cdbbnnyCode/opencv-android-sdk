@@ -15,14 +15,6 @@ import org.opencv.utils.Converters;
 
 public class Text {
 
-    // C++: enum <unnamed>
-    public static final int
-            ERFILTER_NM_RGBLGrad = 0,
-            ERFILTER_NM_IHSGrad = 1,
-            OCR_LEVEL_WORD = 0,
-            OCR_LEVEL_TEXTLINE = 1;
-
-
     // C++: enum decoder_mode
     public static final int
             OCR_DECODER_VITERBI = 0;
@@ -32,6 +24,14 @@ public class Text {
     public static final int
             ERGROUPING_ORIENTATION_HORIZ = 0,
             ERGROUPING_ORIENTATION_ANY = 1;
+
+
+    // C++: enum <unnamed>
+    public static final int
+            ERFILTER_NM_RGBLGrad = 0,
+            ERFILTER_NM_IHSGrad = 1,
+            OCR_LEVEL_WORD = 0,
+            OCR_LEVEL_TEXTLINE = 1;
 
 
     // C++: enum page_seg_mode

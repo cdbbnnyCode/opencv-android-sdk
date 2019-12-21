@@ -17,6 +17,7 @@ import org.opencv.ximgproc.FastLineDetector;
 import org.opencv.ximgproc.GraphSegmentation;
 import org.opencv.ximgproc.GuidedFilter;
 import org.opencv.ximgproc.RFFeatureGetter;
+import org.opencv.ximgproc.RICInterpolator;
 import org.opencv.ximgproc.SelectiveSearchSegmentation;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategy;
 import org.opencv.ximgproc.SelectiveSearchSegmentationStrategyColor;
@@ -886,6 +887,20 @@ public class Ximgproc {
 
     public static RFFeatureGetter createRFFeatureGetter() {
         return RFFeatureGetter.__fromPtr__(createRFFeatureGetter_0());
+    }
+
+
+    //
+    // C++:  Ptr_RICInterpolator cv::ximgproc::createRICInterpolator()
+    //
+
+    /**
+     * Factory method that creates an instance of the
+     * RICInterpolator.
+     * @return automatically generated
+     */
+    public static RICInterpolator createRICInterpolator() {
+        return RICInterpolator.__fromPtr__(createRICInterpolator_0());
     }
 
 
@@ -2878,6 +2893,9 @@ public class Ximgproc {
 
     // C++:  Ptr_RFFeatureGetter cv::ximgproc::createRFFeatureGetter()
     private static native long createRFFeatureGetter_0();
+
+    // C++:  Ptr_RICInterpolator cv::ximgproc::createRICInterpolator()
+    private static native long createRICInterpolator_0();
 
     // C++:  Ptr_SelectiveSearchSegmentation cv::ximgproc::segmentation::createSelectiveSearchSegmentation()
     private static native long createSelectiveSearchSegmentation_0();

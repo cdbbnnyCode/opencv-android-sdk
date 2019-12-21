@@ -16,11 +16,11 @@ import org.opencv.utils.Converters;
 
 public class Core {
     // these constants are wrapped inside functions to prevent inlining
-    private static String getVersion() { return "4.1.2"; }
-    private static String getNativeLibraryName() { return "opencv_java412"; }
+    private static String getVersion() { return "4.2.0"; }
+    private static String getNativeLibraryName() { return "opencv_java420"; }
     private static int getVersionMajorJ() { return 4; }
-    private static int getVersionMinorJ() { return 1; }
-    private static int getVersionRevisionJ() { return 2; }
+    private static int getVersionMinorJ() { return 2; }
+    private static int getVersionRevisionJ() { return 0; }
     private static String getVersionStatusJ() { return ""; }
 
     public static final String VERSION = getVersion();
@@ -49,20 +49,6 @@ public class Core {
             DECOMP_CHOLESKY = 3,
             DECOMP_QR = 4,
             DECOMP_NORMAL = 16;
-
-
-    // C++: enum <unnamed>
-    public static final int
-            SVD_MODIFY_A = 1,
-            SVD_NO_UV = 2,
-            SVD_FULL_UV = 4,
-            FILLED = -1,
-            REDUCE_SUM = 0,
-            REDUCE_AVG = 1,
-            REDUCE_MAX = 2,
-            REDUCE_MIN = 3,
-            RNG_UNIFORM = 0,
-            RNG_NORMAL = 1;
 
 
     // C++: enum BorderTypes
@@ -102,6 +88,20 @@ public class Core {
             CMP_NE = 5;
 
 
+    // C++: enum <unnamed>
+    public static final int
+            SVD_MODIFY_A = 1,
+            SVD_NO_UV = 2,
+            SVD_FULL_UV = 4,
+            FILLED = -1,
+            REDUCE_SUM = 0,
+            REDUCE_AVG = 1,
+            REDUCE_MAX = 2,
+            REDUCE_MIN = 3,
+            RNG_UNIFORM = 0,
+            RNG_NORMAL = 1;
+
+
     // C++: enum Flags
     public static final int
             PCA_DATA_AS_ROW = 0,
@@ -121,36 +121,14 @@ public class Core {
             DCT_ROWS = DFT_ROWS;
 
 
-    // C++: enum IMPL
+    // C++: enum CovarFlags
     public static final int
-            IMPL_PLAIN = 0,
-            IMPL_IPP = 0+1,
-            IMPL_OPENCL = 0+2;
-
-
-    // C++: enum FLAGS
-    public static final int
-            FLAGS_NONE = 0,
-            FLAGS_MAPPING = 0x01,
-            FLAGS_EXPAND_SAME_NAMES = 0x02;
-
-
-    // C++: enum TYPE
-    public static final int
-            TYPE_GENERAL = 0,
-            TYPE_MARKER = 0+1,
-            TYPE_WRAPPER = 0+2,
-            TYPE_FUN = 0+3;
-
-
-    // C++: enum FormatType
-    public static final int
-            Formatter_FMT_DEFAULT = 0,
-            Formatter_FMT_MATLAB = 1,
-            Formatter_FMT_CSV = 2,
-            Formatter_FMT_PYTHON = 3,
-            Formatter_FMT_NUMPY = 4,
-            Formatter_FMT_C = 5;
+            COVAR_SCRAMBLED = 0,
+            COVAR_NORMAL = 1,
+            COVAR_USE_AVG = 2,
+            COVAR_SCALE = 4,
+            COVAR_ROWS = 8,
+            COVAR_COLS = 16;
 
 
     // C++: enum SortFlags
@@ -161,14 +139,14 @@ public class Core {
             SORT_DESCENDING = 16;
 
 
-    // C++: enum CovarFlags
+    // C++: enum FormatType
     public static final int
-            COVAR_SCRAMBLED = 0,
-            COVAR_NORMAL = 1,
-            COVAR_USE_AVG = 2,
-            COVAR_SCALE = 4,
-            COVAR_ROWS = 8,
-            COVAR_COLS = 16;
+            Formatter_FMT_DEFAULT = 0,
+            Formatter_FMT_MATLAB = 1,
+            Formatter_FMT_CSV = 2,
+            Formatter_FMT_PYTHON = 3,
+            Formatter_FMT_NUMPY = 4,
+            Formatter_FMT_C = 5;
 
 
     // C++: enum Param

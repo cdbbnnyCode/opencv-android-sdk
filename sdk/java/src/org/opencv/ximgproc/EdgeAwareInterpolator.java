@@ -3,6 +3,7 @@
 //
 package org.opencv.ximgproc;
 
+import org.opencv.core.Mat;
 import org.opencv.ximgproc.SparseMatchInterpolator;
 
 // C++: class EdgeAwareInterpolator
@@ -92,6 +93,24 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
      */
     public int getK() {
         return getK_0(nativeObj);
+    }
+
+
+    //
+    // C++:  void cv::ximgproc::EdgeAwareInterpolator::setCostMap(Mat _costMap)
+    //
+
+    /**
+     * Interface to provide a more elaborated cost map, i.e. edge map, for the edge-aware term.
+     * This implementation is based on a rather simple gradient-based edge map estimation.
+     * To used more complex edge map estimator (e.g. StructuredEdgeDetection that has been
+     * used in the original publication) that may lead to improved accuracies, the internal
+     * edge map estimation can be bypassed here.
+     * @param _costMap a type CV_32FC1 Mat is required.
+     * SEE: cv::ximgproc::createSuperpixelSLIC
+     */
+    public void setCostMap(Mat _costMap) {
+        setCostMap_0(nativeObj, _costMap.nativeObj);
     }
 
 
@@ -203,6 +222,9 @@ public class EdgeAwareInterpolator extends SparseMatchInterpolator {
 
     // C++:  int cv::ximgproc::EdgeAwareInterpolator::getK()
     private static native int getK_0(long nativeObj);
+
+    // C++:  void cv::ximgproc::EdgeAwareInterpolator::setCostMap(Mat _costMap)
+    private static native void setCostMap_0(long nativeObj, long _costMap_nativeObj);
 
     // C++:  void cv::ximgproc::EdgeAwareInterpolator::setFGSLambda(float _lambda)
     private static native void setFGSLambda_0(long nativeObj, float _lambda);

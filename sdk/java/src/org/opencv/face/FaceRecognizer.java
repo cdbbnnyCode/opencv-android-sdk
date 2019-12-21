@@ -87,7 +87,7 @@ import org.opencv.utils.Converters;
  * int num_components = 10;
  * double threshold = 10.0;
  * // Then if you want to have a cv::FaceRecognizer with a confidence threshold,
- * // create the concrete implementation with the appropiate parameters:
+ * // create the concrete implementation with the appropriate parameters:
  * Ptr&lt;FaceRecognizer&gt; model = EigenFaceRecognizer::create(num_components, threshold);
  * </code>
  *
